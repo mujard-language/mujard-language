@@ -175,7 +175,13 @@ func TestLearnExamples(t *testing.T) {
 		return
 	}
 	web, android := learnBundles(t, levels)
-	want := map[string][]byte{learnWebBundle: web, learnAndroidAsset: android}
+	want := map[string][]byte{}
+	for p, b := range map[string][]byte{learnWebBundle: web, learnAndroidAsset: android} {
+		if _, err := os.Stat(filepath.Dir(p)); err != nil {
+			continue // the web//app checkouts are only in the monorepo
+		}
+		want[p] = b
+	}
 	for p, b := range want {
 		if os.Getenv("MUJARD_GOLDEN") == "1" {
 			if err := os.WriteFile(p, b, 0o644); err != nil {

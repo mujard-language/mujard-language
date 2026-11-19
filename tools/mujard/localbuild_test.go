@@ -7,6 +7,7 @@ import (
 	"net/http/httptest"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"sync/atomic"
 	"testing"
@@ -129,9 +130,17 @@ func TestGccDiags(t *testing.T) {
 // fakeArduinoCli is a stand-in arduino-cli: "compile --fqbn F --output-dir D [--config-file C] S" leaves a firmware in D.
 func fakeArduinoCli(t *testing.T) string {
 	t.Helper()
-	p := filepath.Join(t.TempDir(), "arduino-cli.bat")
-	// It also copies the build's secrets header to MUJARD_TEST_SEEN (when set), so a test can see what the compiler got.
-	script := "@echo off\r\nmkdir \"%~5\" 2>nul\r\necho :00000001FF> \"%~5\\sketch.ino.hex\"\r\nif defined MUJARD_TEST_SEEN if exist \"%~6\\mujard_secrets.h\" copy /y \"%~6\\mujard_secrets.h\" \"%MUJARD_TEST_SEEN%\" >nul\r\nexit /b 0\r\n"
+	if runtime.GOOS == "windows" {
+		p := filepath.Join(t.TempDir(), "arduino-cli.bat")
+		// It also copies the build's secrets header to MUJARD_TEST_SEEN (when set), so a test can see what the compiler got.
+		script := "@echo off\r\nmkdir \"%~5\" 2>nul\r\necho :00000001FF> \"%~5\\sketch.ino.hex\"\r\nif defined MUJARD_TEST_SEEN if exist \"%~6\\mujard_secrets.h\" copy /y \"%~6\\mujard_secrets.h\" \"%MUJARD_TEST_SEEN%\" >nul\r\nexit /b 0\r\n"
+		if err := os.WriteFile(p, []byte(script), 0o700); err != nil {
+			t.Fatal(err)
+		}
+		return p
+	}
+	p := filepath.Join(t.TempDir(), "arduino-cli")
+	script := "#!/bin/sh\nmkdir -p \"$5\"\necho ':00000001FF' > \"$5/sketch.ino.hex\"\nif [ -n \"$MUJARD_TEST_SEEN\" ] && [ -f \"$6/mujard_secrets.h\" ]; then cp \"$6/mujard_secrets.h\" \"$MUJARD_TEST_SEEN\"; fi\nexit 0\n"
 	if err := os.WriteFile(p, []byte(script), 0o700); err != nil {
 		t.Fatal(err)
 	}

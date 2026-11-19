@@ -11,9 +11,11 @@
 #include <string>
 #include <vector>
 
+#if defined(_WIN32)
 // MinGW knows localtime_s / gmtime_s (Windows argument order), not the POSIX _r spellings the cores use.
 #define localtime_r(t, out) (localtime_s(out, t), out)
 #define gmtime_r(t, out) (gmtime_s(out, t), out)
+#endif
 
 #define HIGH 1
 #define LOW 0

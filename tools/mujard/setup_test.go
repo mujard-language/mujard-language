@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"errors"
+	"runtime"
 	"strings"
 	"testing"
 )
@@ -56,6 +57,9 @@ func TestPathHelpers(t *testing.T) {
 }
 
 func TestSetupPathAddsOnceAndUndoes(t *testing.T) {
+	if runtime.GOOS != "windows" {
+		t.Skip("the user-PATH store is a Windows registry value")
+	}
 	store := &memPath{value: `%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;C:\b`, kind: 2}
 	var out bytes.Buffer
 	if code := setupPath(nil, &out, store, selfExe, noMujard); code != 0 || !strings.Contains(out.String(), "Added") {
@@ -81,6 +85,9 @@ func TestSetupPathAddsOnceAndUndoes(t *testing.T) {
 }
 
 func TestSetupPathNeverShadowsAnotherMujard(t *testing.T) {
+	if runtime.GOOS != "windows" {
+		t.Skip("the user-PATH store is a Windows registry value")
+	}
 	store := &memPath{value: `C:\b`, kind: 2}
 	other := func(string) (string, error) { return `C:\Other\MujardCLI.exe`, nil }
 	var out bytes.Buffer
@@ -95,6 +102,9 @@ func TestSetupPathNeverShadowsAnotherMujard(t *testing.T) {
 }
 
 func TestSetupPathCheckAndUsage(t *testing.T) {
+	if runtime.GOOS != "windows" {
+		t.Skip("the user-PATH store is a Windows registry value")
+	}
 	store := &memPath{value: `C:\b`, kind: 2}
 	var out bytes.Buffer
 	if code := setupPath([]string{"--check"}, &out, store, selfExe, noMujard); code != 0 || store.writes != 0 || !strings.Contains(out.String(), "on user PATH:    false") {

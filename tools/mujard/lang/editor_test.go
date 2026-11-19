@@ -109,15 +109,19 @@ var androidEditorInfoPath = filepath.Join("..", "..", "..", "app", "src", "main"
 
 func TestEditorInfoFileIsCurrent(t *testing.T) {
 	want := editorInfoJSON(t)
+	paths := []string{editorInfoPath}
+	if _, err := os.Stat(filepath.Dir(androidEditorInfoPath)); err == nil {
+		paths = append(paths, androidEditorInfoPath) // the app's checkout is only in the monorepo
+	}
 	if os.Getenv("MUJARD_GOLDEN") == "1" {
-		for _, p := range []string{editorInfoPath, androidEditorInfoPath} {
+		for _, p := range paths {
 			if err := os.WriteFile(p, want, 0o644); err != nil {
 				t.Fatalf("write %s: %v", p, err)
 			}
 		}
 		return
 	}
-	for _, p := range []string{editorInfoPath, androidEditorInfoPath} {
+	for _, p := range paths {
 		got, err := os.ReadFile(p)
 		if err != nil {
 			t.Fatalf("read %s: %v (run with MUJARD_GOLDEN=1 to generate)", p, err)

@@ -71,7 +71,9 @@ mujard repl --board uno          # interactive prompt on the simulated board
 
 `mujard lsp` is the language server for editors; `mujard fmt` rewrites a program in the
 standard layout; `mujard boards caps <board>` shows how far each capability is proven on
-a board (hardware / build / backend / none).
+a board (hardware / build / backend / none). `mujard serial <port>` watches a board's
+serial output (with the desktop app), `mujard logs` prints the upload/burn traces this PC
+keeps, and `mujard doc <dir>` writes the language reference pages.
 
 ## Building firmware
 
