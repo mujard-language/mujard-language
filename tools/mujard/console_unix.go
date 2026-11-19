@@ -2,15 +2,19 @@
 
 package main
 
-import (
-	"os"
-	"syscall"
-	"unsafe"
-)
+import "os"
 
-// stdinIsConsole: a terminal, not a pipe, a file or /dev/null - only a tty answers TCGETS.
+// stdinIsConsole: a terminal, not a pipe, a file or /dev/null (a char device too, but not a console).
 func stdinIsConsole() bool {
-	var t syscall.Termios
-	_, _, errno := syscall.Syscall(syscall.SYS_IOCTL, os.Stdin.Fd(), uintptr(syscall.TCGETS), uintptr(unsafe.Pointer(&t)))
-	return errno == 0
+	st, err := os.Stdin.Stat()
+	if err != nil || st.Mode()&os.ModeCharDevice == 0 {
+		return false
+	}
+	dn, err := os.Open(os.DevNull)
+	if err != nil {
+		return true
+	}
+	defer dn.Close()
+	dst, err := dn.Stat()
+	return err != nil || !os.SameFile(st, dst)
 }
