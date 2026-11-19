@@ -1,0 +1,55 @@
+{
+  "name": "HX711",
+  "header": "HX711.h",
+  "classes": {
+    "HX711": {
+      "ctors": [{"params": [], "result": "HX711"}],
+      "methods": {
+        "begin": {"params": [{"name": "dataPin", "type": "int"}, {"name": "clockPin", "type": "int"}, {"name": "fastProcessor", "type": "bool", "optional": true}, {"name": "doReset", "type": "bool", "optional": true}], "result": "void"},
+        "reset": {"params": [], "result": "void"},
+        "is_ready": {"params": [], "result": "bool"},
+        "wait_ready": {"params": [{"name": "ms", "type": "int", "optional": true}], "result": "void"},
+        "wait_ready_retry": {"params": [{"name": "retries", "type": "int", "optional": true}, {"name": "ms", "type": "int", "optional": true}], "result": "bool"},
+        "wait_ready_timeout": {"params": [{"name": "timeout", "type": "int", "optional": true}, {"name": "ms", "type": "int", "optional": true}], "result": "bool"},
+        "read": {"params": [], "result": "float"},
+        "read_average": {"params": [{"name": "times", "type": "int", "optional": true}], "result": "float"},
+        "read_median": {"params": [{"name": "times", "type": "int", "optional": true}], "result": "float"},
+        "read_medavg": {"params": [{"name": "times", "type": "int", "optional": true}], "result": "float"},
+        "read_runavg": {"params": [{"name": "times", "type": "int", "optional": true}, {"name": "alpha", "type": "float", "optional": true}], "result": "float"},
+        "set_raw_mode": {"params": [], "result": "void"},
+        "set_average_mode": {"params": [], "result": "void"},
+        "set_median_mode": {"params": [], "result": "void"},
+        "set_medavg_mode": {"params": [], "result": "void"},
+        "set_runavg_mode": {"params": [], "result": "void"},
+        "get_mode": {"params": [], "result": "int"},
+        "get_value": {"params": [{"name": "times", "type": "int", "optional": true}], "result": "float"},
+        "get_units": {"params": [{"name": "times", "type": "int", "optional": true}], "result": "float"},
+        "set_gain": {"params": [{"name": "gain", "type": "int", "optional": true}, {"name": "forced", "type": "bool", "optional": true}], "result": "bool"},
+        "get_gain": {"params": [], "result": "int"},
+        "tare": {"params": [{"name": "times", "type": "int", "optional": true}], "result": "void"},
+        "get_tare": {"params": [], "result": "float"},
+        "tare_set": {"params": [], "result": "bool"},
+        "set_scale": {"params": [{"name": "scale", "type": "float", "optional": true}], "result": "bool"},
+        "get_scale": {"params": [], "result": "float"},
+        "set_offset": {"params": [{"name": "offset", "type": "int", "optional": true}], "result": "void"},
+        "get_offset": {"params": [], "result": "int"},
+        "calibrate_scale": {"params": [{"name": "weight", "type": "float"}, {"name": "times", "type": "int", "optional": true}], "result": "void"},
+        "power_down": {"params": [], "result": "void"},
+        "power_up": {"params": [], "result": "void"},
+        "set_rate_pin": {"params": [{"name": "pin", "type": "int"}], "result": "void"},
+        "set_rate_10SPS": {"params": [], "result": "void"},
+        "set_rate_80SPS": {"params": [], "result": "void"},
+        "get_rate": {"params": [], "result": "int"},
+        "last_time_read": {"params": [], "result": "int"},
+        "get_price": {"params": [{"name": "times", "type": "int", "optional": true}], "result": "float"},
+        "set_unit_price": {"params": [{"name": "price", "type": "float", "optional": true}], "result": "void"},
+        "get_unit_price": {"params": [], "result": "float"}
+      }
+    }
+  },
+  "constants": {
+    "HX711_CHANNEL_A_GAIN_128": "int",
+    "HX711_CHANNEL_A_GAIN_64": "int",
+    "HX711_CHANNEL_B_GAIN_32": "int"
+  }
+}

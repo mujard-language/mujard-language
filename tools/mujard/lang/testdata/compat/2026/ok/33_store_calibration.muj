@@ -1,0 +1,29 @@
+# sample: a scale that remembers its zero point with store.save and store.load
+board uno
+
+scale = analog A0
+tare = pin 2 as input pullup
+var zero = 0
+
+at start:
+    zero = store.load("zero", default: 0)
+    print "Zero point: {zero}"
+
+on tare.pressed:
+    zero = scale.value
+    store.save("zero", zero)
+    print "New zero point: {zero}"
+
+every 1 s:
+    print "Weight: {scale.value - zero}"
+
+test "the stored zero comes back":
+    expect printed "Zero point: 0", "the default loads at start"
+    scale.pretend(700)
+    advance(1200 ms)
+    expect printed "Weight: 700", "no tare yet: weight is the raw value"
+    tare.pretend(1)
+    advance(100 ms)
+    tare.pretend(0)
+    advance(100 ms)
+    expect printed "New zero point: 700", "tare stores the reading"

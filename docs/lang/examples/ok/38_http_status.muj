@@ -1,0 +1,23 @@
+# sample: ask a web service for a status line every 5 minutes, inside a task
+board esp8266
+
+led = pin D5 as output
+
+at start:
+    wifi.connect(secret("office_wifi"))
+
+task check_status:
+    while true:
+        wait until wifi.connected
+        var reply = http.get("http://status.example.com/today")
+        if reply.ok:
+            led.off()
+            print "Status: {reply.text}"
+        else:
+            led.on()
+            print "No answer ({reply.status})"
+        wait 5 min
+
+test "the status loop runs clean":
+    advance(100 ms)
+    expect true, "the http status task sets up without error"

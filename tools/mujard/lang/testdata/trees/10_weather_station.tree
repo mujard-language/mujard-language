@@ -1,0 +1,21 @@
+(file esp32
+  (use mujard "mujard.mqtt" version="" as="")
+  (device sensor analog [35]  [] to_end=false)
+  (at start
+    (do (call wifi.connect (call secret (text "home_wifi"))))
+    (do (call mqtt.connect (text "broker.example.com") password:(call secret (text "mqtt"))))
+  )
+  (every 10s
+    (var t = (call scale sensor.volts (.. 0.5V 1.5V) (.. 0C 100C)))
+    (do (call show (text "Temperature") t))
+    (do (call plot t))
+    (if wifi.connected
+      (do (call mqtt.publish (text "station/" {board.id} "/temp") t))
+    )
+  )
+  (test "the reading loop runs clean"
+    (do (call sensor.pretend 0.9V))
+    (do (call advance 200ms))
+    (expect true (text "show/plot run without error"))
+  )
+)

@@ -1,0 +1,5 @@
+# expect: C305 5:5
+board uno
+var armed = false
+every 1 s:
+    wait until armed

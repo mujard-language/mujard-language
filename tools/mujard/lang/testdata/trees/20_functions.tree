@@ -1,0 +1,31 @@
+(file uno
+  (device buzzer pin [8] output [] to_end=false)
+  (device button pin [2] input [pullup] to_end=false)
+  (fn beep (pitch:frequency=2kHz, length:time=100ms)
+    (do (call buzzer.tone pitch length))
+  )
+  (fn sum_to (n:int):int
+    (var total = 0)
+    (for i in (..= 1 n)
+      (+= total i)
+    )
+    (return total)
+  )
+  (fn average (a:float, b:float):float
+    (return (/ (+ a b) 2))
+  )
+  (on button.pressed
+    (do (call beep))
+  )
+  (on (call button.held 1s)
+    (do (call beep pitch:1kHz length:300ms))
+    (print (text "1 + 2 + ... + 10 = " {(call sum_to 10)} ", average of 3 and 4 = " {(call average 3 4)}))
+  )
+  (test "the functions compute right"
+    (expect (== (call sum_to 10) 55) (text "1 + 2 + ... + 10 is 55"))
+    (expect (== (call average 3 4) 3.5) (text "the average of 3 and 4 is 3.5"))
+    (do (call button.pretend 1))
+    (do (call advance 1200ms))
+    (expect (call printed (text "55")) (text "a hold reports the maths"))
+  )
+)

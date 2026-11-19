@@ -1,0 +1,14 @@
+{
+  "schema": "mujard-package.v1",
+  "id": "arduino-samd",
+  "name": "Arduino SAMD core 1.8.14 + arm-none-eabi gcc 7-2017q4",
+  "version": "1.8.14",
+  "family": "samd",
+  "root": "${MUJARD_TOOLCHAINS}/samd-core-1.8.14/ArduinoCore-samd",
+  "libraryRoot": "libraries",
+  "tools": {
+    "gccBin": "${MUJARD_TOOLCHAINS}/arm-gcc7-7-2017q4/gcc-arm-none-eabi-7-2017-q4-major-win32/bin",
+    "cmsis": "${MUJARD_TOOLCHAINS}/cmsis4-4.5.0/CMSIS/CMSIS",
+    "cmsisAtmel": "${MUJARD_TOOLCHAINS}/cmsis-atmel-1.2.0/CMSIS-Atmel/CMSIS/Device/ATMEL"
+  }
+}

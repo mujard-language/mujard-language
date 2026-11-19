@@ -1,0 +1,29 @@
+(file esp32
+  (use mujard "mujard.mqtt" version="" as="")
+  (use mujard "mujard.servo" version="" as="")
+  (device lid (call Servo (pin 13)))
+  (device level analog [34]  [] to_end=false)
+  (at start
+    (do (call wifi.connect (call secret (text "home_wifi"))))
+    (do (call mqtt.connect (text "broker.example.com") user:(text "bin7") password:(call secret (text "mqtt"))))
+    (do (call mqtt.subscribe (text "bins/" {board.id} "/command")))
+  )
+  (every 1min
+    (do (call mqtt.publish (text "bins/" {board.id} "/level") level.percent))
+  )
+  (on mqtt.message as m
+    (if (== m.text (text "open"))
+      (do (call lid.move 90deg over:1s))
+    )
+    (elif (== m.text (text "close"))
+      (do (call lid.move 0deg over:1s))
+    )
+  )
+  (on wifi.lost
+    (do (call log.warn (text "Wi-Fi lost, reconnecting")))
+  )
+  (test "the bin program starts clean"
+    (do (call advance 100ms))
+    (expect true (text "mqtt + servo + wifi set up without error"))
+  )
+)

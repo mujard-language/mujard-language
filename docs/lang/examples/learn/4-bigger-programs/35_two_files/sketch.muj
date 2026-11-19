@@ -1,0 +1,22 @@
+# Two files: a module of your own
+# Level 4 - Bigger programs
+#
+# Each press changes how fast the LED blinks. The speeds live in a second file, signals.muj.
+# You learn: 'import', and reaching another file's names as signals.<name>.
+# You need: an LED on pin 12 (with a 220 ohm resistor) and a pushbutton between pin 2 and GND.
+
+board uno
+import signals                     # loads signals.muj from the same folder
+
+led    = pin 12 as output
+button = pin 2 as input pullup
+
+var mode = 0
+
+on button.pressed:
+    mode = signals.next(mode)
+    print "Signal: {signals.name(mode)}"
+    led.blink(signals.rate(mode))
+
+at start:
+    led.blink(signals.rate(mode))

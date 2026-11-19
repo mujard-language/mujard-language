@@ -1,0 +1,39 @@
+{
+  "name": "Adafruit GFX Library",
+  "header": "Adafruit_GFX.h",
+  "classes": {
+    "Adafruit_GFX": {
+      "abstract": true,
+      "methods": {
+        "drawPixel": {"params": [{"name": "x", "type": "int"}, {"name": "y", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "drawLine": {"params": [{"name": "x0", "type": "int"}, {"name": "y0", "type": "int"}, {"name": "x1", "type": "int"}, {"name": "y1", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "drawFastVLine": {"params": [{"name": "x", "type": "int"}, {"name": "y", "type": "int"}, {"name": "h", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "drawFastHLine": {"params": [{"name": "x", "type": "int"}, {"name": "y", "type": "int"}, {"name": "w", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "drawRect": {"params": [{"name": "x", "type": "int"}, {"name": "y", "type": "int"}, {"name": "w", "type": "int"}, {"name": "h", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "fillRect": {"params": [{"name": "x", "type": "int"}, {"name": "y", "type": "int"}, {"name": "w", "type": "int"}, {"name": "h", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "fillScreen": {"params": [{"name": "color", "type": "int"}], "result": "void"},
+        "drawCircle": {"params": [{"name": "x0", "type": "int"}, {"name": "y0", "type": "int"}, {"name": "r", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "fillCircle": {"params": [{"name": "x0", "type": "int"}, {"name": "y0", "type": "int"}, {"name": "r", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "drawRoundRect": {"params": [{"name": "x", "type": "int"}, {"name": "y", "type": "int"}, {"name": "w", "type": "int"}, {"name": "h", "type": "int"}, {"name": "r", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "fillRoundRect": {"params": [{"name": "x", "type": "int"}, {"name": "y", "type": "int"}, {"name": "w", "type": "int"}, {"name": "h", "type": "int"}, {"name": "r", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "drawTriangle": {"params": [{"name": "x0", "type": "int"}, {"name": "y0", "type": "int"}, {"name": "x1", "type": "int"}, {"name": "y1", "type": "int"}, {"name": "x2", "type": "int"}, {"name": "y2", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "fillTriangle": {"params": [{"name": "x0", "type": "int"}, {"name": "y0", "type": "int"}, {"name": "x1", "type": "int"}, {"name": "y1", "type": "int"}, {"name": "x2", "type": "int"}, {"name": "y2", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "drawBitmap": {"params": [{"name": "x", "type": "int"}, {"name": "y", "type": "int"}, {"name": "bitmap", "type": "any"}, {"name": "w", "type": "int"}, {"name": "h", "type": "int"}, {"name": "color", "type": "int"}, {"name": "bg", "type": "int", "optional": true}], "result": "void"},
+        "drawChar": {"params": [{"name": "x", "type": "int"}, {"name": "y", "type": "int"}, {"name": "c", "type": "int"}, {"name": "color", "type": "int"}, {"name": "bg", "type": "int"}, {"name": "size", "type": "int"}], "result": "void"},
+        "setCursor": {"params": [{"name": "x", "type": "int"}, {"name": "y", "type": "int"}], "result": "void"},
+        "setTextColor": {"params": [{"name": "color", "type": "int"}, {"name": "bg", "type": "int", "optional": true}], "result": "void"},
+        "setTextSize": {"params": [{"name": "s", "type": "int"}, {"name": "sy", "type": "int", "optional": true}], "result": "void"},
+        "setTextWrap": {"params": [{"name": "wrap", "type": "bool"}], "result": "void"},
+        "setFont": {"params": [{"name": "font", "type": "any"}], "result": "void"},
+        "print": {"params": [{"name": "value", "type": "any"}, {"name": "base", "type": "any", "optional": true}], "result": "int"},
+        "println": {"params": [{"name": "value", "type": "any", "optional": true}], "result": "int"},
+        "width": {"params": [], "result": "int"},
+        "height": {"params": [], "result": "int"},
+        "setRotation": {"params": [{"name": "rot", "type": "int"}], "result": "void"},
+        "getRotation": {"params": [], "result": "int"},
+        "getCursorX": {"params": [], "result": "int"},
+        "getCursorY": {"params": [], "result": "int"}
+      }
+    }
+  }
+}

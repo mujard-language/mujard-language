@@ -1,0 +1,33 @@
+{
+  "name": "Time",
+  "header": "TimeLib.h",
+  "functions": {
+    "now": {"params": [], "result": "int"},
+    "setTime": {"params": [{"name": "t", "type": "int"}], "result": "void"},
+    "adjustTime": {"params": [{"name": "adjustment", "type": "int"}], "result": "void"},
+    "hour": {"params": [{"name": "t", "type": "int", "optional": true}], "result": "int"},
+    "minute": {"params": [{"name": "t", "type": "int", "optional": true}], "result": "int"},
+    "second": {"params": [{"name": "t", "type": "int", "optional": true}], "result": "int"},
+    "day": {"params": [{"name": "t", "type": "int", "optional": true}], "result": "int"},
+    "weekday": {"params": [{"name": "t", "type": "int", "optional": true}], "result": "int"},
+    "month": {"params": [{"name": "t", "type": "int", "optional": true}], "result": "int"},
+    "year": {"params": [{"name": "t", "type": "int", "optional": true}], "result": "int"},
+    "hourFormat12": {"params": [{"name": "t", "type": "int", "optional": true}], "result": "int"},
+    "isAM": {"params": [{"name": "t", "type": "int", "optional": true}], "result": "bool"},
+    "isPM": {"params": [{"name": "t", "type": "int", "optional": true}], "result": "bool"},
+    "monthStr": {"params": [{"name": "m", "type": "int"}], "result": "text"},
+    "monthShortStr": {"params": [{"name": "m", "type": "int"}], "result": "text"},
+    "dayStr": {"params": [{"name": "d", "type": "int"}], "result": "text"},
+    "dayShortStr": {"params": [{"name": "d", "type": "int"}], "result": "text"},
+    "timeStatus": {"params": [], "result": "int"},
+    "setSyncProvider": {"params": [{"name": "fn", "type": "any"}], "result": "void"},
+    "setSyncInterval": {"params": [{"name": "interval", "type": "int"}], "result": "void"},
+    "breakTime": {"params": [{"name": "t", "type": "int"}, {"name": "tm", "type": "any"}], "result": "void"},
+    "makeTime": {"params": [{"name": "tm", "type": "any"}], "result": "int"}
+  },
+  "constants": {
+    "timeNotSet": "int",
+    "timeNeedsSync": "int",
+    "timeSet": "int"
+  }
+}

@@ -1,0 +1,21 @@
+# Night light
+# Level 2 - Next steps
+#
+# A lamp that fades on when the room gets dark and off when it gets light again.
+# You learn: 'when' - it runs once each time a condition becomes true.
+# You need: a light sensor (LDR) from 5V to A0 with a 10 kohm resistor from A0 to GND, and an LED + resistor on pin 9.
+
+board uno
+
+light = analog A0
+lamp  = pin 9 as pwm
+
+const DARK = 30 %
+
+when light.percent < DARK:         # once, at the moment it gets dark
+    lamp.fade(to: 100 %, over: 2 s)
+    print "Getting dark - lamp on"
+
+when light.percent > DARK + 10 %:  # a gap between the two levels stops flickering at dusk
+    lamp.fade(to: 0 %, over: 2 s)
+    print "Light again - lamp off"

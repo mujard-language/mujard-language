@@ -1,0 +1,38 @@
+# sample: a heater thermostat that remembers its setting
+board uno
+
+sensor = analog A0                    # a TMP36 temperature sensor
+heater = pin 7 as output inverted     # a relay board that switches on when the pin is LOW
+up     = pin 2 as input pullup
+down   = pin 3 as input pullup
+
+saved var target = 21 C
+
+fn temperature() -> temperature:
+    return scale(smooth(sensor.volts, 10), 0.5 V..1.5 V, 0 C..100 C)
+
+on up.pressed:
+    target += 0.5 C
+
+on down.pressed:
+    target -= 0.5 C
+
+every 1 s:
+    var t = temperature()
+    heater.write(hysteresis(t, on: target - 1 C, off: target + 1 C))
+    print "Room {round(t, 1)}, target {target}"
+
+test "raises the target on up":
+    sensor.pretend(0.7 V)
+    advance(1200 ms)
+    expect printed "target 21", "target starts at 21 C"
+    up.pretend(1)
+    advance(100 ms)
+    up.pretend(0)
+    advance(1200 ms)
+    expect printed "target 21.5", "up adds half a degree"
+
+test "a cold room turns the heater on":
+    sensor.pretend(0.5 V)
+    advance(1200 ms)
+    expect heater.read(), "below the band the heater should run"

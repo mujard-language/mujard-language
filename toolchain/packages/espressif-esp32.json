@@ -1,0 +1,22 @@
+{
+  "schema": "mujard-package.v1",
+  "id": "espressif-esp32",
+  "name": "ESP32 Arduino core 3.3.12 + esp-x32 toolchain (compatibility package)",
+  "version": "3.3.12",
+  "family": "esp32",
+  "root": "${MUJARD_TOOLCHAINS}/esp32-core-3.3.12",
+  "libraryRoot": "libraries",
+  "tools": {
+    "gccBin": "${MUJARD_TOOLCHAINS}/esp-x32-2601/bin",
+    "riscvBin": "${MUJARD_TOOLCHAINS}/esp-rv32-2601/riscv32-esp-elf/bin",
+    "esptool": "${MUJARD_TOOLCHAINS}/esptool_py-5.3.1/esptool.exe",
+    "genpart": "${MUJARD_TOOLCHAINS}/esp32-core-3.3.12/tools/gen_esp32part.exe"
+  },
+  "sdks": {
+    "esp32": "${MUJARD_TOOLCHAINS}/esp32-libs-3.3.12",
+    "esp32c3": "${MUJARD_TOOLCHAINS}/esp32c3-libs-3.3.12/esp32c3-libs",
+    "esp32c6": "${MUJARD_TOOLCHAINS}/esp32c6-libs-3.3.12/esp32c6-libs",
+    "esp32s2": "${MUJARD_TOOLCHAINS}/esp32s2-libs-3.3.12/esp32s2-libs",
+    "esp32s3": "${MUJARD_TOOLCHAINS}/esp32s3-libs-3.3.12"
+  }
+}

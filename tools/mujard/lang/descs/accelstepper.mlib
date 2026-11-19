@@ -1,0 +1,53 @@
+{
+  "name": "AccelStepper",
+  "header": "AccelStepper.h",
+  "headers": ["MultiStepper.h"],
+  "classes": {
+    "AccelStepper": {
+      "ctors": [{"params": [{"name": "interface", "type": "int"}, {"name": "pin1", "type": "int"}, {"name": "pin2", "type": "int"}, {"name": "pin3", "type": "int", "optional": true}, {"name": "pin4", "type": "int", "optional": true}, {"name": "enable", "type": "bool", "optional": true}], "result": "AccelStepper"}],
+      "methods": {
+        "moveTo": {"params": [{"name": "absolute", "type": "int"}], "result": "void"},
+        "move": {"params": [{"name": "relative", "type": "int"}], "result": "void"},
+        "run": {"params": [], "result": "bool"},
+        "runSpeed": {"params": [], "result": "bool"},
+        "runToPosition": {"params": [], "result": "void"},
+        "runToNewPosition": {"params": [{"name": "position", "type": "int"}], "result": "void"},
+        "runSpeedToPosition": {"params": [], "result": "bool"},
+        "stop": {"params": [], "result": "void"},
+        "setMaxSpeed": {"params": [{"name": "speed", "type": "float"}], "result": "void"},
+        "maxSpeed": {"params": [], "result": "float"},
+        "setAcceleration": {"params": [{"name": "acceleration", "type": "float"}], "result": "void"},
+        "setSpeed": {"params": [{"name": "speed", "type": "float"}], "result": "void"},
+        "speed": {"params": [], "result": "float"},
+        "setMinPulseWidth": {"params": [{"name": "min_width", "type": "int"}], "result": "void"},
+        "setEnablePin": {"params": [{"name": "pin", "type": "int"}], "result": "void"},
+        "setPinsInverted": {"params": [{"name": "direction", "type": "bool"}, {"name": "step", "type": "bool"}, {"name": "enable", "type": "bool"}], "result": "void"},
+        "currentPosition": {"params": [], "result": "int"},
+        "targetPosition": {"params": [], "result": "int"},
+        "distanceToGo": {"params": [], "result": "int"},
+        "setCurrentPosition": {"params": [{"name": "position", "type": "int"}], "result": "void"},
+        "isRunning": {"params": [], "result": "bool"},
+        "enableOutputs": {"params": [], "result": "void"},
+        "disableOutputs": {"params": [], "result": "void"}
+      }
+    },
+    "MultiStepper": {
+      "ctors": [{"params": [], "result": "MultiStepper"}],
+      "methods": {
+        "addStepper": {"params": [{"name": "stepper", "type": "any"}], "result": "bool"},
+        "moveTo": {"params": [{"name": "absolute", "type": "any"}], "result": "void"},
+        "run": {"params": [], "result": "bool"},
+        "runSpeedToPosition": {"params": [], "result": "void"}
+      }
+    }
+  },
+  "constants": {
+    "AccelStepper::DRIVER": "int",
+    "AccelStepper::FULL2WIRE": "int",
+    "AccelStepper::FULL3WIRE": "int",
+    "AccelStepper::FULL4WIRE": "int",
+    "AccelStepper::HALF3WIRE": "int",
+    "AccelStepper::HALF4WIRE": "int",
+    "AccelStepper::FUNCTION": "int"
+  }
+}

@@ -1,0 +1,45 @@
+(file uno
+  (enum Mode idle heating cooling)
+  (struct Reading value:temperature taken:time)
+  (device heater pin [7] output [] to_end=false)
+  (device cooler pin [8] output [] to_end=false)
+  (device sensor analog [A0]  [] to_end=false)
+  (var mode = Mode.idle)
+  (var last = (call Reading value:20C taken:(call now)))
+  (every 2s
+    (= last (call Reading value:(call scale sensor.volts (.. 0.5V 1.5V) (.. 0C 100C)) taken:(call now)))
+    (if (< last.value 18C)
+      (= mode Mode.heating)
+    )
+    (elif (> last.value 26C)
+      (= mode Mode.cooling)
+    )
+    (else
+      (= mode Mode.idle)
+    )
+    (match mode
+      (case Mode.idle
+        (do (call heater.off))
+        (do (call cooler.off))
+      )
+      (case Mode.heating
+        (do (call heater.on))
+        (do (call cooler.off))
+      )
+      (case Mode.cooling
+        (do (call heater.off))
+        (do (call cooler.on))
+      )
+    )
+  )
+  (test "a cold reading switches to heating"
+    (do (call sensor.pretend 0.5V))
+    (do (call advance 2500ms))
+    (expect (== mode Mode.heating) (text "below 18 C the heater runs"))
+    (expect (call heater.read) (text "and the heater is on"))
+    (do (call sensor.pretend 1.4V))
+    (do (call advance 2500ms))
+    (expect (== mode Mode.cooling) (text "a hot reading switches to cooling"))
+    (expect (call cooler.read) (text "and the cooler is on"))
+  )
+)

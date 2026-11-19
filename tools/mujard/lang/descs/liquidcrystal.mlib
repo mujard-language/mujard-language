@@ -1,0 +1,34 @@
+{
+  "name": "LiquidCrystal",
+  "header": "LiquidCrystal.h",
+  "classes": {
+    "LiquidCrystal": {
+      "ctors": [
+        {"params": [{"name": "rs", "type": "int"}, {"name": "enable", "type": "int"}, {"name": "d4", "type": "int"}, {"name": "d5", "type": "int"}, {"name": "d6", "type": "int"}, {"name": "d7", "type": "int"}], "result": "LiquidCrystal"},
+        {"params": [{"name": "rs", "type": "int"}, {"name": "rw", "type": "int"}, {"name": "enable", "type": "int"}, {"name": "d0", "type": "int"}, {"name": "d1", "type": "int"}, {"name": "d2", "type": "int"}, {"name": "d3", "type": "int"}, {"name": "d4", "type": "int"}, {"name": "d5", "type": "int"}, {"name": "d6", "type": "int"}, {"name": "d7", "type": "int"}], "result": "LiquidCrystal"}
+      ],
+      "methods": {
+        "begin": {"params": [{"name": "cols", "type": "int"}, {"name": "rows", "type": "int"}, {"name": "charsize", "type": "int", "optional": true}], "result": "void"},
+        "clear": {"params": [], "result": "void"},
+        "home": {"params": [], "result": "void"},
+        "setCursor": {"params": [{"name": "col", "type": "int"}, {"name": "row", "type": "int"}], "result": "void"},
+        "print": {"params": [{"name": "value", "type": "any"}, {"name": "base", "type": "any", "optional": true}], "result": "int"},
+        "println": {"params": [{"name": "value", "type": "any", "optional": true}], "result": "int"},
+        "write": {"params": [{"name": "value", "type": "int"}], "result": "int"},
+        "createChar": {"params": [{"name": "location", "type": "int"}, {"name": "charmap", "type": "any"}], "result": "void"},
+        "noDisplay": {"params": [], "result": "void"},
+        "display": {"params": [], "result": "void"},
+        "noBlink": {"params": [], "result": "void"},
+        "blink": {"params": [], "result": "void"},
+        "noCursor": {"params": [], "result": "void"},
+        "cursor": {"params": [], "result": "void"},
+        "scrollDisplayLeft": {"params": [], "result": "void"},
+        "scrollDisplayRight": {"params": [], "result": "void"},
+        "leftToRight": {"params": [], "result": "void"},
+        "rightToLeft": {"params": [], "result": "void"},
+        "autoscroll": {"params": [], "result": "void"},
+        "noAutoscroll": {"params": [], "result": "void"}
+      }
+    }
+  }
+}

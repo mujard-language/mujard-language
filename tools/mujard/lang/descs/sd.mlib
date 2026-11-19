@@ -1,0 +1,44 @@
+{
+  "name": "SD",
+  "header": "SD.h",
+  "takes": ["spi"],
+  "classes": {
+    "SD": {
+      "methods": {
+        "begin": {"params": [{"name": "cs_pin", "type": "int", "optional": true}, {"name": "spi", "type": "any", "optional": true}], "result": "bool"},
+        "open": {"params": [{"name": "path", "type": "text"}, {"name": "mode", "type": "any", "optional": true}], "result": "File"},
+        "exists": {"params": [{"name": "path", "type": "text"}], "result": "bool"},
+        "mkdir": {"params": [{"name": "path", "type": "text"}], "result": "bool"},
+        "remove": {"params": [{"name": "path", "type": "text"}], "result": "bool"},
+        "rmdir": {"params": [{"name": "path", "type": "text"}], "result": "bool"},
+        "end": {"params": [], "result": "void"}
+      }
+    },
+    "File": {
+      "value": true,
+      "methods": {
+        "write": {"params": [{"name": "data", "type": "any"}, {"name": "len", "type": "any", "optional": true}], "result": "int"},
+        "print": {"params": [{"name": "value", "type": "any"}, {"name": "base", "type": "any", "optional": true}], "result": "int"},
+        "println": {"params": [{"name": "value", "type": "any", "optional": true}], "result": "int"},
+        "read": {"params": [], "result": "int"},
+        "readBytes": {"params": [{"name": "buf", "type": "any"}, {"name": "len", "type": "int"}], "result": "int"},
+        "readString": {"params": [], "result": "text"},
+        "peek": {"params": [], "result": "int"},
+        "available": {"params": [], "result": "int"},
+        "flush": {"params": [], "result": "void"},
+        "close": {"params": [], "result": "void"},
+        "seek": {"params": [{"name": "pos", "type": "int"}], "result": "bool"},
+        "position": {"params": [], "result": "int"},
+        "size": {"params": [], "result": "int"},
+        "name": {"params": [], "result": "text"},
+        "isDirectory": {"params": [], "result": "bool"},
+        "openNextFile": {"params": [{"name": "mode", "type": "any", "optional": true}], "result": "File"},
+        "rewindDirectory": {"params": [], "result": "void"}
+      }
+    }
+  },
+  "constants": {
+    "FILE_READ": "int",
+    "FILE_WRITE": "int"
+  }
+}

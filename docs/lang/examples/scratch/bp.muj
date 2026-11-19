@@ -1,0 +1,7 @@
+board bluepill
+led = pin LED as output
+sck = pin PA5 as output
+pot = analog PA0
+at start:
+    led.on()
+    print(pot.value)

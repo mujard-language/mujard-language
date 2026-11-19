@@ -1,0 +1,14 @@
+# Read a knob
+# Level 1 - Basics
+#
+# Read a potentiometer and see the value three ways, plus a live graph.
+# You learn: 'analog', value, volts, percent and plot.
+# You need: a potentiometer: middle leg to A0, outer legs to 5V and GND. Open the serial monitor or the plotter.
+
+board uno
+
+knob = analog A0
+
+every 200 ms:
+    print "raw {knob.value}   volts {knob.volts}   percent {knob.percent}"
+    plot knob.percent              # a line in the plotter

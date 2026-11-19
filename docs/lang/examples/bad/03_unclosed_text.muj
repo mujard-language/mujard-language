@@ -1,0 +1,4 @@
+# expect: L103 4:11
+board uno
+at start:
+    print "hello

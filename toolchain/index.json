@@ -1,0 +1,453 @@
+{
+  "schema": "mujard-toolchain-index.v1",
+  "packages": [
+    {
+      "id": "avr-gcc",
+      "version": "7.3.0-atmel3.6.1-arduino7",
+      "name": "avr-gcc 7.3.0 (GNU AVR toolchain)",
+      "license": "GPL-3.0-or-later WITH GCC Runtime Library Exception",
+      "source": "https://gcc.gnu.org / Microchip AVR toolchain",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://downloads.arduino.cc/tools/avr-gcc-7.3.0-atmel3.6.1-arduino7-i686-w64-mingw32.zip",
+          "sha256": "a54f64755fff4cb792a1495e5defdd789902a2a3503982e81b898299cf39800e",
+          "size": 52519412
+        }
+      }
+    },
+    {
+      "id": "arduino-avr-core",
+      "version": "1.8.8",
+      "name": "Arduino AVR core 1.8.8 (compatibility core)",
+      "license": "LGPL-2.1",
+      "source": "https://github.com/arduino/ArduinoCore-avr",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://downloads.arduino.cc/cores/staging/avr-1.8.8.tar.bz2",
+          "sha256": "a234c2a43dcd01ce54be665806f183b8e6ec4e966d2e3e0c3358b63023d6390c",
+          "size": 7162150
+        }
+      }
+    },
+    {
+      "id": "arduino-servo",
+      "version": "1.3.0",
+      "name": "Arduino Servo library 1.3.0",
+      "license": "LGPL-2.1",
+      "source": "https://github.com/arduino-libraries/Servo",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://downloads.arduino.cc/libraries/github.com/arduino-libraries/Servo-1.3.0.zip",
+          "sha256": "d25b0d77f10a810d24876c570410f32cc3129f9cc3d0370c861a278b969b4b38",
+          "size": 133580
+        }
+      }
+    },
+    {
+      "id": "esp32-core",
+      "version": "3.3.12",
+      "name": "ESP32 Arduino core 3.3.12 (pioarduino)",
+      "license": "LGPL-2.1 / Apache-2.0 (components)",
+      "source": "https://github.com/espressif/arduino-esp32",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://github.com/espressif/arduino-esp32/releases/download/3.3.12/esp32-core-3.3.12.zip",
+          "sha256": "87401004f279a206781e368b66098a8383b7cf87cce7811a6afd0163503fa78f",
+          "size": 51102895
+        }
+      }
+    },
+    {
+      "id": "esp-x32",
+      "version": "2601",
+      "name": "xtensa-esp-elf gcc 14.2.0 (ESP32 toolchain)",
+      "license": "GPL-3.0-or-later WITH GCC Runtime Library Exception",
+      "source": "https://github.com/espressif/crosstool-NG",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://github.com/espressif/crosstool-NG/releases/download/esp-14.2.0_20260121/xtensa-esp-elf-14.2.0_20260121-i686-w64-mingw32.zip",
+          "sha256": "d57eeb3783bce663cca312323ac9b305a22dfab479c642320c62aeefcc536ac0",
+          "size": 411000830
+        }
+      }
+    },
+    {
+      "id": "esp32s3-libs",
+      "version": "3.3.12",
+      "name": "ESP32-S3 prebuilt IDF libraries",
+      "license": "Apache-2.0",
+      "source": "https://github.com/espressif/arduino-esp32",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://github.com/espressif/arduino-esp32/releases/download/3.3.12/esp32s3-libs-3.3.12.zip",
+          "sha256": "08f4e7292fee97dc011dc64e3c670a9a4e83a6b52a604c4b9b18ab2885cdd092",
+          "size": 91711095
+        }
+      }
+    },
+    {
+      "id": "esp32-libs",
+      "version": "3.3.12",
+      "name": "ESP32 (classic) prebuilt IDF libraries",
+      "license": "Apache-2.0",
+      "source": "https://github.com/espressif/arduino-esp32",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://github.com/espressif/arduino-esp32/releases/download/3.3.12/esp32-libs-3.3.12.zip",
+          "sha256": "4efd0f654c860b018e0ca2f858042ea6a78d8c2d57eef790b0d480d63bb56edc",
+          "size": 48020175
+        }
+      }
+    },
+    {
+      "id": "esp32s2-libs",
+      "version": "3.3.12",
+      "name": "ESP32-S2 prebuilt IDF libraries",
+      "license": "Apache-2.0",
+      "source": "https://github.com/espressif/arduino-esp32",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://github.com/espressif/arduino-esp32/releases/download/3.3.12/esp32s2-libs-3.3.12.zip",
+          "sha256": "2a0736a6c25227ed04fdd755241dfe6564da7ee275e791580b8cd3611d6f0444",
+          "size": 45952096
+        }
+      }
+    },
+    {
+      "id": "esp-rv32",
+      "version": "2601",
+      "name": "riscv32-esp-elf gcc 14.2.0 (ESP32-C3/C6 toolchain)",
+      "license": "GPL-3.0-or-later WITH GCC Runtime Library Exception",
+      "source": "https://github.com/espressif/crosstool-NG",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://github.com/espressif/crosstool-NG/releases/download/esp-14.2.0_20260121/riscv32-esp-elf-14.2.0_20260121-i686-w64-mingw32.zip",
+          "sha256": "6f2c8f95866bdd72a96d0823f902b3e7466220f57470b5070ed5d6e99cddfa99",
+          "size": 698364886
+        }
+      }
+    },
+    {
+      "id": "esp32c3-libs",
+      "version": "3.3.12",
+      "name": "ESP32-C3 prebuilt IDF libraries",
+      "license": "Apache-2.0",
+      "source": "https://github.com/espressif/arduino-esp32",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://github.com/espressif/arduino-esp32/releases/download/3.3.12/esp32c3-libs-3.3.12.zip",
+          "sha256": "4f14e59ca2adc7b917126638287a7115a7a2c0b6aed98df6138f56c3491b3a29",
+          "size": 60831692
+        }
+      }
+    },
+    {
+      "id": "esp32c6-libs",
+      "version": "3.3.12",
+      "name": "ESP32-C6 prebuilt IDF libraries",
+      "license": "Apache-2.0",
+      "source": "https://github.com/espressif/arduino-esp32",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://github.com/espressif/arduino-esp32/releases/download/3.3.12/esp32c6-libs-3.3.12.zip",
+          "sha256": "20d5f7704dd436a41f0d1e4c68c9e1dcefb25bed12b1706d72c289dd981cffae",
+          "size": 69563845
+        }
+      }
+    },
+    {
+      "id": "esptool_py",
+      "version": "5.3.1",
+      "name": "esptool 5.3.1 (ESP image tool)",
+      "license": "GPL-2.0-or-later",
+      "source": "https://github.com/espressif/esptool",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://github.com/espressif/esptool/releases/download/v5.3.1/esptool-v5.3.1-windows-amd64.zip",
+          "sha256": "2b4a73c45db27426685896f64ce3e557f63a64f43cc100cb65c0cc3486af96d3",
+          "size": 63962426
+        }
+      }
+    },
+    {
+      "id": "bossac",
+      "version": "1.9.1-arduino5",
+      "name": "bossac 1.9.1-arduino5 (SAMx/nRF upload tool)",
+      "license": "BSD-3-Clause",
+      "source": "https://github.com/shumatech/BOSSA",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://downloads.arduino.cc/tools/bossac-1.9.1-arduino5-windows.tar.gz",
+          "sha256": "99e1982cf29600152e1c89b3389c1b4ce853201491ed52a12b4a327200cc6af0",
+          "size": 1260650
+        }
+      }
+    },
+    {
+      "id": "dfu-util",
+      "version": "0.11.0-arduino5",
+      "name": "dfu-util 0.11.0-arduino5 (USB DFU tool)",
+      "license": "GPL-2.0-or-later",
+      "source": "https://dfu-util.sourceforge.net",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://downloads.arduino.cc/tools/dfu-util-0.11-arduino5-windows_386.tar.gz",
+          "sha256": "6451e16bf77600fe2436c8708ab4b75077c49997cf8bedf03221d9d6726bb641",
+          "size": 571340
+        }
+      }
+    },
+    {
+      "id": "openocd",
+      "version": "0.11.0-arduino2",
+      "name": "openocd 0.11.0-arduino2 (SWD/JTAG probe tool)",
+      "license": "GPL-2.0-or-later",
+      "source": "https://openocd.org",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://downloads.arduino.cc/tools/openocd-0.11.0-arduino2-static-i686-w64-mingw32.zip",
+          "sha256": "631010980f12b1e750c4c67ce012b31c5953caabf4d30607d806e3d2b717d4b8",
+          "size": 2460087
+        }
+      }
+    },
+    {
+      "id": "rp2040-core",
+      "version": "6.1.1",
+      "name": "Raspberry Pi Pico Arduino core 6.1.1 (arduino-pico, RP2040 + RP2350)",
+      "license": "LGPL-2.1",
+      "source": "https://github.com/earlephilhower/arduino-pico",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://github.com/earlephilhower/arduino-pico/releases/download/6.1.1/rp2040-6.1.1.zip",
+          "sha256": "aba58aa05cd632a8b236581168dd057b3638276ff327d2a660095c23e1f46993",
+          "size": 133161862
+        }
+      }
+    },
+    {
+      "id": "pqt-gcc",
+      "version": "5.0.0-9576866",
+      "name": "arm-none-eabi gcc (pico-quick-toolchain 5.0.0)",
+      "license": "GPL-3.0-or-later WITH GCC Runtime Library Exception",
+      "source": "https://github.com/earlephilhower/pico-quick-toolchain",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://github.com/earlephilhower/pico-quick-toolchain/releases/download/5.0.0/x86_64-w64-mingw32.arm-none-eabi-78c24be.260719.zip",
+          "sha256": "ecdc402f54d92cb44cd5d3b0dee89d51922e799d7fa5ead90fc74cabd95ed9ad",
+          "size": 130142209
+        }
+      }
+    },
+    {
+      "id": "pqt-picotool",
+      "version": "5.0.0-9576866",
+      "name": "picotool (pico-quick-toolchain 5.0.0, UF2 converter)",
+      "license": "BSD-3-Clause",
+      "source": "https://github.com/raspberrypi/picotool",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://github.com/earlephilhower/pico-quick-toolchain/releases/download/5.0.0/x86_64-w64-mingw32.picotool-6f6458d.260719.zip",
+          "sha256": "c5d8f1b4ea345b67464402561b5b5ea36bc62962f051bc4d5245c0ca888126cd",
+          "size": 1270393
+        }
+      }
+    },
+    {
+      "id": "adafruit-neopixel",
+      "version": "1.15.5",
+      "name": "Adafruit NeoPixel library 1.15.5",
+      "license": "LGPL-3.0",
+      "source": "https://github.com/adafruit/Adafruit_NeoPixel",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://downloads.arduino.cc/libraries/github.com/adafruit/Adafruit_NeoPixel-1.15.5.zip",
+          "sha256": "3d767caa011ab3078df7fe3c3e0456359ce2bc309eba343932690a2c1612fd16",
+          "size": 85934
+        }
+      }
+    },
+    {
+      "id": "esp8266-core",
+      "version": "3.1.2",
+      "name": "ESP8266 Arduino core 3.1.2",
+      "license": "LGPL-2.1",
+      "source": "https://github.com/esp8266/Arduino",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://github.com/esp8266/Arduino/releases/download/3.1.2/esp8266-3.1.2.zip",
+          "sha256": "b3f47686d7783c120c2f10bf82788f921c53db8642cc87012599abb6e335b182",
+          "size": 39269515
+        }
+      }
+    },
+    {
+      "id": "xtensa-lx106",
+      "version": "3.1.0-gcc10.3-e5f9fec",
+      "name": "xtensa-lx106-elf gcc 10.3 (ESP8266 toolchain)",
+      "license": "GPL-3.0-or-later WITH GCC Runtime Library Exception",
+      "source": "https://github.com/earlephilhower/esp-quick-toolchain",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://github.com/earlephilhower/esp-quick-toolchain/releases/download/3.1.0-gcc10.3/i686-w64-mingw32.xtensa-lx106-elf-e5f9fec.220621.zip",
+          "sha256": "c57bb03e910c78c6307c8c211c00db6a39226bce50a94bd4de6736f44a7a1d53",
+          "size": 71726607
+        }
+      }
+    },
+    {
+      "id": "python3-embed",
+      "version": "3.7.2-post1",
+      "name": "python 3.7.2 embeddable (ESP8266 image tools)",
+      "license": "PSF-2.0",
+      "source": "https://github.com/earlephilhower/esp-quick-toolchain",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://github.com/earlephilhower/esp-quick-toolchain/releases/download/2.5.0-4/python3-3.7.2.post1-embed-win32v2a.zip",
+          "sha256": "f57cb2daf86176d2929e7c58990c2ac32554e3219d454dcac10e464ddda35bf2",
+          "size": 6428926
+        }
+      }
+    },
+    {
+      "id": "stm32-core",
+      "version": "3.0.0",
+      "name": "STM32 Arduino core 3.0.0 (stm32duino)",
+      "license": "MIT",
+      "source": "https://github.com/stm32duino/Arduino_Core_STM32",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://github.com/stm32duino/Arduino_Core_STM32/releases/download/3.0.0/STM32-3.0.0.tar.bz2",
+          "sha256": "75a92c551873f030b95729bad0880757428b33455d3bf47cd6796f37f07387c5",
+          "size": 59533121
+        }
+      }
+    },
+    {
+      "id": "xpack-arm-gcc",
+      "version": "14.2.1-1.1",
+      "name": "arm-none-eabi gcc 14.2.1 (xpack)",
+      "license": "GPL-3.0-or-later WITH GCC Runtime Library Exception",
+      "source": "https://github.com/xpack-dev-tools/arm-none-eabi-gcc-xpack",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://github.com/xpack-dev-tools/arm-none-eabi-gcc-xpack/releases/download/v14.2.1-1.1/xpack-arm-none-eabi-gcc-14.2.1-1.1-win32-x64.zip",
+          "sha256": "0b2d496b383ba578182eb57b3f7d35ff510e36eda56257883b902fa07c3bba55",
+          "size": 323368593
+        }
+      }
+    },
+    {
+      "id": "cmsis",
+      "version": "6.3.0",
+      "name": "CMSIS 6.3.0 (ARM core headers)",
+      "license": "Apache-2.0",
+      "source": "https://github.com/stm32duino/ArduinoModule-CMSIS",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://github.com/stm32duino/ArduinoModule-CMSIS/releases/download/6.3.0/CMSIS-6.3.0.tar.bz2",
+          "sha256": "a37aac32c442955b3cdd601de72da6d384750450e40fa8581051d14c99f92118",
+          "size": 253988
+        }
+      }
+    },
+    {
+      "id": "cmsis-dsp",
+      "version": "1.17.0",
+      "name": "CMSIS-DSP 1.17.0 headers",
+      "license": "Apache-2.0",
+      "source": "https://github.com/stm32duino/ArduinoModule-CMSIS",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://github.com/stm32duino/ArduinoModule-CMSIS/releases/download/6.3.0/CMSIS_DSP-1.17.0.tar.bz2",
+          "sha256": "19a2379b527fb4931b1450a1de51d2f40a01fa1b1e74c95b778214d72edf2200",
+          "size": 1339859
+        }
+      }
+    },
+    {
+      "id": "samd-core",
+      "version": "1.8.14",
+      "name": "Arduino SAMD core 1.8.14",
+      "license": "LGPL-2.1",
+      "source": "https://github.com/arduino/ArduinoCore-samd",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://downloads.arduino.cc/cores/staging/core-ArduinoCore-samd-1.8.14.tar.bz2",
+          "sha256": "bbb35d6edd6e57e13d29e7dcc9975fb605e180fc36b451b890d36820300a023b",
+          "size": 3061758
+        }
+      }
+    },
+    {
+      "id": "arm-gcc7",
+      "version": "7-2017q4",
+      "name": "arm-none-eabi gcc 7-2017q4 (Arduino SAMD toolchain)",
+      "license": "GPL-3.0-or-later WITH GCC Runtime Library Exception",
+      "source": "https://gcc.gnu.org",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://downloads.arduino.cc/tools/gcc-arm-none-eabi-7-2017-q4-major-win32-arduino1.zip",
+          "sha256": "96dd0091856f4d2eb21046eba571321feecf7d50b9c156f708b2a8b683903382",
+          "size": 131761924
+        }
+      }
+    },
+    {
+      "id": "cmsis4",
+      "version": "4.5.0",
+      "name": "CMSIS 4.5.0 (ARM core headers + cortexM math libs)",
+      "license": "BSD-3-Clause",
+      "source": "https://github.com/arduino/ArduinoModule-CMSIS",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://downloads.arduino.cc/CMSIS-4.5.0.tar.bz2",
+          "sha256": "cd8f7eae9fc7c8b4a1b5e40b89b9666d33953b47d3d2eb81844f5af729fa224d",
+          "size": 31525196
+        }
+      }
+    },
+    {
+      "id": "renesas-uno-core",
+      "version": "1.6.0",
+      "name": "Arduino Renesas UNO R4 core 1.6.0 (FSP-based, prebuilt libfsp)",
+      "license": "LGPL-2.1",
+      "source": "https://github.com/arduino/ArduinoCore-renesas",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://downloads.arduino.cc/cores/staging/ArduinoCore-renesas_uno-1.6.0.tar.bz2",
+          "sha256": "71aa5d81f9455dbc2e8977b594963494e41466a8ed439a841b9d029b4aa31c8b",
+          "size": 14143316
+        }
+      }
+    },
+    {
+      "id": "mbed-nano-core",
+      "version": "4.6.0",
+      "name": "Arduino mbed Nano core 4.6.0 (Nano 33 BLE, prebuilt mbed RTOS)",
+      "license": "LGPL-2.1",
+      "source": "https://github.com/arduino/ArduinoCore-mbed",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://downloads.arduino.cc/cores/staging/ArduinoCore-mbed-nano-4.6.0.tar.bz2",
+          "sha256": "40b6c4ea6b89e85b421705549925857f67f278b1bd3e0879b8d1201d86d68211",
+          "size": 7338749
+        }
+      }
+    },
+    {
+      "id": "cmsis-atmel",
+      "version": "1.2.0",
+      "name": "CMSIS-Atmel 1.2.0 (SAMD device headers)",
+      "license": "Apache-2.0",
+      "source": "https://github.com/arduino/ArduinoModule-CMSIS-Atmel",
+      "systems": {
+        "windows-amd64": {
+          "url": "https://downloads.arduino.cc/CMSIS-Atmel-1.2.0.tar.bz2",
+          "sha256": "5e02670be7e36be9691d059bee0b04ee8b249404687531f33893922d116b19a5",
+          "size": 2221805
+        }
+      }
+    }
+  ]
+}

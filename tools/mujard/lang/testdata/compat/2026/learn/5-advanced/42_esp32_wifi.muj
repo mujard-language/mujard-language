@@ -1,0 +1,29 @@
+# ESP32: Wi-Fi and a relay
+# Level 5 - Advanced
+#
+# The same language on an ESP32: its pin names, a pull-down button, a relay, and a Wi-Fi status light.
+# You learn: changing the board line, GPIO pin names, secret() for passwords and wifi.connected.
+# You need: an ESP32 DevKit, an LED on GPIO26, a button from GPIO27 to 3.3V, and a relay module on GPIO25.
+# Add your Wi-Fi as a secret called home_wifi first (Project > Secrets) - passwords never go in the code.
+
+board esp32
+
+status = pin GPIO26 as output
+button = pin GPIO27 as input pulldown   # pressed = 3.3 V
+relay  = pin GPIO25 as output inverted
+
+var relay_on = false
+
+at start:
+    wifi.connect(secret("home_wifi"))   # connects in the background and reconnects by itself
+
+every 1 s:
+    status.write(wifi.connected)        # the LED shows the Wi-Fi link
+
+on button.pressed:
+    relay_on = not relay_on
+    relay.write(relay_on)
+    log.info "Relay {relay_on}"
+
+every 1 min:
+    log.info "Up {board.uptime}, free memory {board.free_memory}, Wi-Fi {wifi.connected}"

@@ -1,0 +1,5 @@
+# expect: C303 4:13
+board uno
+at start:
+    if 1 in 2:
+        print 1

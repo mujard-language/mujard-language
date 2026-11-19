@@ -1,0 +1,21 @@
+# Running lights
+# Level 2 - Next steps
+#
+# A light runs along a row of LEDs and back again.
+# You learn: a group of pins, lists by number (leds[i]) and 'for' loops.
+# You need: six LEDs, each with a 220 ohm resistor, on pins 2 to 7.
+
+board uno
+
+leds = pins 2..8 as output         # pins 2, 3, 4, 5, 6 and 7 (the end of a range is left out)
+
+task run:
+    while true:
+        for i in 0..6:             # 0, 1, 2, 3, 4, 5
+            leds[i].on()
+            wait 80 ms
+            leds[i].off()
+        for i in 4..0:             # and back: 4, 3, 2, 1 (a range can count down)
+            leds[i].on()
+            wait 80 ms
+            leds[i].off()

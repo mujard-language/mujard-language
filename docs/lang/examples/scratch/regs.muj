@@ -1,0 +1,11 @@
+board uno
+use mujard.regs
+
+led = pin 8 as output
+
+at start:
+    regs.DDRB.write(0x20)
+    regs.PORTB.set(regs.PORTB.PORTB5)
+    regs.PORTB.clear(0x10)
+    var p = regs.PINB.read()
+    print(p)

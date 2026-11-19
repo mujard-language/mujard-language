@@ -1,0 +1,24 @@
+{
+  "name": "NewPing",
+  "header": "NewPing.h",
+  "takes": ["newping"],
+  "classes": {
+    "NewPing": {
+      "ctors": [
+        {"params": [{"name": "trigger", "type": "int"}, {"name": "echo", "type": "int"}, {"name": "max_cm", "type": "int", "optional": true}], "result": "NewPing"}
+      ],
+      "methods": {
+        "ping": {"params": [{"name": "max_cm", "type": "int", "optional": true}], "result": "int"},
+        "ping_cm": {"params": [{"name": "max_cm", "type": "int", "optional": true}], "result": "int"},
+        "ping_in": {"params": [{"name": "max_cm", "type": "int", "optional": true}], "result": "int"},
+        "ping_median": {"params": [{"name": "it", "type": "int"}, {"name": "max_cm", "type": "int", "optional": true}], "result": "int"},
+        "ping_timer": {"params": [{"name": "callback", "type": "any"}, {"name": "max_cm", "type": "int", "optional": true}], "result": "void"},
+        "check_timer": {"params": [], "result": "bool"},
+        "convert_cm": {"params": [{"name": "echoTime", "type": "int"}], "result": "int"},
+        "convert_in": {"params": [{"name": "echoTime", "type": "int"}], "result": "int"},
+        "timer_us": {"params": [{"name": "frequency", "type": "int"}, {"name": "callback", "type": "any"}], "result": "void"},
+        "timer_stop": {"params": [], "result": "void"}
+      }
+    }
+  }
+}

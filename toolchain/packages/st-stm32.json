@@ -1,0 +1,14 @@
+{
+  "schema": "mujard-package.v1",
+  "id": "st-stm32",
+  "name": "STM32 Arduino core 3.0.0 (stm32duino) + xpack arm-none-eabi gcc 14.2.1",
+  "version": "3.0.0",
+  "family": "stm32",
+  "root": "${MUJARD_TOOLCHAINS}/stm32-core-3.0.0/STM32",
+  "libraryRoot": "libraries",
+  "tools": {
+    "gccBin": "${MUJARD_TOOLCHAINS}/xpack-arm-gcc-14.2.1-1.1/xpack-arm-none-eabi-gcc-14.2.1-1.1/bin",
+    "cmsis": "${MUJARD_TOOLCHAINS}/cmsis-6.3.0/CMSIS/CMSIS/Core/Include",
+    "cmsisDsp": "${MUJARD_TOOLCHAINS}/cmsis-dsp-1.17.0/CMSIS_DSP"
+  }
+}

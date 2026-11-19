@@ -1,0 +1,38 @@
+{
+  "schema": "mujard-board.v1",
+  "id": "raspberrypi:rp2:rp2040",
+  "short": "rp2040",
+  "name": "Raspberry Pi Pico (RP2040)",
+  "vendor": "raspberrypi",
+  "family": "rp2",
+  "chip": "raspberrypi:rp2040",
+  "aliases": ["pico", "rp2040:rp2040:rpipico"],
+  "package": "rp2-pico",
+  "core": "cores/rp2040",
+  "variant": "variants/rpipico",
+  "vars": {
+    "chip": "rp2040",
+    "toolchainOpts": "-march=armv6-m -mcpu=cortex-m0plus -mthumb",
+    "boardDefine": "RASPBERRY_PI_PICO",
+    "fCpu": "200000000L",
+    "usbVid": "0x2e8a",
+    "usbPid": "0x000a",
+    "usbManufacturer": "Raspberry Pi",
+    "usbProduct": "Pico",
+    "flashTotal": "2097152",
+    "flashLength": "2093056",
+    "eepromStart": "270528512",
+    "fsStart": "270528512",
+    "fsEnd": "270528512",
+    "ramLength": "256k",
+    "psramLength": "0",
+    "boot2": "boot2_w25q080_2_padded_checksum",
+    "uf2Family": "--family rp2040"
+  },
+  "output": "uf2",
+  "flashMax": 2093056,
+  "ramMax": 262144,
+  "upload": {
+    "protocol": "uf2"
+  }
+}

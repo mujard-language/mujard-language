@@ -1,0 +1,35 @@
+# sample: a door alarm that tells your phone
+board esp32
+
+door  = pin 4 as input pullup
+alarm = pin 26 as output
+siren = pin 25 as output
+arm   = pin 27 as input pullup
+
+var armed = false
+
+on arm.pressed:
+    armed = not armed
+    if armed:
+        alarm.pattern("xx", repeat: 1)
+    else:
+        alarm.off()
+        siren.off()
+
+on door.released:
+    if armed:
+        siren.on()
+        alarm.pattern("SOS")
+        notify "Door opened!"
+
+test "an armed door opening trips the siren":
+    arm.pretend(1)
+    advance(100 ms)
+    arm.pretend(0)
+    advance(100 ms)
+    door.pretend(1)
+    advance(50 ms)
+    door.pretend(0)
+    advance(200 ms)
+    expect siren.read(), "the siren should be sounding"
+    expect notified "Door opened", "the phone should be told"

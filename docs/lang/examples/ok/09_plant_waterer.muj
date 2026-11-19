@@ -1,0 +1,21 @@
+# sample: water a plant when the soil is dry
+board esp32
+
+soil = analog 34
+pump = pin 26 as output
+
+saved var waterings = 0
+
+when soil.percent < 30 %:
+    pump.on()
+    waterings += 1
+    log.info "Watering ({waterings} times so far)"
+    after 5 s:
+        pump.off()
+
+test "dry soil starts the pump":
+    soil.pretend(15 %)
+    advance(500 ms)
+    expect pump.read(), "dry soil should run the pump"
+    advance(5 s)
+    expect not pump.read(), "and stop after the watering"

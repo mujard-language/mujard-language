@@ -1,0 +1,13 @@
+{
+  "schema": "mujard-package.v1",
+  "id": "espressif-esp8266",
+  "name": "ESP8266 Arduino core 3.1.2 + xtensa-lx106 toolchain (compatibility package)",
+  "version": "3.1.2",
+  "family": "esp8266",
+  "root": "${MUJARD_TOOLCHAINS}/esp8266-core-3.1.2/esp8266-3.1.2",
+  "libraryRoot": "libraries",
+  "tools": {
+    "gccBin": "${MUJARD_TOOLCHAINS}/xtensa-lx106-3.1.0-gcc10.3-e5f9fec/xtensa-lx106-elf/bin",
+    "python3": "${MUJARD_TOOLCHAINS}/python3-embed-3.7.2-post1/python3-3.7.2.post1-embed-win32/python3.exe"
+  }
+}

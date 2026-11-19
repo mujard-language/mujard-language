@@ -1,0 +1,20 @@
+# sample: a button switches a lamp on and off
+board uno
+
+lamp   = pin 12 as output
+button = pin 2 as input pullup
+
+on button.pressed:
+    lamp.toggle()
+    print "Lamp toggled"
+
+test "a press toggles the lamp":
+    button.pretend(1)
+    advance(100 ms)
+    expect lamp.read(), "lamp should be on"
+    expect printed "Lamp toggled", "it should print"
+    button.pretend(0)
+    advance(100 ms)
+    button.pretend(1)
+    advance(100 ms)
+    expect not lamp.read(), "a second press turns it off"

@@ -1,0 +1,31 @@
+{
+  "name": "QMC5883LCompass",
+  "header": "QMC5883LCompass.h",
+  "takes": ["i2c"],
+  "classes": {
+    "QMC5883LCompass": {
+      "ctors": [{"params": [], "result": "QMC5883LCompass"}],
+      "methods": {
+        "init": {"params": [], "result": "void"},
+        "setADDR": {"params": [{"name": "b", "type": "int"}], "result": "void"},
+        "setMode": {"params": [{"name": "mode", "type": "int"}, {"name": "odr", "type": "int"}, {"name": "rng", "type": "int"}, {"name": "osr", "type": "int"}], "result": "void"},
+        "setMagneticDeclination": {"params": [{"name": "degrees", "type": "int"}, {"name": "minutes", "type": "int"}], "result": "void"},
+        "setSmoothing": {"params": [{"name": "steps", "type": "int"}, {"name": "adv", "type": "bool"}], "result": "void"},
+        "calibrate": {"params": [], "result": "void"},
+        "setCalibration": {"params": [{"name": "x_min", "type": "int"}, {"name": "x_max", "type": "int"}, {"name": "y_min", "type": "int"}, {"name": "y_max", "type": "int"}, {"name": "z_min", "type": "int"}, {"name": "z_max", "type": "int"}], "result": "void"},
+        "setCalibrationOffsets": {"params": [{"name": "x_offset", "type": "float"}, {"name": "y_offset", "type": "float"}, {"name": "z_offset", "type": "float"}], "result": "void"},
+        "setCalibrationScales": {"params": [{"name": "x_scale", "type": "float"}, {"name": "y_scale", "type": "float"}, {"name": "z_scale", "type": "float"}], "result": "void"},
+        "getCalibrationOffset": {"params": [{"name": "index", "type": "int"}], "result": "float"},
+        "getCalibrationScale": {"params": [{"name": "index", "type": "int"}], "result": "float"},
+        "clearCalibration": {"params": [], "result": "void"},
+        "setReset": {"params": [], "result": "void"},
+        "read": {"params": [], "result": "void"},
+        "getX": {"params": [], "result": "int"},
+        "getY": {"params": [], "result": "int"},
+        "getZ": {"params": [], "result": "int"},
+        "getAzimuth": {"params": [], "result": "int"},
+        "getBearing": {"params": [{"name": "azimuth", "type": "int"}], "result": "int"}
+      }
+    }
+  }
+}

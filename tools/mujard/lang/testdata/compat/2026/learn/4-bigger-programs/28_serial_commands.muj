@@ -1,0 +1,35 @@
+# Commands from the computer
+# Level 4 - Bigger programs
+#
+# Type commands in the serial monitor to control the board: on, off, blink, fan 50, help.
+# You learn: 'on serial.line', match, splitting text and to_number().
+# You need: an LED on pin 9 (with a 220 ohm resistor) for the "fan" (it dims like a fan's speed).
+
+board uno
+
+led = pin LED as output
+fan = pin 9 as pwm
+
+at start:
+    print "Type a command (help lists them)"
+
+on serial.line as cmd:             # runs for every line you send
+    match cmd:
+        "on":
+            led.on()
+        "off":
+            led.off()
+        "blink":
+            led.blink(2 Hz)
+        "help":
+            print "Commands: on, off, blink, fan <0-100>"
+        else:
+            if cmd.starts_with("fan "):
+                var level = cmd.split(" ")[1].to_number()   # a number, or none if it isn't one
+                if level == none:
+                    print "fan needs a number, like: fan 50"
+                else:
+                    fan.write(clamp(scale(level, 0..100, 0 %..100 %), 0 %..100 %))
+                    print "Fan at {level} %"
+            else:
+                print "I don't know '{cmd}' - type help"

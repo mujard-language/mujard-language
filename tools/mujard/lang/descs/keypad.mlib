@@ -1,0 +1,32 @@
+{
+  "name": "Keypad",
+  "header": "Keypad.h",
+  "classes": {
+    "Keypad": {
+      "ctors": [
+        {"params": [{"name": "keymap", "type": "any"}, {"name": "rowPins", "type": "any"}, {"name": "colPins", "type": "any"}, {"name": "rows", "type": "int"}, {"name": "cols", "type": "int"}], "result": "Keypad"}
+      ],
+      "methods": {
+        "getKey": {"params": [], "result": "int"},
+        "getKeys": {"params": [], "result": "bool"},
+        "getState": {"params": [], "result": "int"},
+        "keyStateChanged": {"params": [], "result": "bool"},
+        "isPressed": {"params": [{"name": "keyChar", "type": "int"}], "result": "bool"},
+        "waitForKey": {"params": [], "result": "int"},
+        "setHoldTime": {"params": [{"name": "time", "type": "int"}], "result": "void"},
+        "setDebounceTime": {"params": [{"name": "time", "type": "int"}], "result": "void"},
+        "setHoldTime": {"params": [{"name": "time", "type": "int"}], "result": "void"},
+        "addEventListener": {"params": [{"name": "listener", "type": "any"}], "result": "void"},
+        "numKeys": {"params": [], "result": "int"}
+      },
+      "fields": {"key": "any"}
+    }
+  },
+  "constants": {
+    "IDLE": "int",
+    "PRESSED": "int",
+    "HOLD": "int",
+    "RELEASED": "int",
+    "NO_KEY": "int"
+  }
+}

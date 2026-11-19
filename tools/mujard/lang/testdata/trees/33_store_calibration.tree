@@ -1,0 +1,28 @@
+(file uno
+  (device scale analog [A0]  [] to_end=false)
+  (device tare pin [2] input [pullup] to_end=false)
+  (var zero = 0)
+  (at start
+    (= zero (call store.load (text "zero") default:0))
+    (print (text "Zero point: " {zero}))
+  )
+  (on tare.pressed
+    (= zero scale.value)
+    (do (call store.save (text "zero") zero))
+    (print (text "New zero point: " {zero}))
+  )
+  (every 1s
+    (print (text "Weight: " {(- scale.value zero)}))
+  )
+  (test "the stored zero comes back"
+    (expect (call printed (text "Zero point: 0")) (text "the default loads at start"))
+    (do (call scale.pretend 700))
+    (do (call advance 1200ms))
+    (expect (call printed (text "Weight: 700")) (text "no tare yet: weight is the raw value"))
+    (do (call tare.pretend 1))
+    (do (call advance 100ms))
+    (do (call tare.pretend 0))
+    (do (call advance 100ms))
+    (expect (call printed (text "New zero point: 700")) (text "tare stores the reading"))
+  )
+)

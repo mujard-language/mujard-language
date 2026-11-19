@@ -1,0 +1,38 @@
+# sample: commands typed in the serial monitor
+board uno
+
+led = pin 13 as output
+fan = pin 9 as pwm
+
+on serial.line as cmd:
+    match cmd:
+        "on":
+            led.on()
+        "off":
+            led.off()
+        else:
+            if cmd.starts_with("fan "):
+                var level = cmd.split(" ")[1].to_number()
+                if level == none:
+                    print "Fan needs a number, like: fan 50"
+                else:
+                    fan.write(clamp(scale(level, 0..100, 0 %..100 %), 0 %..100 %))
+            else:
+                print "Commands: on, off, fan <0-100>"
+
+test "the 'on' command lights the LED":
+    serial.pretend("on")
+    advance(100 ms)
+    expect led.read(), "on lights it"
+
+test "the 'off' command clears it":
+    serial.pretend("on")
+    advance(100 ms)
+    serial.pretend("off")
+    advance(100 ms)
+    expect not led.read(), "off clears it"
+
+test "an unknown command prints the help":
+    serial.pretend("nonsense")
+    advance(100 ms)
+    expect printed "Commands:", "a bad command explains itself"

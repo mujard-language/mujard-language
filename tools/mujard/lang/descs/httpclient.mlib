@@ -1,0 +1,41 @@
+{
+  "name": "HTTPClient",
+  "header": "HTTPClient.h",
+  "architectures": ["esp32"],
+  "classes": {
+    "HTTPClient": {
+      "ctors": [{"params": [], "result": "HTTPClient"}],
+      "methods": {
+        "begin": {"params": [{"name": "client_or_url", "type": "any"}, {"name": "url", "type": "text", "optional": true}], "result": "bool"},
+        "end": {"params": [], "result": "void"},
+        "connected": {"params": [], "result": "bool"},
+        "setReuse": {"params": [{"name": "reuse", "type": "bool"}], "result": "void"},
+        "setUserAgent": {"params": [{"name": "ua", "type": "text"}], "result": "void"},
+        "setAuthorization": {"params": [{"name": "user", "type": "text"}, {"name": "password", "type": "text", "optional": true}], "result": "void"},
+        "setTimeout": {"params": [{"name": "ms", "type": "int"}], "result": "void"},
+        "setFollowRedirects": {"params": [{"name": "mode", "type": "any"}], "result": "void"},
+        "setRedirectLimit": {"params": [{"name": "limit", "type": "int"}], "result": "void"},
+        "addHeader": {"params": [{"name": "name", "type": "text"}, {"name": "value", "type": "text"}, {"name": "first", "type": "bool", "optional": true}, {"name": "replace", "type": "bool", "optional": true}], "result": "void"},
+        "collectHeaders": {"params": [{"name": "keys", "type": "any"}, {"name": "count", "type": "int"}], "result": "void"},
+        "header": {"params": [{"name": "name", "type": "text"}], "result": "text"},
+        "hasHeader": {"params": [{"name": "name", "type": "text"}], "result": "bool"},
+        "GET": {"params": [], "result": "int"},
+        "POST": {"params": [{"name": "payload", "type": "any"}], "result": "int"},
+        "PUT": {"params": [{"name": "payload", "type": "any"}], "result": "int"},
+        "PATCH": {"params": [{"name": "payload", "type": "any"}], "result": "int"},
+        "sendRequest": {"params": [{"name": "type", "type": "text"}, {"name": "payload", "type": "any", "optional": true}], "result": "int"},
+        "getString": {"params": [], "result": "text"},
+        "getSize": {"params": [], "result": "int"},
+        "getStream": {"params": [], "result": "any"},
+        "writeToStream": {"params": [{"name": "stream", "type": "any"}], "result": "int"},
+        "getLocation": {"params": [], "result": "text"}
+      }
+    }
+  },
+  "constants": {
+    "HTTP_CODE_OK": "int",
+    "HTTP_CODE_NOT_FOUND": "int",
+    "HTTP_CODE_MOVED_PERMANENTLY": "int",
+    "HTTP_CODE_INTERNAL_SERVER_ERROR": "int"
+  }
+}

@@ -1,0 +1,33 @@
+# sample: an automatic dustbin lid
+board uno
+use mujard.servo
+use mujard.ultrasonic
+
+lid  = Servo(pin 6)
+hand = Ultrasonic(trig: pin 9, echo: pin 10)
+
+const NEAR = 20 cm
+var open = false
+var last_seen = now()
+
+at start:
+    lid.move(0 deg)
+
+every 100 ms:
+    var d = hand.distance()
+    if d != none and d < NEAR:
+        last_seen = now()
+        if not open:
+            lid.move(90 deg, over: 400 ms)
+            open = true
+    elif open and since(last_seen) > 3 s:
+        lid.move(0 deg, over: 600 ms)
+        open = false
+
+test "opens on a near hand and closes after":
+    hand.pretend(10 cm)
+    advance(200 ms)
+    expect open, "a near hand opens the lid"
+    hand.pretend(80 cm)
+    advance(4 s)
+    expect not open, "the lid closes after the wait"

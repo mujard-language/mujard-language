@@ -1,0 +1,108 @@
+{
+  "name": "RTClib",
+  "header": "RTClib.h",
+  "takes": ["i2c"],
+  "classes": {
+    "DateTime": {
+      "ctors": [
+        {"params": [{"name": "year", "type": "int"}, {"name": "month", "type": "int"}, {"name": "day", "type": "int"}, {"name": "hour", "type": "int", "optional": true}, {"name": "minute", "type": "int", "optional": true}, {"name": "second", "type": "int", "optional": true}], "result": "DateTime"},
+        {"params": [{"name": "t", "type": "int"}], "result": "DateTime"}
+      ],
+      "methods": {
+        "year": {"params": [], "result": "int"},
+        "month": {"params": [], "result": "int"},
+        "day": {"params": [], "result": "int"},
+        "hour": {"params": [], "result": "int"},
+        "minute": {"params": [], "result": "int"},
+        "second": {"params": [], "result": "int"},
+        "dayOfTheWeek": {"params": [], "result": "int"},
+        "unixtime": {"params": [], "result": "int"},
+        "secondstime": {"params": [], "result": "int"},
+        "isValid": {"params": [], "result": "bool"},
+        "timestamp": {"params": [{"name": "format", "type": "int", "optional": true}], "result": "text"},
+        "toString": {"params": [{"name": "buffer", "type": "any"}], "result": "void"}
+      }
+    },
+    "TimeSpan": {
+      "ctors": [
+        {"params": [{"name": "seconds", "type": "int"}], "result": "TimeSpan"},
+        {"params": [{"name": "days", "type": "int"}, {"name": "hours", "type": "int"}, {"name": "minutes", "type": "int"}, {"name": "seconds", "type": "int"}], "result": "TimeSpan"}
+      ],
+      "methods": {
+        "days": {"params": [], "result": "int"},
+        "hours": {"params": [], "result": "int"},
+        "minutes": {"params": [], "result": "int"},
+        "seconds": {"params": [], "result": "int"},
+        "totalseconds": {"params": [], "result": "int"}
+      }
+    },
+    "RTC_DS1307": {
+      "ctors": [{"params": [{"name": "wire", "type": "any", "optional": true}], "result": "RTC_DS1307"}],
+      "methods": {
+        "begin": {"params": [{"name": "wire", "type": "any", "optional": true}], "result": "bool"},
+        "adjust": {"params": [{"name": "dt", "type": "DateTime"}], "result": "void"},
+        "now": {"params": [], "result": "DateTime"},
+        "isrunning": {"params": [], "result": "bool"},
+        "readnvram": {"params": [{"name": "address", "type": "int"}], "result": "int"},
+        "writenvram": {"params": [{"name": "address", "type": "int"}, {"name": "data", "type": "int"}], "result": "void"}
+      }
+    },
+    "RTC_DS3231": {
+      "ctors": [{"params": [{"name": "wire", "type": "any", "optional": true}], "result": "RTC_DS3231"}],
+      "methods": {
+        "begin": {"params": [{"name": "wire", "type": "any", "optional": true}], "result": "bool"},
+        "adjust": {"params": [{"name": "dt", "type": "DateTime"}], "result": "void"},
+        "now": {"params": [], "result": "DateTime"},
+        "lostPower": {"params": [], "result": "bool"},
+        "getTemperature": {"params": [], "result": "float"},
+        "enable32K": {"params": [], "result": "void"},
+        "disable32K": {"params": [], "result": "void"},
+        "isEnabled32K": {"params": [], "result": "bool"},
+        "setAlarm1": {"params": [{"name": "dt", "type": "DateTime"}, {"name": "mode", "type": "int"}], "result": "bool"},
+        "setAlarm2": {"params": [{"name": "dt", "type": "DateTime"}, {"name": "mode", "type": "int"}], "result": "bool"},
+        "clearAlarm": {"params": [{"name": "n", "type": "int"}], "result": "void"},
+        "alarmFired": {"params": [{"name": "n", "type": "int"}], "result": "bool"},
+        "disableAlarm": {"params": [{"name": "n", "type": "int"}], "result": "void"},
+        "writeSqwPinMode": {"params": [{"name": "mode", "type": "int"}], "result": "void"},
+        "readSqwPinMode": {"params": [], "result": "int"}
+      }
+    },
+    "RTC_PCF8523": {
+      "ctors": [{"params": [{"name": "wire", "type": "any", "optional": true}], "result": "RTC_PCF8523"}],
+      "methods": {
+        "begin": {"params": [{"name": "wire", "type": "any", "optional": true}], "result": "bool"},
+        "adjust": {"params": [{"name": "dt", "type": "DateTime"}], "result": "void"},
+        "now": {"params": [], "result": "DateTime"},
+        "lostPower": {"params": [], "result": "bool"},
+        "initialized": {"params": [], "result": "bool"},
+        "calibrate": {"params": [{"name": "mode", "type": "int"}, {"name": "offset", "type": "int"}], "result": "void"}
+      }
+    },
+    "RTC_PCF8563": {
+      "ctors": [{"params": [{"name": "wire", "type": "any", "optional": true}], "result": "RTC_PCF8563"}],
+      "methods": {
+        "begin": {"params": [{"name": "wire", "type": "any", "optional": true}], "result": "bool"},
+        "adjust": {"params": [{"name": "dt", "type": "DateTime"}], "result": "void"},
+        "now": {"params": [], "result": "DateTime"},
+        "lostPower": {"params": [], "result": "bool"},
+        "isrunning": {"params": [], "result": "bool"}
+      }
+    },
+    "RTC_Millis": {
+      "ctors": [{"params": [], "result": "RTC_Millis"}],
+      "methods": {
+        "begin": {"params": [{"name": "dt", "type": "DateTime"}], "result": "void"},
+        "adjust": {"params": [{"name": "dt", "type": "DateTime"}], "result": "void"},
+        "now": {"params": [], "result": "DateTime"}
+      }
+    },
+    "RTC_Micros": {
+      "ctors": [{"params": [], "result": "RTC_Micros"}],
+      "methods": {
+        "begin": {"params": [{"name": "dt", "type": "DateTime"}], "result": "void"},
+        "adjust": {"params": [{"name": "dt", "type": "DateTime"}], "result": "void"},
+        "now": {"params": [], "result": "DateTime"}
+      }
+    }
+  }
+}

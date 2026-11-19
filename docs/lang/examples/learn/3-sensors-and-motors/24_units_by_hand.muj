@@ -1,0 +1,22 @@
+# Measuring with units
+# Level 3 - Sensors and motors
+#
+# The distance sensor again, done by hand: send a pulse, time the echo, and let the units do the maths.
+# You learn: pulse(), measure_pulse(), speeds (m/s) and the maths library.
+# You need: an HC-SR04: Trig to pin 7, Echo to pin 8, VCC to 5V, GND to GND.
+
+board uno
+use mujard.math
+
+trig = pin 7 as output
+echo = pin 8 as input
+
+every 250 ms:
+    trig.pulse(10 us)                              # a 10 microsecond "ping"
+    var t = echo.measure_pulse(timeout: 30 ms)     # how long the echo took, or none
+    if t == none:
+        print "No echo"
+    else:
+        var distance = t * 343 m/s / 2             # time x speed of sound, there and back
+        var height = distance * math.sin(30 deg)   # angles in degrees - no radians needed
+        print "Distance {distance as cm}, height at 30 degrees {height as cm}"

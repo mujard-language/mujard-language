@@ -1,0 +1,16 @@
+# Knob-controlled servo
+# Level 3 - Sensors and motors
+#
+# The servo follows the knob, like a steering wheel.
+# You learn: scale() to turn one kind of value into another (percent into degrees).
+# You need: a potentiometer on A0 and a small servo on pin 9 (red to 5V, brown to GND).
+
+board uno
+use mujard.servo
+
+knob = analog A0
+arm  = Servo(pin 9)
+
+every 20 ms:
+    var angle = scale(knob.percent, 0 %..100 %, 0 deg..180 deg)
+    arm.move(angle)

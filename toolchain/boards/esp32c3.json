@@ -1,0 +1,42 @@
+{
+  "schema": "mujard-board.v1",
+  "id": "espressif:esp32:esp32c3",
+  "short": "esp32c3",
+  "name": "ESP32-C3 devkit",
+  "vendor": "espressif",
+  "family": "esp32",
+  "chip": "espressif:esp32c3",
+  "aliases": ["esp32:esp32:esp32c3"],
+  "package": "espressif-esp32",
+  "core": "cores/esp32",
+  "variant": "variants/esp32c3",
+  "vars": {
+    "tarch": "riscv32",
+    "target": "esp",
+    "mcu": "esp32c3",
+    "arch": "ESP32",
+    "boardDefine": "ESP32C3_DEV",
+    "fCpu": "160000000L",
+    "ideVersion": "10819",
+    "codeDebug": "0",
+    "boot": "qio",
+    "bootFreq": "80m",
+    "flashMode": "qio",
+    "flashFreq": "80m",
+    "flashSize": "4MB",
+    "psramType": "qspi",
+    "partitions": "default",
+    "usbMode": "1",
+    "cdcOnBoot": "0",
+    "mscOnBoot": "0",
+    "dfuOnBoot": "0",
+    "bootloaderAddr": "0x0"
+  },
+  "output": "bin",
+  "flashMax": 1310720,
+  "ramMax": 327680,
+  "upload": {
+    "protocol": "esptool",
+    "baud": 921600
+  }
+}

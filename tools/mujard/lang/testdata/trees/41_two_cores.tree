@@ -1,0 +1,22 @@
+(file esp32
+  (use mujard "mujard.queue" version="" as="")
+  (device led pin [GPIO25] output [] to_end=false)
+  (device q (call Queue int 8))
+  (task counter
+    (while true
+      (for n in (..= 1 10)
+        (do (call q.push n))
+        (wait 200ms)
+      )
+    )
+  )
+  (every 100ms
+    (while q.available
+      (print (text "core 1 says " {(call q.pop)}))
+    )
+  )
+  (every 1s
+    (do (call led.toggle))
+    (print (text "main core alive (" {board.cores} " cores)"))
+  )
+)

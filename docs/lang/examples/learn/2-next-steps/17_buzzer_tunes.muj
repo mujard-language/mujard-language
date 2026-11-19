@@ -1,0 +1,20 @@
+# Beeps and tunes
+# Level 2 - Next steps
+#
+# A beep at start, then a short tune each time the button is pressed.
+# You learn: tone() for one note and melody() for a whole tune, both in the background.
+# You need: a piezo buzzer from pin 8 to GND, and a pushbutton between pin 2 and GND.
+
+board uno
+
+buzzer = pin 8 as output
+button = pin 2 as input pullup
+
+at start:
+    buzzer.tone(2 kHz, 100 ms)     # a short beep: "I'm ready"
+
+on button.pressed:
+    buzzer.melody("C5 E5 G5 C6*2", tempo: 160)   # *2 = twice as long; '-' would be a rest
+
+on button.held(1 s):
+    buzzer.stop()

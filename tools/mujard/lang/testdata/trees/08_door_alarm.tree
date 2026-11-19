@@ -1,0 +1,36 @@
+(file esp32
+  (device door pin [4] input [pullup] to_end=false)
+  (device alarm pin [26] output [] to_end=false)
+  (device siren pin [25] output [] to_end=false)
+  (device arm pin [27] input [pullup] to_end=false)
+  (var armed = false)
+  (on arm.pressed
+    (= armed (not armed))
+    (if armed
+      (do (call alarm.pattern (text "xx") repeat:1))
+    )
+    (else
+      (do (call alarm.off))
+      (do (call siren.off))
+    )
+  )
+  (on door.released
+    (if armed
+      (do (call siren.on))
+      (do (call alarm.pattern (text "SOS")))
+      (do (call notify (text "Door opened!")))
+    )
+  )
+  (test "an armed door opening trips the siren"
+    (do (call arm.pretend 1))
+    (do (call advance 100ms))
+    (do (call arm.pretend 0))
+    (do (call advance 100ms))
+    (do (call door.pretend 1))
+    (do (call advance 50ms))
+    (do (call door.pretend 0))
+    (do (call advance 200ms))
+    (expect (call siren.read) (text "the siren should be sounding"))
+    (expect (call notified (text "Door opened")) (text "the phone should be told"))
+  )
+)

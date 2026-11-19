@@ -1,0 +1,4 @@
+# expect: L107 4:18
+board uno
+at start:
+    print "value {x"

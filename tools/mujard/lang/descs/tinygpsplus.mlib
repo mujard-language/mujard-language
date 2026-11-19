@@ -1,0 +1,119 @@
+{
+  "name": "TinyGPSPlus",
+  "header": "TinyGPSPlus.h",
+  "classes": {
+    "TinyGPSPlus": {
+      "ctors": [{"params": [], "result": "TinyGPSPlus"}],
+      "methods": {
+        "encode": {"params": [{"name": "c", "type": "int"}], "result": "bool"},
+        "charsProcessed": {"params": [], "result": "int"},
+        "sentencesWithFix": {"params": [], "result": "int"},
+        "failedChecksum": {"params": [], "result": "int"},
+        "passedChecksum": {"params": [], "result": "int"},
+        "distanceBetween": {"params": [{"name": "lat1", "type": "float"}, {"name": "lon1", "type": "float"}, {"name": "lat2", "type": "float"}, {"name": "lon2", "type": "float"}], "result": "float"},
+        "courseTo": {"params": [{"name": "lat1", "type": "float"}, {"name": "lon1", "type": "float"}, {"name": "lat2", "type": "float"}, {"name": "lon2", "type": "float"}], "result": "float"},
+        "cardinal": {"params": [{"name": "course", "type": "float"}], "result": "text"}
+      },
+      "fields": {
+        "location": "TinyGPSLocation",
+        "date": "TinyGPSDate",
+        "time": "TinyGPSTime",
+        "speed": "TinyGPSSpeed",
+        "course": "TinyGPSCourse",
+        "altitude": "TinyGPSAltitude",
+        "satellites": "TinyGPSInteger",
+        "hdop": "TinyGPSDecimal"
+      }
+    },
+    "TinyGPSLocation": {
+      "value": true,
+      "methods": {
+        "isValid": {"params": [], "result": "bool"},
+        "isUpdated": {"params": [], "result": "bool"},
+        "age": {"params": [], "result": "int"},
+        "lat": {"params": [], "result": "float"},
+        "lng": {"params": [], "result": "float"}
+      }
+    },
+    "TinyGPSDate": {
+      "value": true,
+      "methods": {
+        "isValid": {"params": [], "result": "bool"},
+        "isUpdated": {"params": [], "result": "bool"},
+        "age": {"params": [], "result": "int"},
+        "year": {"params": [], "result": "int"},
+        "month": {"params": [], "result": "int"},
+        "day": {"params": [], "result": "int"},
+        "value": {"params": [], "result": "int"}
+      }
+    },
+    "TinyGPSTime": {
+      "value": true,
+      "methods": {
+        "isValid": {"params": [], "result": "bool"},
+        "isUpdated": {"params": [], "result": "bool"},
+        "age": {"params": [], "result": "int"},
+        "hour": {"params": [], "result": "int"},
+        "minute": {"params": [], "result": "int"},
+        "second": {"params": [], "result": "int"},
+        "centisecond": {"params": [], "result": "int"},
+        "value": {"params": [], "result": "int"}
+      }
+    },
+    "TinyGPSSpeed": {
+      "value": true,
+      "methods": {
+        "isValid": {"params": [], "result": "bool"},
+        "isUpdated": {"params": [], "result": "bool"},
+        "age": {"params": [], "result": "int"},
+        "value": {"params": [], "result": "float"},
+        "knots": {"params": [], "result": "float"},
+        "mph": {"params": [], "result": "float"},
+        "mps": {"params": [], "result": "float"},
+        "kmph": {"params": [], "result": "float"}
+      }
+    },
+    "TinyGPSCourse": {
+      "value": true,
+      "methods": {
+        "isValid": {"params": [], "result": "bool"},
+        "isUpdated": {"params": [], "result": "bool"},
+        "age": {"params": [], "result": "int"},
+        "value": {"params": [], "result": "float"},
+        "deg": {"params": [], "result": "float"}
+      }
+    },
+    "TinyGPSAltitude": {
+      "value": true,
+      "methods": {
+        "isValid": {"params": [], "result": "bool"},
+        "isUpdated": {"params": [], "result": "bool"},
+        "age": {"params": [], "result": "int"},
+        "value": {"params": [], "result": "float"},
+        "meters": {"params": [], "result": "float"},
+        "km": {"params": [], "result": "float"},
+        "miles": {"params": [], "result": "float"},
+        "feet": {"params": [], "result": "float"}
+      }
+    },
+    "TinyGPSInteger": {
+      "value": true,
+      "methods": {
+        "isValid": {"params": [], "result": "bool"},
+        "isUpdated": {"params": [], "result": "bool"},
+        "age": {"params": [], "result": "int"},
+        "value": {"params": [], "result": "int"}
+      }
+    },
+    "TinyGPSDecimal": {
+      "value": true,
+      "methods": {
+        "isValid": {"params": [], "result": "bool"},
+        "isUpdated": {"params": [], "result": "bool"},
+        "age": {"params": [], "result": "int"},
+        "value": {"params": [], "result": "int"},
+        "hdop": {"params": [], "result": "float"}
+      }
+    }
+  }
+}

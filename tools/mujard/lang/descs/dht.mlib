@@ -1,0 +1,26 @@
+{
+  "name": "DHT sensor library",
+  "header": "DHT.h",
+  "classes": {
+    "DHT": {
+      "ctors": [{"params": [{"name": "pin", "type": "int"}, {"name": "type", "type": "int"}, {"name": "count", "type": "int", "optional": true}], "result": "DHT"}],
+      "methods": {
+        "begin": {"params": [{"name": "usec", "type": "int", "optional": true}], "result": "void"},
+        "readTemperature": {"params": [{"name": "fahrenheit", "type": "bool", "optional": true}, {"name": "force", "type": "bool", "optional": true}], "result": "float"},
+        "readHumidity": {"params": [{"name": "force", "type": "bool", "optional": true}], "result": "float"},
+        "computeHeatIndex": {"params": [{"name": "temperature", "type": "float"}, {"name": "humidity", "type": "float"}, {"name": "fahrenheit", "type": "bool", "optional": true}], "result": "float"},
+        "computeHeatIndex": {"params": [{"name": "temperature", "type": "float"}, {"name": "percent_humidity", "type": "float"}, {"name": "fahrenheit", "type": "bool", "optional": true}], "result": "float"},
+        "convertCtoF": {"params": [{"name": "c", "type": "float"}], "result": "float"},
+        "convertFtoC": {"params": [{"name": "f", "type": "float"}], "result": "float"},
+        "read": {"params": [{"name": "force", "type": "bool", "optional": true}], "result": "bool"}
+      }
+    }
+  },
+  "constants": {
+    "DHT11": "int",
+    "DHT12": "int",
+    "DHT21": "int",
+    "DHT22": "int",
+    "AM2301": "int"
+  }
+}

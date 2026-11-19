@@ -1,0 +1,7 @@
+board bluepill
+use mujard.regs
+
+led = pin 5 as output
+
+at start:
+    led.on()

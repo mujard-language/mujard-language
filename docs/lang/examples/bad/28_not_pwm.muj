@@ -1,0 +1,3 @@
+# expect: B403 3:12
+board uno
+lamp = pin 7 as pwm

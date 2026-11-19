@@ -1,0 +1,18 @@
+(file uno
+  (device lamp pin [9] pwm [] to_end=false)
+  (device light analog [A0]  [] to_end=false)
+  (const DARK = 30%)
+  (when (< light.percent DARK)
+    (do (call lamp.fade to:100% over:2s))
+  )
+  (when (> light.percent (+ DARK 10%))
+    (do (call lamp.fade to:0% over:2s))
+  )
+  (test "dark and light both run clean"
+    (do (call light.pretend 10%))
+    (do (call advance 3000ms))
+    (do (call light.pretend 80%))
+    (do (call advance 3000ms))
+    (expect true (text "the fades should run without error"))
+  )
+)

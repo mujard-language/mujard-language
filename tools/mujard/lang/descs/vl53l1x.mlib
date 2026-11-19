@@ -1,0 +1,30 @@
+{
+  "name": "VL53L1X",
+  "header": "VL53L1X.h",
+  "takes": ["i2c"],
+  "classes": {
+    "VL53L1X": {
+      "ctors": [{"params": [], "result": "VL53L1X"}],
+      "methods": {
+        "setAddress": {"params": [{"name": "new_addr", "type": "int"}], "result": "void"},
+        "getAddress": {"params": [], "result": "int"},
+        "init": {"params": [{"name": "io_2v8", "type": "bool", "optional": true}], "result": "bool"},
+        "setMeasurementTimingBudget": {"params": [{"name": "budget_us", "type": "int"}], "result": "bool"},
+        "getMeasurementTimingBudget": {"params": [], "result": "int"},
+        "setROISize": {"params": [{"name": "width", "type": "int"}, {"name": "height", "type": "int"}], "result": "void"},
+        "setROICenter": {"params": [{"name": "spadNum", "type": "int"}], "result": "void"},
+        "getROICenter": {"params": [], "result": "int"},
+        "startContinuous": {"params": [{"name": "period_ms", "type": "int"}], "result": "void"},
+        "stopContinuous": {"params": [], "result": "void"},
+        "read": {"params": [{"name": "blocking", "type": "bool", "optional": true}], "result": "int"},
+        "readRangeContinuousMillimeters": {"params": [{"name": "blocking", "type": "bool", "optional": true}], "result": "int"},
+        "readSingle": {"params": [{"name": "blocking", "type": "bool", "optional": true}], "result": "int"},
+        "readRangeSingleMillimeters": {"params": [{"name": "blocking", "type": "bool", "optional": true}], "result": "int"},
+        "dataReady": {"params": [], "result": "bool"},
+        "setTimeout": {"params": [{"name": "timeout", "type": "int"}], "result": "void"},
+        "getTimeout": {"params": [], "result": "int"},
+        "timeoutOccurred": {"params": [], "result": "bool"}
+      }
+    }
+  }
+}

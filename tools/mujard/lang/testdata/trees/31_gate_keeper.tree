@@ -1,0 +1,53 @@
+(file uno
+  (device arm_button pin [2] input [pullup] to_end=false)
+  (device disarm_button pin [3] input [pullup] to_end=false)
+  (device led pin [13] output [] to_end=false)
+  (var armed = false)
+  (var lucky:list[int,4] = [3 7 13 42])
+  (on arm_button.pressed
+    (= armed true)
+  )
+  (on disarm_button.pressed
+    (= armed false)
+  )
+  (task guard
+    (while true
+      (wait-until armed)
+      (do (call led.on))
+      (wait-until (not armed))
+      (do (call led.off))
+    )
+  )
+  (task counter
+    (var n = 0)
+    (while true
+      (wait 1s)
+      (if (in n (.. 0 9))
+        (+= n 1)
+      )
+      (else
+        (pass)
+      )
+    )
+  )
+  (at start
+    (if (in 7 lucky)
+      (print (text "Seven is lucky"))
+    )
+  )
+  (test "arm lights, disarm clears"
+    (expect (call printed (text "Seven is lucky")) (text "the membership check ran at start"))
+    (do (call arm_button.pretend 1))
+    (do (call advance 100ms))
+    (do (call arm_button.pretend 0))
+    (do (call advance 100ms))
+    (expect armed (text "the arm button armed it"))
+    (do (call advance 200ms))
+    (expect (call led.read) (text "the guard sees it armed"))
+    (do (call disarm_button.pretend 1))
+    (do (call advance 100ms))
+    (do (call disarm_button.pretend 0))
+    (do (call advance 300ms))
+    (expect (not (call led.read)) (text "disarming clears the LED"))
+  )
+)

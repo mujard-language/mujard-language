@@ -1,0 +1,33 @@
+# sample: lists, for, while, break and continue
+board uno
+
+sensor = analog A0
+var readings: list[int, 10] = []
+
+every 100 ms:
+    if readings.length == 10:
+        readings.remove(0)
+    readings.add(sensor.value)
+
+every 1 s:
+    var total = 0
+    var highest = 0
+    for r in readings:
+        if r == 0:
+            continue
+        total += r
+        highest = max(highest, r)
+    var i = 0
+    while i < readings.length:
+        if readings[i] > 1000:
+            print "Very bright at sample {i}"
+            break
+        i += 1
+    if readings.length > 0:
+        print "Average {total / readings.length}, highest {highest}"
+
+test "readings collect and report":
+    sensor.pretend(500)
+    advance(1500 ms)
+    expect readings.length > 0, "samples accumulate"
+    expect printed "Average", "the stats print"

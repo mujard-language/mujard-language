@@ -1,0 +1,18 @@
+{
+  "name": "CapacitiveSensor",
+  "header": "CapacitiveSensor.h",
+  "classes": {
+    "CapacitiveSensor": {
+      "ctors": [
+        {"params": [{"name": "sendPin", "type": "int"}, {"name": "receivePin", "type": "int"}], "result": "CapacitiveSensor"}
+      ],
+      "methods": {
+        "capacitiveSensor": {"params": [{"name": "samples", "type": "int"}], "result": "int"},
+        "capacitiveSensorRaw": {"params": [{"name": "samples", "type": "int"}], "result": "int"},
+        "set_CS_Timeout_Millis": {"params": [{"name": "ms", "type": "int"}], "result": "void"},
+        "set_CS_AutocaL_Millis": {"params": [{"name": "ms", "type": "int"}], "result": "void"},
+        "reset_CS_AutocaL": {"params": [], "result": "void"}
+      }
+    }
+  }
+}

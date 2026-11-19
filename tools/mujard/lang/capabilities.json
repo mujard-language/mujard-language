@@ -1,0 +1,132 @@
+{
+  "build": {
+    "bluepill": {
+      "output": "2026-11-06",
+      "servo": "2026-11-06",
+      "ultrasonic": "2026-11-06"
+    },
+    "esp32": {
+      "analog": "2026-11-06",
+      "clock": "2026-11-06",
+      "input": "2026-11-06",
+      "mqtt": "2026-11-06",
+      "multicore": "2026-11-07",
+      "output": "2026-11-07",
+      "pwm": "2026-11-06",
+      "servo": "2026-11-06",
+      "tone": "2026-11-06",
+      "ultrasonic": "2026-11-06",
+      "wifi": "2026-11-06"
+    },
+    "esp32c3": {
+      "output": "2026-11-06",
+      "servo": "2026-11-06",
+      "ultrasonic": "2026-11-06"
+    },
+    "esp32c6": {
+      "output": "2026-11-06",
+      "servo": "2026-11-06",
+      "ultrasonic": "2026-11-06"
+    },
+    "esp32s2": {
+      "output": "2026-11-06",
+      "servo": "2026-11-06",
+      "ultrasonic": "2026-11-06"
+    },
+    "esp32s3": {
+      "output": "2026-11-06",
+      "servo": "2026-11-06",
+      "ultrasonic": "2026-11-06"
+    },
+    "esp8266": {
+      "http": "2026-11-06",
+      "output": "2026-11-06",
+      "servo": "2026-11-06",
+      "ultrasonic": "2026-11-06",
+      "wifi": "2026-11-06"
+    },
+    "leonardo": {
+      "output": "2026-11-06",
+      "servo": "2026-11-06",
+      "ultrasonic": "2026-11-06"
+    },
+    "mega": {
+      "output": "2026-11-06",
+      "servo": "2026-11-06",
+      "ultrasonic": "2026-11-06"
+    },
+    "micro": {
+      "output": "2026-11-06",
+      "servo": "2026-11-06",
+      "ultrasonic": "2026-11-06"
+    },
+    "nano": {
+      "output": "2026-11-06",
+      "servo": "2026-11-06",
+      "ultrasonic": "2026-11-06"
+    },
+    "nano33ble": {
+      "output": "2026-11-06",
+      "servo": "2026-11-06",
+      "ultrasonic": "2026-11-06"
+    },
+    "pico": {
+      "analog": "2026-10-30",
+      "input": "2026-10-30",
+      "output": "2026-11-06",
+      "pwm": "2026-10-30",
+      "servo": "2026-11-06",
+      "ultrasonic": "2026-11-06"
+    },
+    "picow": {
+      "clock": "2026-11-06",
+      "output": "2026-11-06",
+      "servo": "2026-11-06",
+      "ultrasonic": "2026-11-06",
+      "wifi": "2026-11-06"
+    },
+    "rp2350usba": {
+      "output": "2026-11-06",
+      "servo": "2026-11-06",
+      "ultrasonic": "2026-11-06"
+    },
+    "uno": {
+      "analog": "2026-11-06",
+      "fast": "2026-11-06",
+      "i2c": "2026-11-06",
+      "input": "2026-11-06",
+      "output": "2026-11-06",
+      "pwm": "2026-11-06",
+      "servo": "2026-11-06",
+      "shift": "2026-11-06",
+      "store": "2026-11-06",
+      "tone": "2026-11-06",
+      "uart": "2026-11-06",
+      "ultrasonic": "2026-11-06"
+    },
+    "unor4": {
+      "output": "2026-11-06",
+      "servo": "2026-11-06",
+      "ultrasonic": "2026-11-06"
+    },
+    "zero": {
+      "output": "2026-11-06",
+      "servo": "2026-11-06",
+      "ultrasonic": "2026-11-06"
+    }
+  },
+  "hardware": {
+    "esp32": {
+      "input": "2026-11-01: physically tested on a real ESP32 board by the owner - the digital input read and fired, seen by the owner",
+      "output": "2026-11-01: physically tested on a real ESP32 board by the owner - the digital output drove the pin, seen by the owner"
+    },
+    "nano": {
+      "input": "2026-10-29: 06_button.muj on the owner's CH340-clone Nano (COM5) - the LED lit while the D2 button was held, seen by the owner",
+      "output": "2026-10-29: 02_blink.muj on the owner's CH340-clone Nano (COM5) - on/off every 500 ms, seen by the owner"
+    },
+    "rp2350usba": {
+      "input": "2026-11-01: physically tested on a real Waveshare RP2350-USB-A board by the owner - the digital input read and fired, seen by the owner",
+      "output": "2026-11-01: physically tested on a real Waveshare RP2350-USB-A board by the owner - the digital output drove the pin, seen by the owner"
+    }
+  }
+}

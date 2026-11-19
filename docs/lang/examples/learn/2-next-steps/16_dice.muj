@@ -1,0 +1,17 @@
+# Electronic dice
+# Level 2 - Next steps
+#
+# Press the button to roll: up to six LEDs light up to show the number.
+# You learn: random() and setting many outputs in a loop.
+# You need: six LEDs (with 220 ohm resistors) on pins 2 to 7, and a pushbutton between pin 12 and GND.
+
+board uno
+
+leds   = pins 2..8 as output
+button = pin 12 as input pullup
+
+on button.pressed:
+    var roll = random(1..=6)       # ..= includes the end: 1, 2, 3, 4, 5 or 6
+    print "You rolled {roll}"
+    for i in 0..6:
+        leds[i].write(i < roll)    # the first 'roll' LEDs on, the rest off

@@ -1,0 +1,24 @@
+# sample: distance with units, by hand
+board uno
+use mujard.math
+
+trig = pin 9 as output
+echo = pin 10 as input
+
+every 200 ms:
+    trig.pulse(10 us)
+    var t = echo.measure_pulse(timeout: 30 ms)
+    if t == none:
+        print "Nothing in range"
+    else:
+        var distance = t * 343 m/s / 2
+        var height = distance * math.sin(30 deg)
+        print "Distance {distance as cm}, height {height as cm}"
+
+test "an echo prints the distance":
+    echo.pretend(1 m)
+    advance(300 ms)
+    expect printed "Distance", "a range is reported"
+    echo.pretend(-1 m)
+    advance(300 ms)
+    expect printed "Nothing in range", "no echo means no range"

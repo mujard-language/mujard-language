@@ -1,0 +1,19 @@
+# sample: a temperature sensor read over I2C with i2c.write and i2c.read
+board uno
+use mujard.i2c
+
+const SENSOR = 0x48
+var request: list[int, 1] = [0]
+
+every 2 s:
+    i2c.write(SENSOR, request)
+    var data = i2c.read(SENSOR, 2)
+    if data == none:
+        print "No answer from the sensor"
+    else:
+        var raw = (data[0] << 8) | data[1]
+        print "Raw reading: {raw >> 4}"
+
+test "a silent bus gets a clean no-answer":
+    advance(2500 ms)
+    expect printed "No answer from the sensor", "the fake bus has nothing on it"

@@ -1,0 +1,32 @@
+# sample: a countdown that can be started and aborted
+board uno
+
+start_button = pin 2 as input pullup
+abort_button = pin 3 as input pullup
+buzzer       = pin 8 as output
+
+task countdown:
+    for n in 10..=1:
+        print n
+        wait 1 s
+    print "Lift-off!"
+    buzzer.tone(1 kHz, 1 s)
+
+at start:
+    countdown.stop()
+
+on start_button.pressed:
+    countdown.restart()
+
+on abort_button.pressed:
+    countdown.stop()
+    print "Aborted"
+
+test "counts down and lifts off":
+    start_button.pretend(1)
+    advance(100 ms)
+    start_button.pretend(0)
+    advance(100 ms)
+    expect printed "10", "the count begins"
+    advance(11 s)
+    expect printed "Lift-off!", "it reaches zero"

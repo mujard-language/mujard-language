@@ -1,0 +1,17 @@
+# Hello, board
+# Level 1 - Basics
+#
+# Your first program: the board says hello, then counts the seconds.
+# You learn: the 'board' line, 'at start:', 'every', variables and print.
+# You need: just the board and its USB cable. Open the serial monitor to see the messages.
+
+board uno                          # every program starts with the board it is for
+
+var seconds = 0                    # a variable: a value the program can change
+
+at start:                          # runs once, when the board powers up
+    print "Hello! I am an {board.name}."
+
+every 1 s:                         # runs again and again, once a second
+    seconds += 1
+    print "I have been awake for {seconds} seconds"

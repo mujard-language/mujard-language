@@ -1,0 +1,5 @@
+board zero
+led = pin 13 as output
+sda = pin SDA as input
+at start:
+    led.on()

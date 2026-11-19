@@ -1,0 +1,50 @@
+{
+  "name": "LoRa",
+  "header": "LoRa.h",
+  "takes": ["spi"],
+  "classes": {
+    "LoRa": {
+      "methods": {
+        "begin": {"params": [{"name": "frequency", "type": "int"}], "result": "int"},
+        "end": {"params": [], "result": "void"},
+        "beginPacket": {"params": [{"name": "implicitHeader", "type": "bool", "optional": true}], "result": "int"},
+        "endPacket": {"params": [{"name": "async", "type": "bool", "optional": true}], "result": "int"},
+        "parsePacket": {"params": [{"name": "size", "type": "int", "optional": true}], "result": "int"},
+        "packetRssi": {"params": [], "result": "int"},
+        "packetSnr": {"params": [], "result": "float"},
+        "packetFrequencyError": {"params": [], "result": "int"},
+        "rssi": {"params": [], "result": "int"},
+        "write": {"params": [{"name": "byte", "type": "int"}], "result": "int"},
+        "available": {"params": [], "result": "int"},
+        "read": {"params": [], "result": "int"},
+        "peek": {"params": [], "result": "int"},
+        "flush": {"params": [], "result": "void"},
+        "print": {"params": [{"name": "value", "type": "any"}, {"name": "base", "type": "any", "optional": true}], "result": "int"},
+        "println": {"params": [{"name": "value", "type": "any", "optional": true}], "result": "int"},
+        "receive": {"params": [{"name": "size", "type": "int", "optional": true}], "result": "void"},
+        "idle": {"params": [], "result": "void"},
+        "sleep": {"params": [], "result": "void"},
+        "setTxPower": {"params": [{"name": "level", "type": "int"}, {"name": "outputPin", "type": "int", "optional": true}], "result": "void"},
+        "setFrequency": {"params": [{"name": "frequency", "type": "int"}], "result": "void"},
+        "setSpreadingFactor": {"params": [{"name": "sf", "type": "int"}], "result": "void"},
+        "setSignalBandwidth": {"params": [{"name": "sbw", "type": "int"}], "result": "void"},
+        "setCodingRate4": {"params": [{"name": "denominator", "type": "int"}], "result": "void"},
+        "setPreambleLength": {"params": [{"name": "length", "type": "int"}], "result": "void"},
+        "setSyncWord": {"params": [{"name": "sw", "type": "int"}], "result": "void"},
+        "enableCrc": {"params": [], "result": "void"},
+        "disableCrc": {"params": [], "result": "void"},
+        "enableInvertIQ": {"params": [], "result": "void"},
+        "disableInvertIQ": {"params": [], "result": "void"},
+        "setOCP": {"params": [{"name": "mA", "type": "int"}], "result": "void"},
+        "setGain": {"params": [{"name": "gain", "type": "int"}], "result": "void"},
+        "random": {"params": [], "result": "int"},
+        "setPins": {"params": [{"name": "ss", "type": "int", "optional": true}, {"name": "reset", "type": "int", "optional": true}, {"name": "dio0", "type": "int", "optional": true}], "result": "void"},
+        "setSPIFrequency": {"params": [{"name": "frequency", "type": "int"}], "result": "void"}
+      }
+    }
+  },
+  "constants": {
+    "PA_OUTPUT_PA_BOOST_PIN": "int",
+    "PA_OUTPUT_RFO_PIN": "int"
+  }
+}

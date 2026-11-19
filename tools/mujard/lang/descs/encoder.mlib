@@ -1,0 +1,16 @@
+{
+  "name": "Encoder",
+  "header": "Encoder.h",
+  "classes": {
+    "Encoder": {
+      "ctors": [
+        {"params": [{"name": "pin1", "type": "int"}, {"name": "pin2", "type": "int"}], "result": "Encoder"}
+      ],
+      "methods": {
+        "read": {"params": [], "result": "int"},
+        "readAndReset": {"params": [], "result": "int"},
+        "write": {"params": [{"name": "p", "type": "int"}], "result": "void"}
+      }
+    }
+  }
+}

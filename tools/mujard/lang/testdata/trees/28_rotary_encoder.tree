@@ -1,0 +1,23 @@
+(file uno
+  (device enc_a pin [2] input [pullup] to_end=false)
+  (device enc_b pin [3] input [pullup] to_end=false)
+  (var position = 0)
+  (on enc_a.changed fast
+    (if (== (call enc_a.read) (call enc_b.read))
+      (+= position 1)
+    )
+    (else
+      (-= position 1)
+    )
+  )
+  (every 200ms
+    (if (call changed position)
+      (print (text "Position: " {position}))
+    )
+  )
+  (test "a turn moves the position and prints"
+    (do (call enc_a.pretend 1))
+    (do (call advance 300ms))
+    (expect (call printed (text "Position:")) (text "a change is reported"))
+  )
+)

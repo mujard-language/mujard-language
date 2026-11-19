@@ -1,0 +1,26 @@
+# Click, double-click and hold
+# Level 2 - Next steps
+#
+# One button, three different actions - like the button on a phone.
+# You learn: the clicked, double_clicked, held and released events.
+# You need: a pushbutton between pin 2 and GND.
+
+board uno
+
+button = pin 2 as input pullup
+led    = pin LED as output
+
+on button.clicked:                 # a short press
+    led.toggle()
+    print "Click: LED switched"
+
+on button.double_clicked:          # two quick presses
+    led.blink(5 Hz)
+    print "Double-click: blinking"
+
+on button.held(2 s):               # kept down for 2 seconds
+    led.off()
+    print "Held: everything off"
+
+on button.released:
+    print "(button let go)"

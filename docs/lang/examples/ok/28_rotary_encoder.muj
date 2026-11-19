@@ -1,0 +1,21 @@
+# sample: count a rotary encoder with a fast (interrupt) event
+board uno
+
+enc_a = pin 2 as input pullup
+enc_b = pin 3 as input pullup
+var position = 0
+
+on enc_a.changed fast:
+    if enc_a.read() == enc_b.read():
+        position += 1
+    else:
+        position -= 1
+
+every 200 ms:
+    if changed(position):
+        print "Position: {position}"
+
+test "a turn moves the position and prints":
+    enc_a.pretend(1)
+    advance(300 ms)
+    expect printed "Position:", "a change is reported"

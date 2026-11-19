@@ -1,0 +1,32 @@
+{
+  "schema": "mujard-board.v1",
+  "id": "microchip:avr:m32u4",
+  "short": "m32u4",
+  "name": "ATmega32U4 board (native USB)",
+  "vendor": "microchip",
+  "family": "avr",
+  "chip": "microchip:atmega32u4",
+  "aliases": ["leonardo", "arduino:avr:leonardo"],
+  "package": "arduino-avr",
+  "core": "cores/arduino",
+  "variant": "variants/leonardo",
+  "vars": {
+    "mcu": "atmega32u4",
+    "fCpu": "16000000L",
+    "boardDefine": "ARDUINO_AVR_LEONARDO"
+  },
+  "defines": [
+    "USBCON",
+    "USB_VID=0x2341",
+    "USB_PID=0x8036",
+    "USB_PRODUCT=\"Mujard m32u4\""
+  ],
+  "output": "hex",
+  "flashMax": 28672,
+  "ramMax": 2560,
+  "upload": {
+    "protocol": "avr109",
+    "baud": 57600,
+    "signature": "1E9587"
+  }
+}

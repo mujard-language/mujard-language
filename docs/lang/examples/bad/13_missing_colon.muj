@@ -1,0 +1,4 @@
+# expect: P201 3:10
+board uno
+every 1 s
+    print "tick"

@@ -1,0 +1,33 @@
+# Thermostat
+# Level 3 - Sensors and motors
+#
+# Keeps a room warm: switches a heater relay on and off, with buttons to change the target.
+# You learn: hysteresis() (no rapid on/off), an 'inverted' relay, a function and 'saved var'.
+# You need: a TMP36 on A0, a relay module on pin 7, and buttons on pins 2 (up) and 3 (down) to GND.
+# Mains heaters are dangerous: practise with a lamp or an LED on the relay.
+
+board uno
+
+sensor = analog A0
+heater = pin 7 as output inverted     # most relay modules switch on when the pin is LOW
+up     = pin 2 as input pullup
+down   = pin 3 as input pullup
+
+saved var target = 21 C               # kept when the power goes off
+
+fn room_temperature() -> temperature:
+    return scale(smooth(sensor.volts, 10), 0.5 V..1.5 V, 0 C..100 C)
+
+on up.pressed:
+    target += 0.5 C
+    print "Target {target}"
+
+on down.pressed:
+    target -= 0.5 C
+    print "Target {target}"
+
+every 1 s:
+    var t = room_temperature()
+    # on below target - 1 C, off above target + 1 C, and no flickering in between
+    heater.write(hysteresis(t, on: target - 1 C, off: target + 1 C))
+    print "Room {round(t, 1)}, target {target}, heater {heater.read()}"

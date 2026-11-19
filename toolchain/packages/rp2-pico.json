@@ -1,0 +1,14 @@
+{
+  "schema": "mujard-package.v1",
+  "id": "rp2-pico",
+  "name": "Raspberry Pi Pico / RP2350 core 6.1.1 + arm-none-eabi toolchain (compatibility package)",
+  "version": "6.1.1",
+  "family": "rp2",
+  "root": "${MUJARD_TOOLCHAINS}/rp2040-core-6.1.1/rp2040-6.1.1",
+  "libraryRoot": "libraries",
+  "libraryRoots": ["${MUJARD_TOOLCHAINS}/adafruit-neopixel-1.15.5"],
+  "tools": {
+    "gccBin": "${MUJARD_TOOLCHAINS}/pqt-gcc-5.0.0-9576866/arm-none-eabi/bin",
+    "picotool": "${MUJARD_TOOLCHAINS}/pqt-picotool-5.0.0-9576866/picotool/picotool"
+  }
+}

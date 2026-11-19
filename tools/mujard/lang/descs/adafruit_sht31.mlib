@@ -1,0 +1,22 @@
+{
+  "name": "Adafruit SHT31 Library",
+  "header": "Adafruit_SHT31.h",
+  "takes": ["i2c"],
+  "classes": {
+    "Adafruit_SHT31": {
+      "ctors": [{"params": [], "result": "Adafruit_SHT31"}],
+      "methods": {
+        "begin": {"params": [{"name": "i2caddr", "type": "int", "optional": true}], "result": "bool"},
+        "readTemperature": {"params": [], "result": "float"},
+        "readHumidity": {"params": [], "result": "float"},
+        "readStatus": {"params": [], "result": "int"},
+        "reset": {"params": [], "result": "void"},
+        "heater": {"params": [{"name": "h", "type": "bool"}], "result": "void"},
+        "isHeaterEnabled": {"params": [], "result": "bool"}
+      }
+    }
+  },
+  "constants": {
+    "SHT31_DEFAULT_ADDR": "int"
+  }
+}

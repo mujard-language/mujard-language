@@ -1,0 +1,4 @@
+# expect: L105 4:13
+board uno
+at start:
+    var x = 1__000

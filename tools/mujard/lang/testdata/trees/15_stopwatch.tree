@@ -1,0 +1,38 @@
+(file uno
+  (device start_stop pin [2] input [pullup] to_end=false)
+  (device reset pin [3] input [pullup] to_end=false)
+  (var watch = (call stopwatch))
+  (on start_stop.pressed
+    (if watch.running
+      (do (call watch.stop))
+      (print (text "Time: " {(as watch.elapsed s)}))
+    )
+    (else
+      (do (call watch.start))
+    )
+  )
+  (on reset.pressed
+    (do (call watch.reset))
+    (print (text "Reset"))
+  )
+  (test "starts and stops on the button"
+    (do (call start_stop.pretend 1))
+    (do (call advance 100ms))
+    (do (call start_stop.pretend 0))
+    (do (call advance 100ms))
+    (expect watch.running (text "a press starts the watch"))
+    (do (call start_stop.pretend 1))
+    (do (call advance 100ms))
+    (do (call start_stop.pretend 0))
+    (do (call advance 100ms))
+    (expect (not watch.running) (text "another press stops it"))
+    (expect (call printed (text "Time:")) (text "stopping reports the time"))
+  )
+  (test "reset clears and reports"
+    (do (call reset.pretend 1))
+    (do (call advance 100ms))
+    (do (call reset.pretend 0))
+    (do (call advance 100ms))
+    (expect (call printed (text "Reset")) (text "reset prints"))
+  )
+)

@@ -1,0 +1,16 @@
+(file esp32
+  (device battery (call battery_on (analog 35) divider:2 type:lipo_1s))
+  (device status pin [26] output [] to_end=false)
+  (every 5min
+    (do (call show (text "Battery") battery.percent))
+    (when (< battery.percent 15%)
+      (do (call notify (text "Charge me! (" {battery.percent} ")")))
+      (do (call status.blink 1Hz on:100ms))
+    )
+  )
+  (test "a low battery asks to be charged"
+    (do (call battery.pretend 10%))
+    (do (call advance 100ms))
+    (expect (call notified (text "Charge me")) (text "a low battery warns"))
+  )
+)

@@ -1,0 +1,28 @@
+{
+  "name": "NTPClient",
+  "header": "NTPClient.h",
+  "classes": {
+    "NTPClient": {
+      "ctors": [
+        {"params": [{"name": "udp", "type": "any"}, {"name": "offset", "type": "int", "optional": true}, {"name": "interval", "type": "int", "optional": true}], "result": "NTPClient"}
+      ],
+      "methods": {
+        "begin": {"params": [], "result": "void"},
+        "end": {"params": [], "result": "void"},
+        "update": {"params": [], "result": "bool"},
+        "forceUpdate": {"params": [], "result": "bool"},
+        "getDay": {"params": [], "result": "int"},
+        "getHours": {"params": [], "result": "int"},
+        "getMinutes": {"params": [], "result": "int"},
+        "getSeconds": {"params": [], "result": "int"},
+        "getEpochTime": {"params": [], "result": "int"},
+        "getFormattedTime": {"params": [], "result": "text"},
+        "setTimeOffset": {"params": [{"name": "offset", "type": "int"}], "result": "void"},
+        "setUpdateInterval": {"params": [{"name": "interval", "type": "int"}], "result": "void"},
+        "setPoolServerName": {"params": [{"name": "server", "type": "text"}], "result": "void"},
+        "setRandomPort": {"params": [{"name": "min", "type": "int"}, {"name": "max", "type": "int"}], "result": "void"},
+        "isTimeSet": {"params": [], "result": "bool"}
+      }
+    }
+  }
+}

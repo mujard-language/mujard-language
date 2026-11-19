@@ -1,0 +1,23 @@
+# Rotary encoder
+# Level 3 - Sensors and motors
+#
+# Count the clicks of a rotary encoder knob, in both directions.
+# You learn: 'fast' events (hardware interrupts) that never miss a step, and changed().
+# You need: a rotary encoder: A to pin 2, B to pin 3, the middle pin to GND.
+
+board uno
+
+enc_a = pin 2 as input pullup
+enc_b = pin 3 as input pullup
+
+var position = 0
+
+on enc_a.changed fast:             # runs within microseconds of the pin changing
+    if enc_a.read() == enc_b.read():
+        position += 1
+    else:
+        position -= 1
+
+every 100 ms:
+    if changed(position):          # print only when it has moved
+        print "Position: {position}"

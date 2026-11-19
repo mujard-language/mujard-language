@@ -1,0 +1,13 @@
+# sample: a knob sets the brightness of an LED
+board uno
+
+knob = analog A0
+lamp = pin 9 as pwm
+
+every 20 ms:
+    lamp.write(knob.percent)
+
+test "the loop runs without error":
+    knob.pretend(75 %)
+    advance(200 ms)
+    expect true, "the dimmer loop should run clean"

@@ -1,0 +1,36 @@
+{
+  "schema": "mujard-board.v1",
+  "id": "arduino:renesas_uno:minima",
+  "short": "unor4",
+  "name": "Arduino Uno R4 Minima (RA4M1)",
+  "vendor": "arduino",
+  "family": "renesas",
+  "chip": "renesas:ra4m1",
+  "aliases": ["minima", "unor4minima", "uno_r4"],
+  "package": "arduino-renesas",
+  "core": "cores/arduino",
+  "variant": "variants/MINIMA",
+  "vars": {
+    "mcu": "ra4m1",
+    "arch": "RENESAS_UNO",
+    "boardDefine": "ARDUINO_UNOR4_MINIMA",
+    "boardId": "minima",
+    "variantDefine": "ARDUINO_MINIMA",
+    "fCpu": "48000000",
+    "ideVersion": "10607",
+    "cpuFlag": "-mcpu=cortex-m4",
+    "floatFlags": "-mfloat-abi=hard -mfpu=fpv4-sp-d16",
+    "tinyusbMcu": "OPT_MCU_RAXXX",
+    "definesFile": "defines.txt",
+    "includesFile": "includes.txt",
+    "ldscript": "fsp.ld",
+    "fspLib": "libs/libfsp.a"
+  },
+  "output": "bin",
+  "flashMax": 262144,
+  "ramMax": 32768,
+  "upload": {
+    "protocol": "dfu-util",
+    "baud": 0
+  }
+}

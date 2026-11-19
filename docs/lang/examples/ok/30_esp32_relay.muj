@@ -1,0 +1,30 @@
+# sample: ESP32 pin names, a pull-down button and an inverted relay
+board esp32
+
+led    = pin GPIO26 as output
+button = pin GPIO27 as input pulldown
+relay  = pin GPIO25 as output inverted
+
+var relay_on = false
+
+on button.pressed:
+    relay_on = not relay_on
+    relay.write(relay_on)
+    led.write(relay_on)
+    log.info "Relay is now {relay_on}"
+
+test "a press flips the relay and the LED":
+    button.pretend(1)
+    advance(100 ms)
+    button.pretend(0)
+    advance(100 ms)
+    expect relay.read(), "the relay switched"
+    expect led.read(), "the LED followed"
+    button.pretend(1)
+    advance(100 ms)
+    button.pretend(0)
+    advance(100 ms)
+    expect not relay.read(), "a second press flips it back"
+
+every 1 h:
+    log.info "Up {board.uptime}, free memory {board.free_memory}"

@@ -1,0 +1,4 @@
+# expect: U502 4:17
+board uno
+at start:
+    var x = 2 s + 3 cm

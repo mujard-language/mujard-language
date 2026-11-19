@@ -1,0 +1,26 @@
+{
+  "name": "Adafruit PWM Servo Driver Library",
+  "header": "Adafruit_PWMServoDriver.h",
+  "takes": ["i2c"],
+  "classes": {
+    "Adafruit_PWMServoDriver": {
+      "ctors": [{"params": [{"name": "addr", "type": "int", "optional": true}], "result": "Adafruit_PWMServoDriver"}],
+      "methods": {
+        "begin": {"params": [{"name": "prescale", "type": "int", "optional": true}], "result": "bool"},
+        "reset": {"params": [], "result": "void"},
+        "sleep": {"params": [], "result": "void"},
+        "wakeup": {"params": [], "result": "void"},
+        "setExtClk": {"params": [{"name": "prescale", "type": "int"}], "result": "void"},
+        "setPWMFreq": {"params": [{"name": "freq", "type": "float"}], "result": "void"},
+        "setOutputMode": {"params": [{"name": "totempole", "type": "bool"}], "result": "void"},
+        "getPWM": {"params": [{"name": "num", "type": "int"}, {"name": "off", "type": "bool", "optional": true}], "result": "int"},
+        "setPWM": {"params": [{"name": "num", "type": "int"}, {"name": "on", "type": "int"}, {"name": "off", "type": "int"}], "result": "int"},
+        "setPin": {"params": [{"name": "num", "type": "int"}, {"name": "val", "type": "int"}, {"name": "invert", "type": "bool", "optional": true}], "result": "void"},
+        "readPrescale": {"params": [], "result": "int"},
+        "writeMicroseconds": {"params": [{"name": "num", "type": "int"}, {"name": "microseconds", "type": "int"}], "result": "void"},
+        "setOscillatorFrequency": {"params": [{"name": "freq", "type": "int"}], "result": "void"},
+        "getOscillatorFrequency": {"params": [], "result": "int"}
+      }
+    }
+  }
+}

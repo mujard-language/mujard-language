@@ -1,0 +1,12 @@
+{
+  "schema": "mujard-package.v1",
+  "id": "arduino-mbed",
+  "name": "Arduino mbed Nano core 4.6.0 + arm-none-eabi gcc 7-2017q4",
+  "version": "4.6.0",
+  "family": "mbed",
+  "root": "${MUJARD_TOOLCHAINS}/mbed-nano-core-4.6.0/ArduinoCore-mbed",
+  "libraryRoot": "libraries",
+  "tools": {
+    "gccBin": "${MUJARD_TOOLCHAINS}/arm-gcc7-7-2017q4/gcc-arm-none-eabi-7-2017-q4-major-win32/bin"
+  }
+}

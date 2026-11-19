@@ -1,0 +1,49 @@
+# sample: 'wait until' a condition, 'x in a..b' and 'x in list' membership, 'pass' as a placeholder
+board uno
+
+arm_button    = pin 2 as input pullup
+disarm_button = pin 3 as input pullup
+led           = pin 13 as output
+var armed = false
+var lucky: list[int, 4] = [3, 7, 13, 42]
+
+on arm_button.pressed:
+    armed = true
+
+on disarm_button.pressed:
+    armed = false
+
+task guard:
+    while true:
+        wait until armed
+        led.on()
+        wait until not armed
+        led.off()
+
+task counter:
+    var n = 0
+    while true:
+        wait 1 s
+        if n in 0..9:
+            n += 1
+        else:
+            pass
+
+at start:
+    if 7 in lucky:
+        print "Seven is lucky"
+
+test "arm lights, disarm clears":
+    expect printed "Seven is lucky", "the membership check ran at start"
+    arm_button.pretend(1)
+    advance(100 ms)
+    arm_button.pretend(0)
+    advance(100 ms)
+    expect armed, "the arm button armed it"
+    advance(200 ms)
+    expect led.read(), "the guard sees it armed"
+    disarm_button.pretend(1)
+    advance(100 ms)
+    disarm_button.pretend(0)
+    advance(300 ms)
+    expect not led.read(), "disarming clears the LED"

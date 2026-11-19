@@ -1,0 +1,16 @@
+{
+  "name": "Stepper",
+  "header": "Stepper.h",
+  "classes": {
+    "Stepper": {
+      "ctors": [
+        {"params": [{"name": "steps", "type": "int"}, {"name": "pin1", "type": "int"}, {"name": "pin2", "type": "int"}, {"name": "pin3", "type": "int", "optional": true}, {"name": "pin4", "type": "int", "optional": true}], "result": "Stepper"}
+      ],
+      "methods": {
+        "setSpeed": {"params": [{"name": "speed", "type": "int"}], "result": "void"},
+        "step": {"params": [{"name": "steps", "type": "int"}], "result": "void"},
+        "version": {"params": [], "result": "int"}
+      }
+    }
+  }
+}

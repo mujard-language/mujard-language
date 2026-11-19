@@ -1,0 +1,18 @@
+# sample: an electronic dice with six LEDs
+board uno
+
+leds   = pins 2..8 as output        # pins 2 to 7
+button = pin 12 as input pullup
+
+on button.pressed:
+    var roll = random(1..=6)
+    print "You rolled {roll}"
+    for i in 0..6:
+        leds[i].write(i < roll)
+
+test "a roll prints and lights a die face":
+    button.pretend(1)
+    advance(100 ms)
+    button.pretend(0)
+    advance(100 ms)
+    expect printed "You rolled", "a press rolls and reports"

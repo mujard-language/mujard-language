@@ -1,0 +1,5 @@
+board esp32
+at start:
+    wifi.connect secret("home_wifi")
+    notify "booted"
+

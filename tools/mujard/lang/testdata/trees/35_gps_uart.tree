@@ -1,0 +1,17 @@
+(file uno
+  (use mujard "mujard.uart" version="" as="")
+  (device gps (call Uart rx:(pin 4) tx:(pin 3) speed:9600baud))
+  (at start
+    (do (call gps.write (text "$PMTK220,1000*1F\n")))
+  )
+  (on gps.line as sentence
+    (if (call sentence.starts_with (text "$GPGGA"))
+      (print sentence)
+    )
+  )
+  (test "a fix sentence prints"
+    (do (call gps.pretend (text "$GPGGA,123519,4807.038,N,01131.000,E")))
+    (do (call advance 200ms))
+    (expect (call printed (text "$GPGGA")) (text "a GPS line is echoed"))
+  )
+)

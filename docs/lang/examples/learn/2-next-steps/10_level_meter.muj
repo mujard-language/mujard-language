@@ -1,0 +1,29 @@
+# Level meter
+# Level 2 - Next steps
+#
+# Three LEDs show how far the knob is turned: green, then yellow, then red.
+# You learn: if / elif / else, comparing values and 'const'.
+# You need: a potentiometer on A0 and three LEDs (each with a 220 ohm resistor) on pins 10, 11 and 12.
+
+board uno
+
+knob   = analog A0
+green  = pin 10 as output
+yellow = pin 11 as output
+red    = pin 12 as output
+
+const LOW_LEVEL  = 33 %            # a const never changes, so give it a clear name
+const HIGH_LEVEL = 66 %
+
+every 50 ms:
+    var level = knob.percent
+    green.on()
+    if level > HIGH_LEVEL:
+        yellow.on()
+        red.on()
+    elif level > LOW_LEVEL:
+        yellow.on()
+        red.off()
+    else:
+        yellow.off()
+        red.off()

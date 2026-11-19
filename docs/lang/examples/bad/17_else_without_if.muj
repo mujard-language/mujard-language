@@ -1,0 +1,5 @@
+# expect: P207 4:5
+board uno
+at start:
+    else:
+        print "x"

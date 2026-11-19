@@ -1,0 +1,39 @@
+{
+  "schema": "mujard-board.v1",
+  "id": "raspberrypi:rp2:rp2350a2m",
+  "short": "rp2350a2m",
+  "name": "RP2350A board, 2 MB flash (Waveshare RP2350-USB-A)",
+  "vendor": "raspberrypi",
+  "family": "rp2",
+  "chip": "raspberrypi:rp2350",
+  "aliases": ["rp2350usba", "rp2040:rp2040:generic_rp2350:flash=2097152_0"],
+  "package": "rp2-pico",
+  "core": "cores/rp2040",
+  "variant": "variants/generic_rp2350",
+  "vars": {
+    "chip": "rp2350",
+    "toolchainOpts": "-mcpu=cortex-m33 -mthumb -march=armv8-m.main+fp+dsp -mfloat-abi=softfp -mcmse",
+    "boardDefine": "GENERIC_RP2350",
+    "fCpu": "150000000L",
+    "usbVid": "0x2e8a",
+    "usbPid": "0xf00f",
+    "usbManufacturer": "Generic",
+    "usbProduct": "RP2350",
+    "flashTotal": "2097152",
+    "flashLength": "2088960",
+    "eepromStart": "270524416",
+    "fsStart": "270524416",
+    "fsEnd": "270524416",
+    "ramLength": "512k",
+    "psramLength": "0x000000",
+    "boot2": "none",
+    "uf2Family": "--family rp2350-arm-s --abs-block"
+  },
+  "defines": ["RP2350_PSRAM_MAX_SCK_HZ=104000000", "__PICO_RP2350A=1"],
+  "output": "uf2",
+  "flashMax": 2088960,
+  "ramMax": 524288,
+  "upload": {
+    "protocol": "uf2"
+  }
+}

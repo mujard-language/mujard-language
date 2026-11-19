@@ -1,0 +1,12 @@
+{
+  "schema": "mujard-package.v1",
+  "id": "arduino-renesas",
+  "name": "Arduino Renesas UNO R4 core 1.6.0 + arm-none-eabi gcc 7-2017q4",
+  "version": "1.6.0",
+  "family": "renesas",
+  "root": "${MUJARD_TOOLCHAINS}/renesas-uno-core-1.6.0/ArduinoCore-renesas",
+  "libraryRoot": "libraries",
+  "tools": {
+    "gccBin": "${MUJARD_TOOLCHAINS}/arm-gcc7-7-2017q4/gcc-arm-none-eabi-7-2017-q4-major-win32/bin"
+  }
+}

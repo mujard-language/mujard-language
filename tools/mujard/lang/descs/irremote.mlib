@@ -1,0 +1,89 @@
+{
+  "name": "IRremote",
+  "header": "IRremote.h",
+  "classes": {
+    "IRrecv": {
+      "ctors": [{"params": [{"name": "pin", "type": "int"}, {"name": "bufsize", "type": "int", "optional": true}], "result": "IRrecv"}],
+      "methods": {
+        "enableIRIn": {"params": [], "result": "void"},
+        "disableIRIn": {"params": [], "result": "void"},
+        "decode": {"params": [{"name": "results", "type": "any", "optional": true}], "result": "bool"},
+        "resume": {"params": [], "result": "void"},
+        "isIdle": {"params": [], "result": "bool"},
+        "blink13": {"params": [{"name": "enable", "type": "bool"}], "result": "void"}
+      }
+    },
+    "IRsend": {
+      "ctors": [{"params": [{"name": "pin", "type": "int", "optional": true}], "result": "IRsend"}],
+      "methods": {
+        "begin": {"params": [{"name": "pin", "type": "int"}, {"name": "enable_led", "type": "bool", "optional": true}, {"name": "led_pin", "type": "int", "optional": true}], "result": "void"},
+        "enableIROut": {"params": [{"name": "khz", "type": "int"}], "result": "void"},
+        "sendNEC": {"params": [{"name": "data", "type": "int"}, {"name": "nbits", "type": "int"}, {"name": "repeat", "type": "bool", "optional": true}], "result": "void"},
+        "sendSony": {"params": [{"name": "data", "type": "int"}, {"name": "nbits", "type": "int"}, {"name": "repeat", "type": "int", "optional": true}], "result": "void"},
+        "sendRC5": {"params": [{"name": "data", "type": "int"}, {"name": "nbits", "type": "int"}], "result": "void"},
+        "sendSAMSUNG": {"params": [{"name": "data", "type": "int"}, {"name": "nbits", "type": "int"}], "result": "void"},
+        "sendJVC": {"params": [{"name": "data", "type": "int"}, {"name": "nbits", "type": "int"}, {"name": "repeat", "type": "bool"}], "result": "void"},
+        "sendDenon": {"params": [{"name": "data", "type": "int"}, {"name": "nbits", "type": "int"}], "result": "void"},
+        "sendLG": {"params": [{"name": "data", "type": "int"}, {"name": "nbits", "type": "int"}], "result": "void"},
+        "sendPanasonic": {"params": [{"name": "addr", "type": "int"}, {"name": "data", "type": "int"}, {"name": "nbits", "type": "int"}], "result": "void"},
+        "sendRaw": {"params": [{"name": "buf", "type": "any"}, {"name": "len", "type": "int"}, {"name": "khz", "type": "int"}], "result": "void"}
+      }
+    },
+    "IrReceiver": {
+      "methods": {
+        "begin": {"params": [{"name": "pin", "type": "int"}, {"name": "enable_led", "type": "bool", "optional": true}, {"name": "led_pin", "type": "int", "optional": true}, {"name": "feedback", "type": "any", "optional": true}], "result": "void"},
+        "start": {"params": [{"name": "micros", "type": "int", "optional": true}], "result": "void"},
+        "stop": {"params": [], "result": "void"},
+        "decode": {"params": [], "result": "bool"},
+        "resume": {"params": [], "result": "void"},
+        "available": {"params": [], "result": "bool"},
+        "isIdle": {"params": [], "result": "bool"},
+        "printIRResultShort": {"params": [{"name": "output", "type": "any"}], "result": "void"}
+      },
+      "fields": {
+        "decodedIRData": "any"
+      }
+    },
+    "IrSender": {
+      "methods": {
+        "begin": {"params": [{"name": "pin", "type": "int"}, {"name": "enable_led", "type": "bool", "optional": true}, {"name": "led_pin", "type": "int", "optional": true}], "result": "void"},
+        "sendNEC": {"params": [{"name": "addr", "type": "int"}, {"name": "command", "type": "int"}, {"name": "repeats", "type": "int"}], "result": "void"},
+        "sendSamsung": {"params": [{"name": "addr", "type": "int"}, {"name": "command", "type": "int"}, {"name": "repeats", "type": "int"}], "result": "void"},
+        "sendSony": {"params": [{"name": "addr", "type": "int"}, {"name": "command", "type": "int"}, {"name": "repeats", "type": "int"}, {"name": "bits", "type": "int", "optional": true}], "result": "void"},
+        "sendRC5": {"params": [{"name": "addr", "type": "int"}, {"name": "command", "type": "int"}, {"name": "repeats", "type": "int"}, {"name": "toggle", "type": "bool", "optional": true}], "result": "void"},
+        "sendRC6": {"params": [{"name": "addr", "type": "int"}, {"name": "command", "type": "int"}, {"name": "repeats", "type": "int"}], "result": "void"},
+        "sendLG": {"params": [{"name": "addr", "type": "int"}, {"name": "command", "type": "int"}, {"name": "repeats", "type": "int"}], "result": "void"},
+        "sendPanasonic": {"params": [{"name": "addr", "type": "int"}, {"name": "command", "type": "int"}, {"name": "repeats", "type": "int"}], "result": "void"},
+        "sendJVC": {"params": [{"name": "addr", "type": "int"}, {"name": "command", "type": "int"}, {"name": "repeats", "type": "int"}], "result": "void"},
+        "sendSharp": {"params": [{"name": "addr", "type": "int"}, {"name": "command", "type": "int"}, {"name": "repeats", "type": "int"}], "result": "void"},
+        "sendDenon": {"params": [{"name": "addr", "type": "int"}, {"name": "command", "type": "int"}, {"name": "repeats", "type": "int"}], "result": "void"},
+        "sendRaw": {"params": [{"name": "buf", "type": "any"}, {"name": "len", "type": "int"}, {"name": "khz", "type": "int"}], "result": "void"},
+        "sendPulseDistanceWidthFromArray": {"params": [{"name": "khz", "type": "int"}, {"name": "header_mark", "type": "int"}, {"name": "header_space", "type": "int"}, {"name": "one_mark", "type": "int"}, {"name": "one_space", "type": "int"}, {"name": "zero_mark", "type": "int"}, {"name": "zero_space", "type": "int"}, {"name": "data", "type": "any"}, {"name": "bits", "type": "int"}, {"name": "protocol", "type": "int"}, {"name": "flags", "type": "int"}, {"name": "repeats", "type": "int"}], "result": "void"}
+      }
+    },
+    "decode_results": {
+      "value": true,
+      "fields": {
+        "decode_type": "int",
+        "value": "int",
+        "bits": "int",
+        "rawlen": "int",
+        "address": "int",
+        "command": "int"
+      }
+    }
+  },
+  "constants": {
+    "NEC": "int",
+    "SONY": "int",
+    "RC5": "int",
+    "RC6": "int",
+    "SAMSUNG": "int",
+    "LG": "int",
+    "JVC": "int",
+    "PANASONIC": "int",
+    "DENON": "int",
+    "UNKNOWN": "int",
+    "REPEAT": "int"
+  }
+}

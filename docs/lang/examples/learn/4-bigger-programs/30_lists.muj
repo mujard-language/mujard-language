@@ -1,0 +1,32 @@
+# Lists: keep the last ten readings
+# Level 4 - Bigger programs
+#
+# Keeps the latest ten light readings and prints their average, the highest and the lowest.
+# You learn: lists with a fixed size, add() / remove(), 'for x in list', min / max and break.
+# You need: a light sensor (LDR) from 5V to A0, with a 10 kohm resistor from A0 to GND.
+
+board uno
+
+light = analog A0
+
+var readings: list[int, 10] = []   # room for 10 whole numbers - Mujard never grows a list without limit
+
+every 100 ms:
+    if readings.length == 10:
+        readings.remove(0)         # forget the oldest...
+    readings.add(light.value)      # ...and add the newest at the end
+
+every 1 s:
+    var total = 0
+    var highest = 0
+    var lowest = 1023
+    for r in readings:
+        total += r
+        highest = max(highest, r)
+        lowest = min(lowest, r)
+    if readings.length > 0:        # nothing to report until the first reading
+        print "Average {total / readings.length}, highest {highest}, lowest {lowest}"
+    for i in 0..readings.length:
+        if readings[i] > 1000:
+            print "Very bright at reading {i}"
+            break                  # one message is enough

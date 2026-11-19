@@ -1,0 +1,12 @@
+(file uno
+  (device knob analog [A0]  [] to_end=false)
+  (device lamp pin [9] pwm [] to_end=false)
+  (every 20ms
+    (do (call lamp.write knob.percent))
+  )
+  (test "the loop runs without error"
+    (do (call knob.pretend 75%))
+    (do (call advance 200ms))
+    (expect true (text "the dimmer loop should run clean"))
+  )
+)

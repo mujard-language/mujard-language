@@ -1,0 +1,18 @@
+# Fade
+# Level 1 - Basics
+#
+# An LED slowly brightens and dims, like breathing.
+# You learn: 'as pwm' (levels between off and on), percentages and fade().
+# You need: an LED and a 220 ohm resistor: pin 9 -> resistor -> LED long leg, LED short leg -> GND.
+# Only pins marked ~ on the board can fade (on an Uno: 3, 5, 6, 9, 10, 11).
+
+board uno
+
+led = pin 9 as pwm
+
+task breathe:
+    while true:
+        led.fade(to: 100 %, over: 1 s)   # fade() works in the background and returns at once...
+        wait 1 s                         # ...so wait while it happens
+        led.fade(to: 0 %, over: 1 s)
+        wait 1 s

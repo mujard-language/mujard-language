@@ -1,0 +1,29 @@
+{
+  "name": "PubSubClient",
+  "header": "PubSubClient.h",
+  "classes": {
+    "PubSubClient": {
+      "ctors": [{"params": [{"name": "client", "type": "any"}], "result": "PubSubClient"}],
+      "methods": {
+        "setServer": {"params": [{"name": "server", "type": "any"}, {"name": "port", "type": "int"}], "result": "any"},
+        "setCallback": {"params": [{"name": "callback", "type": "any"}], "result": "any"},
+        "setBufferSize": {"params": [{"name": "size", "type": "int"}], "result": "bool"},
+        "setKeepAlive": {"params": [{"name": "seconds", "type": "int"}], "result": "any"},
+        "setSocketTimeout": {"params": [{"name": "seconds", "type": "int"}], "result": "any"},
+        "connect": {"params": [{"name": "id", "type": "text"}, {"name": "user", "type": "text", "optional": true}, {"name": "pass", "type": "text", "optional": true}], "result": "bool"},
+        "disconnect": {"params": [], "result": "void"},
+        "connected": {"params": [], "result": "bool"},
+        "publish": {"params": [{"name": "topic", "type": "text"}, {"name": "payload", "type": "any"}, {"name": "retained", "type": "bool", "optional": true}], "result": "bool"},
+        "publish_P": {"params": [{"name": "topic", "type": "text"}, {"name": "payload", "type": "any"}, {"name": "retained", "type": "bool", "optional": true}], "result": "bool"},
+        "subscribe": {"params": [{"name": "topic", "type": "text"}, {"name": "qos", "type": "int", "optional": true}], "result": "bool"},
+        "unsubscribe": {"params": [{"name": "topic", "type": "text"}], "result": "bool"},
+        "loop": {"params": [], "result": "bool"},
+        "state": {"params": [], "result": "int"}
+      }
+    }
+  },
+  "constants": {
+    "MQTT_MAX_PACKET_SIZE": "int",
+    "MQTT_KEEPALIVE": "int"
+  }
+}

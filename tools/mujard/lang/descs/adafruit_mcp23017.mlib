@@ -1,0 +1,46 @@
+{
+  "name": "Adafruit MCP23017 Arduino Library",
+  "header": "Adafruit_MCP23X17.h",
+  "takes": ["i2c"],
+  "classes": {
+    "Adafruit_MCP23XXX": {
+      "abstract": true,
+      "methods": {
+        "begin_I2C": {"params": [{"name": "i2c_addr", "type": "int", "optional": true}], "result": "bool"},
+        "pinMode": {"params": [{"name": "pin", "type": "int"}, {"name": "mode", "type": "int"}], "result": "void"},
+        "digitalRead": {"params": [{"name": "pin", "type": "int"}], "result": "int"},
+        "digitalWrite": {"params": [{"name": "pin", "type": "int"}, {"name": "value", "type": "int"}], "result": "void"},
+        "readGPIO": {"params": [{"name": "port", "type": "int", "optional": true}], "result": "int"},
+        "writeGPIO": {"params": [{"name": "value", "type": "int"}, {"name": "port", "type": "int", "optional": true}], "result": "void"},
+        "setupInterrupts": {"params": [{"name": "mirroring", "type": "bool"}, {"name": "openDrain", "type": "bool"}, {"name": "polarity", "type": "int"}], "result": "void"},
+        "setupInterruptPin": {"params": [{"name": "pin", "type": "int"}, {"name": "mode", "type": "int", "optional": true}], "result": "void"},
+        "disableInterruptPin": {"params": [{"name": "pin", "type": "int"}], "result": "void"},
+        "clearInterrupts": {"params": [], "result": "void"},
+        "getLastInterruptPin": {"params": [], "result": "int"},
+        "getCapturedInterrupt": {"params": [], "result": "int"}
+      }
+    },
+    "Adafruit_MCP23X17": {
+      "extends": "Adafruit_MCP23XXX",
+      "ctors": [{"params": [], "result": "Adafruit_MCP23X17"}],
+      "methods": {
+        "readGPIOA": {"params": [], "result": "int"},
+        "writeGPIOA": {"params": [{"name": "value", "type": "int"}], "result": "void"},
+        "readGPIOB": {"params": [], "result": "int"},
+        "writeGPIOB": {"params": [{"name": "value", "type": "int"}], "result": "void"},
+        "readGPIOAB": {"params": [], "result": "int"},
+        "writeGPIOAB": {"params": [{"name": "value", "type": "int"}], "result": "void"},
+        "enableAddrPins": {"params": [], "result": "void"}
+      }
+    }
+  },
+  "constants": {
+    "MCP23XXX_ADDR": "int",
+    "INPUT": "int",
+    "OUTPUT": "int",
+    "INPUT_PULLUP": "int",
+    "HIGH": "int",
+    "LOW": "int",
+    "CHANGE": "int"
+  }
+}

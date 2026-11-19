@@ -1,0 +1,3 @@
+# expect: B405 3:13
+board esp32
+motor = pin 34 as output

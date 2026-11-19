@@ -1,0 +1,15 @@
+# I2C scanner
+# Level 3 - Sensors and motors
+#
+# Lists the address of every I2C device connected: the first thing to try when a display or sensor won't answer.
+# You learn: the i2c library and printing a list.
+# You need: any I2C module (display, sensor, clock): SDA to A4, SCL to A5, VCC and GND.
+
+board uno
+use mujard.i2c
+
+at start:
+    print "Looking for I2C devices..."
+
+every 5 s:
+    print "Found: {i2c.scan()}"    # for example [0x27, 0x68]

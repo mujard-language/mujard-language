@@ -1,0 +1,15 @@
+(file esp32
+  (device buzzer pin [25] output [] to_end=false)
+  (at start
+    (do (call wifi.connect (call secret (text "home_wifi"))))
+    (do (call clock.sync timezone:(text "Africa/Lagos")))
+  )
+  (at 07:30
+    (do (call buzzer.melody (text "C5 E5 G5 C6*2")))
+    (do (call log.info (text "Good morning! It is " {clock.time} " on " {clock.date})))
+  )
+  (test "the clock program starts clean"
+    (do (call advance 100ms))
+    (expect true (text "wifi + clock sync set up without error"))
+  )
+)

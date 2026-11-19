@@ -1,0 +1,26 @@
+{
+  "schema": "mujard-board.v1",
+  "id": "microchip:avr:m2560",
+  "short": "m2560",
+  "name": "ATmega2560 board",
+  "vendor": "microchip",
+  "family": "avr",
+  "chip": "microchip:atmega2560",
+  "aliases": ["mega", "arduino:avr:mega"],
+  "package": "arduino-avr",
+  "core": "cores/arduino",
+  "variant": "variants/mega",
+  "vars": {
+    "mcu": "atmega2560",
+    "fCpu": "16000000L",
+    "boardDefine": "ARDUINO_AVR_MEGA2560"
+  },
+  "output": "hex",
+  "flashMax": 253952,
+  "ramMax": 8192,
+  "upload": {
+    "protocol": "stk500v2",
+    "baud": 115200,
+    "signature": "1E9801"
+  }
+}

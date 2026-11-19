@@ -1,0 +1,28 @@
+# Two cores, one board
+# Level 5 - Advanced
+#
+# An ESP32 counts on its second core and reports to the main one through a queue - no races.
+# You learn: 'on core 1' runs a task on the second core, Queue passes values between cores safely.
+# You need: a dual-core ESP32 board (board.cores is 2 or more) and an LED on GPIO25.
+
+board esp32
+use mujard.queue
+
+led = pin GPIO25 as output
+
+q = Queue(int, 8)                  # up to 8 ints waiting between the cores
+
+task counter on core 1:            # this task runs on the second core
+    while true:
+        for n in 1..=10:
+            q.push(n)
+            wait 200 ms            # wait is allowed inside a task
+        q.push(0)                  # 0 = "one round done"
+
+every 100 ms:                      # the main core drains the queue
+    while q.available:
+        print "core 1 says {q.pop()}"
+
+every 1 s:                         # and keeps its own life going
+    led.toggle()
+    print "main core busy too ({board.cores} cores in use)"

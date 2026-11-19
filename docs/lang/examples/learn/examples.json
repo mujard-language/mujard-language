@@ -1,0 +1,63 @@
+{
+  "levels": [
+    { "id": "basics", "title": "1. Basics", "summary": "First steps: print, blink, fade, buttons and knobs." },
+    { "id": "next-steps", "title": "2. Next steps", "summary": "Decisions, timing, loops and sound." },
+    { "id": "sensors-and-motors", "title": "3. Sensors and motors", "summary": "Servos, distance, temperature, encoders, shift registers and I2C." },
+    { "id": "bigger-programs", "title": "4. Bigger programs", "summary": "Serial commands, functions, lists, state machines, tasks and modules." },
+    { "id": "advanced", "title": "5. Advanced", "summary": "Safety, tests, saved settings, interrupts, other boards, Arduino libraries and a full project." }
+  ],
+  "examples": [
+    { "id": "hello", "level": "basics", "title": "Hello, board", "summary": "The board says hello and counts the seconds.", "files": { "sketch.muj": "1-basics/01_hello.muj" } },
+    { "id": "blink", "level": "basics", "title": "Blink", "summary": "The board's own LED turns on and off.", "files": { "sketch.muj": "1-basics/02_blink.muj" } },
+    { "id": "blink-timing", "level": "basics", "title": "Blink with your own timing", "summary": "A short flash and a long pause, with a task and wait.", "files": { "sketch.muj": "1-basics/03_blink_timing.muj" } },
+    { "id": "blink-patterns", "level": "basics", "title": "Blink patterns and Morse code", "summary": "blink(), pattern(\"SOS\") and 'after'.", "files": { "sketch.muj": "1-basics/04_blink_patterns.muj" } },
+    { "id": "fade", "level": "basics", "title": "Fade", "summary": "An LED brightens and dims, like breathing.", "files": { "sketch.muj": "1-basics/05_fade.muj" } },
+    { "id": "button", "level": "basics", "title": "Button", "summary": "The LED is on while you hold the button.", "files": { "sketch.muj": "1-basics/06_button.muj" } },
+    { "id": "button-toggle", "level": "basics", "title": "Button toggle", "summary": "Each press switches the LED on or off.", "files": { "sketch.muj": "1-basics/07_button_toggle.muj" } },
+    { "id": "read-a-knob", "level": "basics", "title": "Read a knob", "summary": "A potentiometer as a raw value, volts and percent, plus a graph.", "files": { "sketch.muj": "1-basics/08_read_a_knob.muj" } },
+
+    { "id": "dimmer", "level": "next-steps", "title": "Dimmer", "summary": "A knob sets how bright an LED is.", "files": { "sketch.muj": "2-next-steps/09_dimmer.muj" } },
+    { "id": "level-meter", "level": "next-steps", "title": "Level meter", "summary": "Three LEDs show how far a knob is turned: if / elif / else.", "files": { "sketch.muj": "2-next-steps/10_level_meter.muj" } },
+    { "id": "night-light", "level": "next-steps", "title": "Night light", "summary": "A lamp fades on when it gets dark, with 'when'.", "files": { "sketch.muj": "2-next-steps/11_night_light.muj" } },
+    { "id": "traffic-light", "level": "next-steps", "title": "Traffic light", "summary": "Red, red + yellow, green, yellow - a task in steps.", "files": { "sketch.muj": "2-next-steps/12_traffic_light.muj" } },
+    { "id": "press-counter", "level": "next-steps", "title": "Press counter", "summary": "Counts presses and celebrates every tenth one.", "files": { "sketch.muj": "2-next-steps/13_press_counter.muj" } },
+    { "id": "button-gestures", "level": "next-steps", "title": "Click, double-click and hold", "summary": "One button, three different actions.", "files": { "sketch.muj": "2-next-steps/14_button_gestures.muj" } },
+    { "id": "running-lights", "level": "next-steps", "title": "Running lights", "summary": "A light runs along six LEDs: pin groups and for loops.", "files": { "sketch.muj": "2-next-steps/15_running_lights.muj" } },
+    { "id": "dice", "level": "next-steps", "title": "Electronic dice", "summary": "Press to roll; up to six LEDs show the number.", "files": { "sketch.muj": "2-next-steps/16_dice.muj" } },
+    { "id": "buzzer-tunes", "level": "next-steps", "title": "Beeps and tunes", "summary": "tone() and melody() on a piezo buzzer.", "files": { "sketch.muj": "2-next-steps/17_buzzer_tunes.muj" } },
+
+    { "id": "servo-sweep", "level": "sensors-and-motors", "title": "Servo sweep", "summary": "A servo turns slowly from side to side.", "files": { "sketch.muj": "3-sensors-and-motors/18_servo_sweep.muj" } },
+    { "id": "servo-knob", "level": "sensors-and-motors", "title": "Knob-controlled servo", "summary": "The servo follows a knob, with scale().", "files": { "sketch.muj": "3-sensors-and-motors/19_servo_knob.muj" } },
+    { "id": "distance-sensor", "level": "sensors-and-motors", "title": "Distance sensor", "summary": "Measure distance with an HC-SR04, and check for 'none'.", "files": { "sketch.muj": "3-sensors-and-motors/20_distance_sensor.muj" } },
+    { "id": "parking-sensor", "level": "sensors-and-motors", "title": "Parking sensor", "summary": "Beeps faster the closer you get.", "files": { "sketch.muj": "3-sensors-and-motors/21_parking_sensor.muj" } },
+    { "id": "temperature", "level": "sensors-and-motors", "title": "Temperature sensor", "summary": "A TMP36 read in degrees Celsius, smoothed.", "files": { "sketch.muj": "3-sensors-and-motors/22_temperature.muj" } },
+    { "id": "thermostat", "level": "sensors-and-motors", "title": "Thermostat", "summary": "A heater relay with hysteresis and a saved target.", "files": { "sketch.muj": "3-sensors-and-motors/23_thermostat.muj" } },
+    { "id": "units-by-hand", "level": "sensors-and-motors", "title": "Measuring with units", "summary": "Time an echo by hand and let the units do the maths.", "files": { "sketch.muj": "3-sensors-and-motors/24_units_by_hand.muj" } },
+    { "id": "rotary-encoder", "level": "sensors-and-motors", "title": "Rotary encoder", "summary": "Count knob clicks with a fast (interrupt) event.", "files": { "sketch.muj": "3-sensors-and-motors/25_rotary_encoder.muj" } },
+    { "id": "shift-register", "level": "sensors-and-motors", "title": "More outputs with a shift register", "summary": "Eight LEDs from three pins with a 74HC595.", "files": { "sketch.muj": "3-sensors-and-motors/26_shift_register.muj" } },
+    { "id": "i2c-scanner", "level": "sensors-and-motors", "title": "I2C scanner", "summary": "List the address of every I2C device connected.", "files": { "sketch.muj": "3-sensors-and-motors/27_i2c_scanner.muj" } },
+
+    { "id": "serial-commands", "level": "bigger-programs", "title": "Commands from the computer", "summary": "Type commands in the serial monitor: match, split and to_number().", "files": { "sketch.muj": "4-bigger-programs/28_serial_commands.muj" } },
+    { "id": "functions", "level": "bigger-programs", "title": "Functions", "summary": "fn with typed parameters, defaults and return values.", "files": { "sketch.muj": "4-bigger-programs/29_functions.muj" } },
+    { "id": "lists", "level": "bigger-programs", "title": "Lists: keep the last ten readings", "summary": "Average, highest and lowest of the latest readings.", "files": { "sketch.muj": "4-bigger-programs/30_lists.muj" } },
+    { "id": "state-machine", "level": "bigger-programs", "title": "A state machine: climate control", "summary": "Climate control with enum, struct and match.", "files": { "sketch.muj": "4-bigger-programs/31_state_machine.muj" } },
+    { "id": "reaction-game", "level": "bigger-programs", "title": "Reaction game", "summary": "Press when the light comes on: stopwatch() and 'wait until'.", "files": { "sketch.muj": "4-bigger-programs/32_reaction_game.muj" } },
+    { "id": "countdown", "level": "bigger-programs", "title": "Countdown with start and stop", "summary": "Control a task from buttons: start, stop and restart.", "files": { "sketch.muj": "4-bigger-programs/33_countdown.muj" } },
+    { "id": "smart-signals", "level": "bigger-programs", "title": "Smart signals", "summary": "smooth, rising, falling, changed, between and peak.", "files": { "sketch.muj": "4-bigger-programs/34_smart_signals.muj" } },
+    { "id": "two-files", "level": "bigger-programs", "title": "Two files: a module of your own", "summary": "Split a program with 'import'.", "files": { "sketch.muj": "4-bigger-programs/35_two_files/sketch.muj", "signals.muj": "4-bigger-programs/35_two_files/signals.muj" } },
+    { "id": "bits-and-bytes", "level": "bigger-programs", "title": "Bits and bytes", "summary": "Hex, binary, single bits and the bit operators.", "files": { "sketch.muj": "4-bigger-programs/36_bits_and_bytes.muj" } },
+
+    { "id": "safety", "level": "advanced", "title": "Safety first: a heater that can't run away", "summary": "safe_state, expect, limit, watchdog and halt on a heater.", "files": { "sketch.muj": "5-advanced/37_safety.muj" } },
+    { "id": "testing", "level": "advanced", "title": "Testing without hardware", "summary": "Test blocks that run on a simulated board.", "files": { "sketch.muj": "5-advanced/38_testing.muj" } },
+    { "id": "remember-settings", "level": "advanced", "title": "Remember things when the power goes off", "summary": "'saved var' keeps values through power cuts.", "files": { "sketch.muj": "5-advanced/39_remember_settings.muj" } },
+    { "id": "tachometer", "level": "advanced", "title": "Tachometer: how fast is it spinning?", "summary": "Count pulses with an interrupt and show turns per minute.", "files": { "sketch.muj": "5-advanced/40_tachometer.muj" } },
+    { "id": "multitasking", "level": "advanced", "title": "Doing many things at once", "summary": "Timers, events and tasks side by side.", "files": { "sketch.muj": "5-advanced/41_multitasking.muj" } },
+    { "id": "esp32-wifi", "level": "advanced", "title": "ESP32: Wi-Fi and a relay", "summary": "GPIO names, secrets and a Wi-Fi status light.", "files": { "sketch.muj": "5-advanced/42_esp32_wifi.muj" } },
+    { "id": "pico", "level": "advanced", "title": "Raspberry Pi Pico", "summary": "The same Mujard on a Pico, with GP pin names.", "files": { "sketch.muj": "5-advanced/43_pico.muj" } },
+    { "id": "arduino-library", "level": "advanced", "title": "Using an Arduino library", "summary": "A NeoPixel rainbow, plus a cpp: block.", "files": { "sketch.muj": "5-advanced/44_arduino_library.muj" } },
+    { "id": "smart-dustbin", "level": "advanced", "title": "Project: a smart dustbin", "summary": "A lid that opens for your hand - with tests that prove it.", "files": { "sketch.muj": "5-advanced/45_smart_dustbin.muj" } },
+    { "id": "ble-rc-car", "level": "advanced", "title": "Project: an RC car over Bluetooth", "summary": "A joystick drives, a hold button sounds the horn - let go and it stops.", "files": { "sketch.muj": "5-advanced/46_ble_rc_car.muj" } },
+    { "id": "ble-joystick", "level": "advanced", "title": "Project: a joystick module over Bluetooth", "summary": "The app shows the stick's position as gauges and its own joystick drives the onboard LED.", "files": { "sketch.muj": "5-advanced/47_ble_joystick.muj" } },
+    { "id": "two-cores", "level": "advanced", "title": "Two cores, one board", "summary": "'on core 1' runs a task on the second core and a Queue carries its values safely.", "files": { "sketch.muj": "5-advanced/48_two_cores.muj" } }
+  ]
+}

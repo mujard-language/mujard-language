@@ -1,0 +1,8 @@
+board esp32s3
+use mujard.regs
+
+at start:
+    regs.GPIO_OUT.set(regs.GPIO_OUT.DATA_ORIG)
+    regs.GPIO_ENABLE.set(0x08)
+    var v = regs.GPIO_IN.read()
+    print(v)

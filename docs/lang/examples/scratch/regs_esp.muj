@@ -1,0 +1,9 @@
+board esp32
+use mujard.regs
+
+led = pin 5 as output
+
+at start:
+    regs.GPIO_OUT.set(regs.GPIO_OUT.DATA)
+    var v = regs.GPIO_IN.read()
+    print(v)

@@ -1,0 +1,4 @@
+# expect: C305 4:5
+board uno
+every 1 s:
+    wait 500 ms

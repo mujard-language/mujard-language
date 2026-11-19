@@ -1,0 +1,27 @@
+(file uno
+  (use mujard "mujard.servo" version="" as="")
+  (use mujard "mujard.ultrasonic" version="" as="")
+  (device lid (call Servo (pin 6)))
+  (device hand (call Ultrasonic trig:(pin 9) echo:(pin 10)))
+  (every 100ms
+    (var d = (call hand.distance))
+    (if (and (!= d none) (< d 20cm))
+      (do (call lid.move 90deg))
+      (after 3s
+        (do (call lid.move 0deg))
+      )
+    )
+  )
+  (test "opens when a hand is near"
+    (do (call hand.pretend 10cm))
+    (do (call advance 200ms))
+    (expect (== lid.angle 90deg) (text "lid should be open"))
+  )
+  (test "closes again after three seconds"
+    (do (call hand.pretend 10cm))
+    (do (call advance 200ms))
+    (do (call hand.pretend 80cm))
+    (do (call advance 3500ms))
+    (expect (== lid.angle 0deg) (text "lid should be closed"))
+  )
+)

@@ -1,0 +1,26 @@
+# sample: a heater with safety checks
+board uno
+
+heater = pin 7 as output
+sensor = analog A0
+
+safe_state:
+    heater.off()
+
+at start:
+    watchdog(2 s)
+
+every 1 s:
+    var t = scale(sensor.volts, 0.5 V..1.5 V, 0 C..100 C)
+    expect t < 85 C, "Heater too hot"
+    heater.write(hysteresis(t, on: 60 C, off: 65 C))
+    if board.uptime > 12 h:
+        board.halt("Twelve-hour limit reached")
+
+test "a cold room heats, a hot one halts":
+    sensor.pretend(0.7 V)
+    advance(1200 ms)
+    expect heater.read(), "below the band the heater runs"
+    sensor.pretend(1.9 V)
+    advance(1200 ms)
+    expect stopped(), "over 85 C the guard halts it"

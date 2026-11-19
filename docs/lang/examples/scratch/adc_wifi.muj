@@ -1,0 +1,8 @@
+board esp32
+use mujard.wifi
+
+pot = analog GPIO25
+
+at start:
+    wifi.connect(secret("home"))
+    print(pot.value)

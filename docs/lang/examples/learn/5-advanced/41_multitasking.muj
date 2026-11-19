@@ -1,0 +1,40 @@
+# Doing many things at once
+# Level 5 - Advanced
+#
+# A blinking heartbeat, a traffic-light task, a button and a sensor report - all running side by side.
+# You learn: how every, on, when and tasks share the board, and 'wait until' to wait for a condition.
+# You need: LEDs on pins 10, 11 and 12, a pushbutton between pin 2 and GND, and a potentiometer on A0.
+
+board uno
+
+heartbeat = pin LED as output
+red       = pin 10 as output
+green     = pin 12 as output
+walk      = pin 11 as output
+button    = pin 2 as input pullup
+knob      = analog A0
+
+var walk_wanted = false
+
+every 500 ms:                      # 1. a heartbeat, whatever else is happening
+    heartbeat.toggle()
+
+on button.pressed:                 # 2. a request from a pedestrian
+    walk_wanted = true
+    print "Walk requested"
+
+task crossing:                     # 3. a crossing that waits for the request
+    while true:
+        green.on()
+        red.off()
+        wait until walk_wanted     # pauses only this task
+        wait 2 s
+        green.off()
+        red.on()
+        walk.on()
+        wait 5 s
+        walk.off()
+        walk_wanted = false
+
+every 2 s:                         # 4. a sensor report on its own timer
+    print "Knob at {knob.percent}, up {board.uptime}"

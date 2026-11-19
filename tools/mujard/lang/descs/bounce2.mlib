@@ -1,0 +1,21 @@
+{
+  "name": "Bounce2",
+  "header": "Bounce2.h",
+  "classes": {
+    "Bounce": {
+      "ctors": [{"params": [], "result": "Bounce"}],
+      "methods": {
+        "attach": {"params": [{"name": "pin", "type": "int"}, {"name": "interval", "type": "int", "optional": true}], "result": "void"},
+        "update": {"params": [], "result": "bool"},
+        "read": {"params": [], "result": "int"},
+        "fell": {"params": [], "result": "bool"},
+        "rose": {"params": [], "result": "bool"},
+        "changed": {"params": [], "result": "bool"},
+        "duration": {"params": [], "result": "int"},
+        "previousDuration": {"params": [], "result": "int"},
+        "currentDuration": {"params": [], "result": "int"},
+        "interval": {"params": [{"name": "interval", "type": "int"}], "result": "void"}
+      }
+    }
+  }
+}

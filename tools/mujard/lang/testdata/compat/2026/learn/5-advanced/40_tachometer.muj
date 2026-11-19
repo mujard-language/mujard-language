@@ -1,0 +1,25 @@
+# Tachometer: how fast is it spinning?
+# Level 5 - Advanced
+#
+# Counts pulses from a sensor on a spinning wheel or fan and shows its speed in turns per minute.
+# You learn: counting with a 'fast' interrupt, and working out a rate once a second.
+# You need: a hall-effect or IR sensor whose output goes to pin 2 (one pulse per turn).
+# No sensor yet? A pushbutton on pin 2 works too: each press is one "turn".
+
+board uno
+
+sensor = pin 2 as input pullup
+led    = pin LED as output
+
+var pulses = 0
+
+on sensor.falling fast:            # an interrupt: never misses a pulse, even at high speed
+    pulses += 1
+
+every 1 s:
+    var count = pulses             # take the count...
+    pulses = 0                     # ...and start again for the next second
+    var rpm = count * 60
+    print "{rpm} turns per minute"
+    plot rpm
+    led.write(count > 0)           # the LED shows it is turning

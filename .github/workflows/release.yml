@@ -1,0 +1,89 @@
+name: Release
+
+# Builds the mujard CLI and mujard-build for every desktop platform and attaches them to a
+# GitHub Release. Runs on version tags (v*) and by hand (Actions -> Release -> Run workflow).
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { goos: windows, goarch: amd64, artifact: mujard-windows-amd64 }
+          - { goos: linux,   goarch: amd64, artifact: mujard-linux-amd64 }
+          - { goos: linux,   goarch: arm64, artifact: mujard-linux-arm64 }
+          - { goos: darwin,  goarch: amd64, artifact: mujard-macos-amd64 }
+          - { goos: darwin,  goarch: arm64, artifact: mujard-macos-arm64 }
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+          cache: false
+
+      - name: Build mujard ${{ matrix.goos }}/${{ matrix.goarch }}
+        env:
+          GOOS: ${{ matrix.goos }}
+          GOARCH: ${{ matrix.goarch }}
+          CGO_ENABLED: '0'
+        run: |
+          cd tools/mujard
+          ext=""; [ "$GOOS" = "windows" ] && ext=".exe"
+          go build -trimpath -ldflags "-s -w" -o "../../dist/mujard${ext}" .
+
+      - name: Build mujard-build ${{ matrix.goos }}/${{ matrix.goarch }}
+        env:
+          GOOS: ${{ matrix.goos }}
+          GOARCH: ${{ matrix.goarch }}
+          CGO_ENABLED: '0'
+        run: |
+          cd tools/mujard-build
+          ext=""; [ "$GOOS" = "windows" ] && ext=".exe"
+          go build -trimpath -ldflags "-s -w" -o "../../dist/mujard-build${ext}" .
+
+      - name: Package
+        run: |
+          cd dist
+          if [ "${{ matrix.goos }}" = "windows" ]; then
+            zip -q -r "../${{ matrix.artifact }}.zip" .
+          else
+            tar -czf "../${{ matrix.artifact }}.tar.gz" .
+          fi
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: ${{ matrix.artifact }}.*
+          if-no-files-found: error
+
+  release:
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+
+      - name: Checksums
+        run: |
+          cd dist
+          sha256sum * | sort > ../checksums.txt
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            dist/*
+            checksums.txt

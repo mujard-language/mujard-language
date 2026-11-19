@@ -1,0 +1,16 @@
+# Temperature sensor
+# Level 3 - Sensors and motors
+#
+# Read a TMP36 temperature sensor and print the temperature in degrees Celsius.
+# You learn: volts, temperatures (C), smooth() for steady readings and round().
+# You need: a TMP36 (flat side towards you): left leg to 5V, middle leg to A0, right leg to GND.
+
+board uno
+
+sensor = analog A0
+
+every 500 ms:
+    # The TMP36 gives 0.5 V at 0 C and 1.5 V at 100 C: scale() does the maths.
+    var t = scale(smooth(sensor.volts, 10), 0.5 V..1.5 V, 0 C..100 C)
+    print "Temperature: {round(t, 1)}"
+    plot t

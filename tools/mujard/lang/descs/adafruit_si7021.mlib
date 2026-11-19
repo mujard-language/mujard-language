@@ -1,0 +1,25 @@
+{
+  "name": "Adafruit Si7021 Library",
+  "header": "Adafruit_Si7021.h",
+  "takes": ["i2c"],
+  "classes": {
+    "Adafruit_Si7021": {
+      "ctors": [{"params": [], "result": "Adafruit_Si7021"}],
+      "methods": {
+        "begin": {"params": [], "result": "bool"},
+        "readTemperature": {"params": [], "result": "float"},
+        "readHumidity": {"params": [], "result": "float"},
+        "reset": {"params": [], "result": "void"},
+        "readSerialNumber": {"params": [], "result": "void"},
+        "heater": {"params": [{"name": "h", "type": "bool"}], "result": "void"},
+        "isHeaterEnabled": {"params": [], "result": "bool"},
+        "setHeatLevel": {"params": [{"name": "level", "type": "int"}], "result": "void"},
+        "getRevision": {"params": [], "result": "int"}
+      },
+      "fields": {
+        "sernum_a": "int",
+        "sernum_b": "int"
+      }
+    }
+  }
+}

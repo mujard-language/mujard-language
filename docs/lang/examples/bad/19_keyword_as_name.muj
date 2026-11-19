@@ -1,0 +1,4 @@
+# expect: P211 4:9
+board uno
+at start:
+    var every = 3

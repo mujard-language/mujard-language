@@ -1,0 +1,53 @@
+{
+  "name": "Adafruit ADS1X15",
+  "header": "Adafruit_ADS1X15.h",
+  "takes": ["i2c"],
+  "classes": {
+    "Adafruit_ADS1X15": {
+      "abstract": true,
+      "methods": {
+        "begin": {"params": [{"name": "i2c_addr", "type": "int", "optional": true}], "result": "bool"},
+        "readADC_SingleEnded": {"params": [{"name": "channel", "type": "int"}], "result": "int"},
+        "readADC_Differential_0_1": {"params": [], "result": "int"},
+        "readADC_Differential_0_3": {"params": [], "result": "int"},
+        "readADC_Differential_1_3": {"params": [], "result": "int"},
+        "readADC_Differential_2_3": {"params": [], "result": "int"},
+        "startComparator_SingleEnded": {"params": [{"name": "channel", "type": "int"}, {"name": "threshold", "type": "int"}], "result": "void"},
+        "getLastConversionResults": {"params": [], "result": "int"},
+        "getFsRange": {"params": [], "result": "float"},
+        "computeVolts": {"params": [{"name": "counts", "type": "int"}], "result": "float"},
+        "setGain": {"params": [{"name": "gain", "type": "adsGain_t"}], "result": "void"},
+        "getGain": {"params": [], "result": "adsGain_t"},
+        "setDataRate": {"params": [{"name": "rate", "type": "int"}], "result": "void"},
+        "getDataRate": {"params": [], "result": "int"},
+        "startADCReading": {"params": [{"name": "mux", "type": "int"}, {"name": "continuous", "type": "bool"}], "result": "void"},
+        "conversionComplete": {"params": [], "result": "bool"}
+      }
+    },
+    "Adafruit_ADS1115": {
+      "extends": "Adafruit_ADS1X15",
+      "ctors": [{"params": [], "result": "Adafruit_ADS1115"}]
+    },
+    "Adafruit_ADS1015": {
+      "extends": "Adafruit_ADS1X15",
+      "ctors": [{"params": [], "result": "Adafruit_ADS1015"}]
+    }
+  },
+  "constants": {
+    "ADS1X15_ADDRESS": "int",
+    "GAIN_TWOTHIRDS": "adsGain_t",
+    "GAIN_ONE": "adsGain_t",
+    "GAIN_TWO": "adsGain_t",
+    "GAIN_FOUR": "adsGain_t",
+    "GAIN_EIGHT": "adsGain_t",
+    "GAIN_SIXTEEN": "adsGain_t",
+    "RATE_ADS1115_8SPS": "int",
+    "RATE_ADS1115_16SPS": "int",
+    "RATE_ADS1115_32SPS": "int",
+    "RATE_ADS1115_64SPS": "int",
+    "RATE_ADS1115_128SPS": "int",
+    "RATE_ADS1115_250SPS": "int",
+    "RATE_ADS1115_475SPS": "int",
+    "RATE_ADS1115_860SPS": "int"
+  }
+}

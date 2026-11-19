@@ -1,0 +1,18 @@
+# sample: a battery gauge with battery_on - a LiPo cell through a 2:1 resistor divider
+board uno
+
+battery = battery_on(analog A1, divider: 2, type: lipo_1s)
+warning = pin 13 as output
+
+every 10 s:
+    print "Battery {battery.volts}, {battery.percent}"
+    if battery.percent < 15 %:
+        warning.blink(2 Hz)
+    else:
+        warning.off()
+
+test "a healthy battery stays quiet":
+    battery.pretend(1.9 V)
+    advance(11 s)
+    expect printed "Battery", "the gauge reports"
+    expect not warning.read(), "a full cell is quiet"

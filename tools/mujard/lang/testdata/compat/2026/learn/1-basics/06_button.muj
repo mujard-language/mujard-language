@@ -1,0 +1,14 @@
+# Button
+# Level 1 - Basics
+#
+# The LED is on while you hold the button down.
+# You learn: 'as input pullup' and read().
+# You need: a pushbutton between pin 2 and GND. The pull-up inside the board means no resistor is needed.
+
+board uno
+
+led    = pin LED as output
+button = pin 2 as input pullup     # reads true while the button is pressed
+
+every 10 ms:
+    led.write(button.read())       # the LED copies the button

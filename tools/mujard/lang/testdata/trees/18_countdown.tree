@@ -1,0 +1,32 @@
+(file uno
+  (device start_button pin [2] input [pullup] to_end=false)
+  (device abort_button pin [3] input [pullup] to_end=false)
+  (device buzzer pin [8] output [] to_end=false)
+  (task countdown
+    (for n in (..= 10 1)
+      (print n)
+      (wait 1s)
+    )
+    (print (text "Lift-off!"))
+    (do (call buzzer.tone 1kHz 1s))
+  )
+  (at start
+    (do (call countdown.stop))
+  )
+  (on start_button.pressed
+    (do (call countdown.restart))
+  )
+  (on abort_button.pressed
+    (do (call countdown.stop))
+    (print (text "Aborted"))
+  )
+  (test "counts down and lifts off"
+    (do (call start_button.pretend 1))
+    (do (call advance 100ms))
+    (do (call start_button.pretend 0))
+    (do (call advance 100ms))
+    (expect (call printed (text "10")) (text "the count begins"))
+    (do (call advance 11s))
+    (expect (call printed (text "Lift-off!")) (text "it reaches zero"))
+  )
+)

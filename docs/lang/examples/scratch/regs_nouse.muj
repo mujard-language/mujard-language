@@ -1,0 +1,4 @@
+board uno
+
+at start:
+    regs.PORTB.write(1)

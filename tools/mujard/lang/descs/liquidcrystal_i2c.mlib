@@ -1,0 +1,35 @@
+{
+  "name": "LiquidCrystal I2C",
+  "header": "LiquidCrystal_I2C.h",
+  "takes": ["i2c"],
+  "classes": {
+    "LiquidCrystal_I2C": {
+      "ctors": [{"params": [{"name": "addr", "type": "int"}, {"name": "cols", "type": "int"}, {"name": "rows", "type": "int"}], "result": "LiquidCrystal_I2C"}],
+      "methods": {
+        "init": {"params": [], "result": "void"},
+        "begin": {"params": [{"name": "cols", "type": "int"}, {"name": "rows", "type": "int"}, {"name": "size", "type": "int", "optional": true}], "result": "void"},
+        "clear": {"params": [], "result": "void"},
+        "home": {"params": [], "result": "void"},
+        "setCursor": {"params": [{"name": "col", "type": "int"}, {"name": "row", "type": "int"}], "result": "void"},
+        "print": {"params": [{"name": "value", "type": "any"}, {"name": "base", "type": "any", "optional": true}], "result": "int"},
+        "write": {"params": [{"name": "value", "type": "any"}], "result": "int"},
+        "createChar": {"params": [{"name": "location", "type": "int"}, {"name": "charmap", "type": "any"}], "result": "void"},
+        "backlight": {"params": [], "result": "void"},
+        "noBacklight": {"params": [], "result": "void"},
+        "display": {"params": [], "result": "void"},
+        "noDisplay": {"params": [], "result": "void"},
+        "cursor": {"params": [], "result": "void"},
+        "noCursor": {"params": [], "result": "void"},
+        "blink": {"params": [], "result": "void"},
+        "noBlink": {"params": [], "result": "void"},
+        "scrollDisplayLeft": {"params": [], "result": "void"},
+        "scrollDisplayRight": {"params": [], "result": "void"},
+        "leftToRight": {"params": [], "result": "void"},
+        "rightToLeft": {"params": [], "result": "void"},
+        "autoscroll": {"params": [], "result": "void"},
+        "noAutoscroll": {"params": [], "result": "void"},
+        "setBacklight": {"params": [{"name": "value", "type": "int"}], "result": "void"}
+      }
+    }
+  }
+}

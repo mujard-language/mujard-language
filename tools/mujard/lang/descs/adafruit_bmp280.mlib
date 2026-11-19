@@ -1,0 +1,27 @@
+{
+  "name": "Adafruit BMP280 Library",
+  "header": "Adafruit_BMP280.h",
+  "takes": ["i2c"],
+  "classes": {
+    "Adafruit_BMP280": {
+      "ctors": [{"params": [], "result": "Adafruit_BMP280"}],
+      "methods": {
+        "begin": {"params": [{"name": "addr", "type": "int", "optional": true}, {"name": "chipid", "type": "int", "optional": true}], "result": "bool"},
+        "reset": {"params": [], "result": "void"},
+        "getStatus": {"params": [], "result": "int"},
+        "sensorID": {"params": [], "result": "int"},
+        "readTemperature": {"params": [], "result": "float"},
+        "readPressure": {"params": [], "result": "float"},
+        "readAltitude": {"params": [{"name": "seaLevelhPa", "type": "float", "optional": true}], "result": "float"},
+        "seaLevelForAltitude": {"params": [{"name": "altitude", "type": "float"}, {"name": "atmospheric", "type": "float"}], "result": "float"},
+        "waterBoilingPoint": {"params": [{"name": "pressure", "type": "float"}], "result": "float"},
+        "takeForcedMeasurement": {"params": [], "result": "bool"}
+      }
+    }
+  },
+  "constants": {
+    "BMP280_ADDRESS": "int",
+    "BMP280_ADDRESS_ALT": "int",
+    "BMP280_CHIPID": "int"
+  }
+}

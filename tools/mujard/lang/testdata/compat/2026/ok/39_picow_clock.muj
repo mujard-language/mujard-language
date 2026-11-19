@@ -1,0 +1,24 @@
+# sample: a Pico W that keeps the time from the internet and shows when Wi-Fi comes and goes
+board picow
+
+at start:
+    wifi.connect(secret("home_wifi"))
+    clock.sync(timezone: "Europe/London")
+
+on wifi.joined:
+    log.info "Wi-Fi is up"
+
+on wifi.lost:
+    log.warn "Wi-Fi lost"
+
+every 1 min:
+    var now = clock.time
+    if now != none:
+        print "It is {now.hour}:{now.minute}"
+
+at 12:00:
+    print "Lunch time"
+
+test "the clock program starts clean":
+    advance(100 ms)
+    expect true, "wifi + clock sync set up without error"

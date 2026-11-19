@@ -1,0 +1,10 @@
+(file uno
+  (use mujard "mujard.i2c" version="" as="")
+  (at start
+    (print (text "I2C devices found: " {(call i2c.scan)}))
+  )
+  (test "the scan reports what it found"
+    (do (call advance 100ms))
+    (expect (call printed (text "I2C devices found")) (text "the scan runs and reports"))
+  )
+)

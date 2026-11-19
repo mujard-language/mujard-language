@@ -1,0 +1,67 @@
+# Project: a smart dustbin
+# Level 5 - Advanced
+#
+# The lid opens when a hand comes near, closes 3 seconds after it leaves, and counts how often it was used.
+# A whole project: libraries, sensors, a motor, timing, saved data and tests that prove it works.
+# You need: an HC-SR04 (Trig pin 9, Echo pin 10), a servo on pin 6 for the lid, and a button on pin 2 to GND.
+
+board uno
+use mujard.servo
+use mujard.ultrasonic
+
+lid    = Servo(pin 6)
+hand   = Ultrasonic(trig: pin 9, echo: pin 10)
+button = pin 2 as input pullup
+
+const NEAR   = 20 cm
+const OPEN   = 90 deg
+const CLOSED = 0 deg
+
+var open = false
+var last_seen = now()
+saved var uses = 0
+
+safe_state:
+    lid.move(CLOSED)
+
+fn open_lid():
+    lid.move(OPEN, over: 400 ms)
+    open = true
+    uses += 1
+    print "Open ({uses} uses)"
+
+fn close_lid():
+    lid.move(CLOSED, over: 600 ms)
+    open = false
+
+every 100 ms:
+    var d = hand.distance()
+    if d != none and d < NEAR:
+        last_seen = now()
+        if not open:
+            open_lid()
+    elif open and since(last_seen) > 3 s:
+        close_lid()
+
+on button.clicked:                 # open by hand, too
+    last_seen = now()
+    if not open:
+        open_lid()
+
+test "opens when a hand is near":
+    hand.pretend(10 cm)
+    advance(600 ms)
+    expect lid.angle == OPEN, "the lid should be open"
+
+test "stays shut when nothing is near":
+    hand.pretend(80 cm)
+    advance(2 s)
+    expect lid.angle == CLOSED
+
+test "closes three seconds after the hand leaves":
+    hand.pretend(10 cm)
+    advance(600 ms)
+    hand.pretend(80 cm)
+    advance(4 s)
+    expect lid.angle == CLOSED, "the lid should be closed again"
+    expect printed("Open (1 uses)")

@@ -1,0 +1,36 @@
+(file uno
+  (device sensor analog [A0]  [] to_end=false)
+  (device heater pin [7] output [inverted] to_end=false)
+  (device up pin [2] input [pullup] to_end=false)
+  (device down pin [3] input [pullup] to_end=false)
+  (saved target = 21C)
+  (fn temperature ():temperature
+    (return (call scale (call smooth sensor.volts 10) (.. 0.5V 1.5V) (.. 0C 100C)))
+  )
+  (on up.pressed
+    (+= target 0.5C)
+  )
+  (on down.pressed
+    (-= target 0.5C)
+  )
+  (every 1s
+    (var t = (call temperature))
+    (do (call heater.write (call hysteresis t on:(- target 1C) off:(+ target 1C))))
+    (print (text "Room " {(call round t 1)} ", target " {target}))
+  )
+  (test "raises the target on up"
+    (do (call sensor.pretend 0.7V))
+    (do (call advance 1200ms))
+    (expect (call printed (text "target 21")) (text "target starts at 21 C"))
+    (do (call up.pretend 1))
+    (do (call advance 100ms))
+    (do (call up.pretend 0))
+    (do (call advance 1200ms))
+    (expect (call printed (text "target 21.5")) (text "up adds half a degree"))
+  )
+  (test "a cold room turns the heater on"
+    (do (call sensor.pretend 0.5V))
+    (do (call advance 1200ms))
+    (expect (call heater.read) (text "below the band the heater should run"))
+  )
+)

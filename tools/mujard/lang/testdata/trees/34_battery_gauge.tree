@@ -1,0 +1,19 @@
+(file uno
+  (device battery (call battery_on (analog A1) divider:2 type:lipo_1s))
+  (device warning pin [13] output [] to_end=false)
+  (every 10s
+    (print (text "Battery " {battery.volts} ", " {battery.percent}))
+    (if (< battery.percent 15%)
+      (do (call warning.blink 2Hz))
+    )
+    (else
+      (do (call warning.off))
+    )
+  )
+  (test "a healthy battery stays quiet"
+    (do (call battery.pretend 1.9V))
+    (do (call advance 11s))
+    (expect (call printed (text "Battery")) (text "the gauge reports"))
+    (expect (not (call warning.read)) (text "a full cell is quiet"))
+  )
+)

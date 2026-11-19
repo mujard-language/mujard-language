@@ -1,0 +1,47 @@
+{
+  "name": "Adafruit SSD1306",
+  "header": "Adafruit_SSD1306.h",
+  "classes": {
+    "Adafruit_SSD1306": {
+      "ctors": [{"params": [{"name": "w", "type": "int"}, {"name": "h", "type": "int"}, {"name": "wire_or_mosi", "type": "any", "optional": true}, {"name": "rst_or_clk", "type": "any", "optional": true}, {"name": "dc", "type": "int", "optional": true}, {"name": "rst", "type": "int", "optional": true}, {"name": "cs", "type": "int", "optional": true}], "result": "Adafruit_SSD1306"}],
+      "methods": {
+        "begin": {"params": [{"name": "vcs", "type": "int", "optional": true}, {"name": "addr", "type": "int", "optional": true}, {"name": "reset", "type": "bool", "optional": true}, {"name": "periphBegin", "type": "bool", "optional": true}], "result": "bool"},
+        "display": {"params": [], "result": "void"},
+        "clearDisplay": {"params": [], "result": "void"},
+        "invertDisplay": {"params": [{"name": "i", "type": "bool"}], "result": "void"},
+        "dim": {"params": [{"name": "dim", "type": "bool"}], "result": "void"},
+        "ssd1306_command": {"params": [{"name": "c", "type": "int"}], "result": "void"},
+        "drawPixel": {"params": [{"name": "x", "type": "int"}, {"name": "y", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "drawFastVLine": {"params": [{"name": "x", "type": "int"}, {"name": "y", "type": "int"}, {"name": "h", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "drawFastHLine": {"params": [{"name": "x", "type": "int"}, {"name": "y", "type": "int"}, {"name": "w", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "drawLine": {"params": [{"name": "x0", "type": "int"}, {"name": "y0", "type": "int"}, {"name": "x1", "type": "int"}, {"name": "y1", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "drawRect": {"params": [{"name": "x", "type": "int"}, {"name": "y", "type": "int"}, {"name": "w", "type": "int"}, {"name": "h", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "fillRect": {"params": [{"name": "x", "type": "int"}, {"name": "y", "type": "int"}, {"name": "w", "type": "int"}, {"name": "h", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "fillScreen": {"params": [{"name": "color", "type": "int"}], "result": "void"},
+        "drawCircle": {"params": [{"name": "x0", "type": "int"}, {"name": "y0", "type": "int"}, {"name": "r", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "fillCircle": {"params": [{"name": "x0", "type": "int"}, {"name": "y0", "type": "int"}, {"name": "r", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "drawRoundRect": {"params": [{"name": "x", "type": "int"}, {"name": "y", "type": "int"}, {"name": "w", "type": "int"}, {"name": "h", "type": "int"}, {"name": "r", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "fillRoundRect": {"params": [{"name": "x", "type": "int"}, {"name": "y", "type": "int"}, {"name": "w", "type": "int"}, {"name": "h", "type": "int"}, {"name": "r", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "drawTriangle": {"params": [{"name": "x0", "type": "int"}, {"name": "y0", "type": "int"}, {"name": "x1", "type": "int"}, {"name": "y1", "type": "int"}, {"name": "x2", "type": "int"}, {"name": "y2", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "fillTriangle": {"params": [{"name": "x0", "type": "int"}, {"name": "y0", "type": "int"}, {"name": "x1", "type": "int"}, {"name": "y1", "type": "int"}, {"name": "x2", "type": "int"}, {"name": "y2", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "setCursor": {"params": [{"name": "x", "type": "int"}, {"name": "y", "type": "int"}], "result": "void"},
+        "setTextColor": {"params": [{"name": "color", "type": "int"}, {"name": "bg", "type": "int", "optional": true}], "result": "void"},
+        "setTextSize": {"params": [{"name": "s", "type": "int"}, {"name": "sy", "type": "int", "optional": true}], "result": "void"},
+        "setTextWrap": {"params": [{"name": "wrap", "type": "bool"}], "result": "void"},
+        "print": {"params": [{"name": "value", "type": "any"}, {"name": "base", "type": "any", "optional": true}], "result": "int"},
+        "println": {"params": [{"name": "value", "type": "any", "optional": true}], "result": "int"},
+        "width": {"params": [], "result": "int"},
+        "height": {"params": [], "result": "int"},
+        "setRotation": {"params": [{"name": "rot", "type": "int"}], "result": "void"},
+        "getRotation": {"params": [], "result": "int"}
+      }
+    }
+  },
+  "constants": {
+    "SSD1306_BLACK": "int",
+    "SSD1306_WHITE": "int",
+    "SSD1306_INVERSE": "int",
+    "SSD1306_SWITCHCAPVCC": "int",
+    "SSD1306_EXTERNALVCC": "int"
+  }
+}

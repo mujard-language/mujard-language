@@ -1,0 +1,53 @@
+{
+  "name": "Adafruit MPU6050",
+  "header": "Adafruit_MPU6050.h",
+  "takes": ["i2c"],
+  "classes": {
+    "Adafruit_MPU6050": {
+      "ctors": [{"params": [], "result": "Adafruit_MPU6050"}],
+      "methods": {
+        "begin": {"params": [{"name": "addr", "type": "int", "optional": true}, {"name": "wire", "type": "any", "optional": true}, {"name": "sensorId", "type": "int", "optional": true}], "result": "bool"},
+        "getEvent": {"params": [{"name": "accel", "type": "any"}, {"name": "gyro", "type": "any"}, {"name": "temp", "type": "any"}], "result": "bool"},
+        "getAccelerometerSensor": {"params": [], "result": "any"},
+        "getGyroSensor": {"params": [], "result": "any"},
+        "getTemperatureSensor": {"params": [], "result": "any"},
+        "setAccelerometerRange": {"params": [{"name": "range", "type": "int"}], "result": "void"},
+        "getAccelerometerRange": {"params": [], "result": "int"},
+        "setGyroRange": {"params": [{"name": "range", "type": "int"}], "result": "void"},
+        "getGyroRange": {"params": [], "result": "int"},
+        "setHighPassFilter": {"params": [{"name": "bandwidth", "type": "int"}], "result": "void"},
+        "getHighPassFilter": {"params": [], "result": "int"},
+        "setMotionInterrupt": {"params": [{"name": "active", "type": "bool"}], "result": "void"},
+        "setMotionDetectionThreshold": {"params": [{"name": "value", "type": "int"}], "result": "void"},
+        "setMotionDetectionDuration": {"params": [{"name": "value", "type": "int"}], "result": "void"},
+        "getMotionInterruptStatus": {"params": [], "result": "bool"},
+        "setFilterBandwidth": {"params": [{"name": "bandwidth", "type": "int"}], "result": "void"},
+        "getFilterBandwidth": {"params": [], "result": "int"},
+        "setSampleRateDivisor": {"params": [{"name": "value", "type": "int"}], "result": "void"},
+        "getSampleRateDivisor": {"params": [], "result": "int"},
+        "enableSleep": {"params": [{"name": "enable", "type": "bool"}], "result": "void"},
+        "enableCycle": {"params": [{"name": "enable", "type": "bool"}], "result": "void"},
+        "setCycleRate": {"params": [{"name": "rate", "type": "int"}], "result": "void"},
+        "getCycleRate": {"params": [], "result": "int"},
+        "reset": {"params": [], "result": "void"}
+      }
+    }
+  },
+  "constants": {
+    "MPU6050_RANGE_2_G": "int",
+    "MPU6050_RANGE_4_G": "int",
+    "MPU6050_RANGE_8_G": "int",
+    "MPU6050_RANGE_16_G": "int",
+    "MPU6050_RANGE_250_DEG": "int",
+    "MPU6050_RANGE_500_DEG": "int",
+    "MPU6050_RANGE_1000_DEG": "int",
+    "MPU6050_RANGE_2000_DEG": "int",
+    "MPU6050_BAND_260_HZ": "int",
+    "MPU6050_BAND_184_HZ": "int",
+    "MPU6050_BAND_94_HZ": "int",
+    "MPU6050_BAND_44_HZ": "int",
+    "MPU6050_BAND_21_HZ": "int",
+    "MPU6050_BAND_10_HZ": "int",
+    "MPU6050_BAND_5_HZ": "int"
+  }
+}

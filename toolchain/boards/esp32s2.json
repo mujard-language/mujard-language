@@ -1,0 +1,42 @@
+{
+  "schema": "mujard-board.v1",
+  "id": "espressif:esp32:esp32s2",
+  "short": "esp32s2",
+  "name": "ESP32-S2 devkit",
+  "vendor": "espressif",
+  "family": "esp32",
+  "chip": "espressif:esp32s2",
+  "aliases": ["esp32:esp32:esp32s2"],
+  "package": "espressif-esp32",
+  "core": "cores/esp32",
+  "variant": "variants/esp32s2",
+  "vars": {
+    "tarch": "xtensa",
+    "target": "esp32s2",
+    "mcu": "esp32s2",
+    "arch": "ESP32",
+    "boardDefine": "ESP32S2_DEV",
+    "fCpu": "240000000L",
+    "ideVersion": "10819",
+    "codeDebug": "0",
+    "boot": "qio",
+    "bootFreq": "80m",
+    "flashMode": "dio",
+    "flashFreq": "80m",
+    "flashSize": "4MB",
+    "psramType": "qspi",
+    "partitions": "default",
+    "usbMode": "0",
+    "cdcOnBoot": "0",
+    "mscOnBoot": "0",
+    "dfuOnBoot": "0",
+    "bootloaderAddr": "0x1000"
+  },
+  "output": "bin",
+  "flashMax": 1310720,
+  "ramMax": 327680,
+  "upload": {
+    "protocol": "esptool",
+    "baud": 921600
+  }
+}

@@ -1,0 +1,32 @@
+# Remember things when the power goes off
+# Level 5 - Advanced
+#
+# A brightness setting and a counter of how often the board has started, both kept through power cuts.
+# You learn: 'saved var' (kept in EEPROM or flash for you) and resetting it with a long press.
+# You need: an LED on pin 9 (with a 220 ohm resistor) and a pushbutton between pin 2 and GND.
+
+board uno
+
+lamp   = pin 9 as pwm
+button = pin 2 as input pullup
+
+saved var brightness = 50 %        # loaded at start, saved by itself when it changes
+saved var starts = 0
+
+at start:
+    starts += 1
+    print "Started {starts} times; brightness {brightness}"
+    lamp.write(brightness)
+
+on button.clicked:
+    brightness += 25 %
+    if brightness > 100 %:
+        brightness = 25 %
+    lamp.write(brightness)
+    print "Brightness {brightness} (remembered)"
+
+on button.held(3 s):               # back to the factory settings
+    brightness = 50 %
+    starts = 0
+    lamp.write(brightness)
+    print "Settings reset"

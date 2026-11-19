@@ -1,0 +1,12 @@
+# Exercises the https path of the async http client: certificate checks are compiled in
+# (ESP32 CA bundle / BearSSL roots on ESP8266 and Pico W); on the simulated board it reports
+# that https can't run there rather than sending it unchecked.
+board esp8266
+
+at start:
+    wifi.connect(secret("wifi"))
+
+task fetcher:
+    var reply = http.get("https://example.com/status")
+    print "status {reply.status}"
+    print "{reply.text}"

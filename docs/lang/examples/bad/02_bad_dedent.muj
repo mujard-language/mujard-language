@@ -1,0 +1,5 @@
+# expect: L102 5:3
+board uno
+every 1 s:
+    print "a"
+  print "b"

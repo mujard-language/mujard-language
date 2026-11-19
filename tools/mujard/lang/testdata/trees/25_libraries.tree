@@ -1,0 +1,17 @@
+(file uno
+  (use arduino "Adafruit NeoPixel" version="1.12.3" as="")
+  (device strip (call Adafruit_NeoPixel 8 (pin 6) (+ NEO_GRB NEO_KHZ800)))
+  (var hue = 0)
+  (at start
+    (do (call strip.begin))
+  )
+  (every 20ms
+    (= hue (mod (+ hue 256) 65536))
+    (do (call strip.fill (call strip.ColorHSV hue)))
+    (do (call strip.show))
+  )
+  (cpp "// plain C++ for anything Mujard can't say yet\nstatic_assert(sizeof(int) >= 2, \"int too small\");\n")
+  (test "the strip updates"
+    (do (call advance 100ms))
+  )
+)

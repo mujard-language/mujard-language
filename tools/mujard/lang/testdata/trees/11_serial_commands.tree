@@ -1,0 +1,45 @@
+(file uno
+  (device led pin [13] output [] to_end=false)
+  (device fan pin [9] pwm [] to_end=false)
+  (on serial.line as cmd
+    (match cmd
+      (case (text "on")
+        (do (call led.on))
+      )
+      (case (text "off")
+        (do (call led.off))
+      )
+      (else
+        (if (call cmd.starts_with (text "fan "))
+          (var level = (call (call cmd.split (text " "))[1].to_number))
+          (if (== level none)
+            (print (text "Fan needs a number, like: fan 50"))
+          )
+          (else
+            (do (call fan.write (call clamp (call scale level (.. 0 100) (.. 0% 100%)) (.. 0% 100%))))
+          )
+        )
+        (else
+          (print (text "Commands: on, off, fan <0-100>"))
+        )
+      )
+    )
+  )
+  (test "the 'on' command lights the LED"
+    (do (call serial.pretend (text "on")))
+    (do (call advance 100ms))
+    (expect (call led.read) (text "on lights it"))
+  )
+  (test "the 'off' command clears it"
+    (do (call serial.pretend (text "on")))
+    (do (call advance 100ms))
+    (do (call serial.pretend (text "off")))
+    (do (call advance 100ms))
+    (expect (not (call led.read)) (text "off clears it"))
+  )
+  (test "an unknown command prints the help"
+    (do (call serial.pretend (text "nonsense")))
+    (do (call advance 100ms))
+    (expect (call printed (text "Commands:")) (text "a bad command explains itself"))
+  )
+)

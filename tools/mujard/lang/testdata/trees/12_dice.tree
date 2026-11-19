@@ -1,0 +1,18 @@
+(file uno
+  (device leds pins [2 8] output [] to_end=false)
+  (device button pin [12] input [pullup] to_end=false)
+  (on button.pressed
+    (var roll = (call random (..= 1 6)))
+    (print (text "You rolled " {roll}))
+    (for i in (.. 0 6)
+      (do (call leds[i].write (< i roll)))
+    )
+  )
+  (test "a roll prints and lights a die face"
+    (do (call button.pretend 1))
+    (do (call advance 100ms))
+    (do (call button.pretend 0))
+    (do (call advance 100ms))
+    (expect (call printed (text "You rolled")) (text "a press rolls and reports"))
+  )
+)

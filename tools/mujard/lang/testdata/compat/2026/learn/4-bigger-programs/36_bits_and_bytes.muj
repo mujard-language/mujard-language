@@ -1,0 +1,22 @@
+# Bits and bytes
+# Level 4 - Bigger programs
+#
+# Eight switches packed into one number: read single bits, set them and split a number into bytes.
+# You learn: hex (0x) and binary (0b) numbers, bit(), set_bit(), clear_bit(), toggle_bit() and & | ^ >>.
+# You need: nothing extra - watch the serial monitor.
+
+board uno
+
+var flags = 0b0000_0000
+
+at start:
+    flags = flags.set_bit(0)                   # switch 0 on
+    flags = flags.set_bit(3)                   # switch 3 on
+    print "Flags: {flags} (switch 3 is {flags.bit(3)})"
+    flags = flags.clear_bit(0)
+    flags = flags.toggle_bit(7)
+    print "Now: {flags}"
+    var reading = 0x1234
+    print "High byte: {reading >> 8}, low byte: {reading & 0xFF}"   # 0x12 and 0x34 (18 and 52)
+    print "Low 4 bits: {reading & 0x0F}, top byte flipped: {reading ^ 0xFF00}"
+    print "Bit 4 or bit 0: {0b0001_0000 | 0b0000_0001}"

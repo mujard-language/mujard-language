@@ -1,0 +1,19 @@
+(file uno
+  (device lamp pin [12] output [] to_end=false)
+  (device button pin [2] input [pullup] to_end=false)
+  (on button.pressed
+    (do (call lamp.toggle))
+    (print (text "Lamp toggled"))
+  )
+  (test "a press toggles the lamp"
+    (do (call button.pretend 1))
+    (do (call advance 100ms))
+    (expect (call lamp.read) (text "lamp should be on"))
+    (expect (call printed (text "Lamp toggled")) (text "it should print"))
+    (do (call button.pretend 0))
+    (do (call advance 100ms))
+    (do (call button.pretend 1))
+    (do (call advance 100ms))
+    (expect (not (call lamp.read)) (text "a second press turns it off"))
+  )
+)

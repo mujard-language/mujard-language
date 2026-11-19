@@ -1,0 +1,24 @@
+{
+  "name": "LedControl",
+  "header": "LedControl.h",
+  "takes": ["spi"],
+  "classes": {
+    "LedControl": {
+      "ctors": [
+        {"params": [{"name": "din", "type": "int"}, {"name": "clk", "type": "int"}, {"name": "cs", "type": "int"}, {"name": "devices", "type": "int", "optional": true}], "result": "LedControl"}
+      ],
+      "methods": {
+        "getDeviceCount": {"params": [], "result": "int"},
+        "shutdown": {"params": [{"name": "addr", "type": "int"}, {"name": "status", "type": "bool"}], "result": "void"},
+        "setScanLimit": {"params": [{"name": "addr", "type": "int"}, {"name": "limit", "type": "int"}], "result": "void"},
+        "setIntensity": {"params": [{"name": "addr", "type": "int"}, {"name": "intensity", "type": "int"}], "result": "void"},
+        "clearDisplay": {"params": [{"name": "addr", "type": "int"}], "result": "void"},
+        "setLed": {"params": [{"name": "addr", "type": "int"}, {"name": "row", "type": "int"}, {"name": "col", "type": "int"}, {"name": "state", "type": "bool"}], "result": "void"},
+        "setRow": {"params": [{"name": "addr", "type": "int"}, {"name": "row", "type": "int"}, {"name": "value", "type": "int"}], "result": "void"},
+        "setColumn": {"params": [{"name": "addr", "type": "int"}, {"name": "col", "type": "int"}, {"name": "value", "type": "int"}], "result": "void"},
+        "setDigit": {"params": [{"name": "addr", "type": "int"}, {"name": "digit", "type": "int"}, {"name": "value", "type": "int"}, {"name": "dp", "type": "bool"}], "result": "void"},
+        "setChar": {"params": [{"name": "addr", "type": "int"}, {"name": "digit", "type": "int"}, {"name": "value", "type": "int"}, {"name": "dp", "type": "bool"}], "result": "void"}
+      }
+    }
+  }
+}

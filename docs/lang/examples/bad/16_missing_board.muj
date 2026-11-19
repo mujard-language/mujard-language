@@ -1,0 +1,2 @@
+# expect: P206 2:1
+led = pin 13 as output

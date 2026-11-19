@@ -1,0 +1,3 @@
+# expect: P203 3:5
+board uno
+    led = pin 13 as output

@@ -1,0 +1,4 @@
+# expect: U501 3:7
+board uno
+every 500:
+    print "tick"

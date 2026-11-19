@@ -1,0 +1,14 @@
+# Dimmer
+# Level 2 - Next steps
+#
+# Turn a knob to set how bright an LED is.
+# You learn: connecting an input to an output - a percentage goes straight from one to the other.
+# You need: a potentiometer on A0 (outer legs to 5V and GND) and an LED with a 220 ohm resistor on pin 9.
+
+board uno
+
+knob = analog A0
+lamp = pin 9 as pwm
+
+every 20 ms:
+    lamp.write(knob.percent)       # 0 % to 100 % in, 0 % to 100 % out

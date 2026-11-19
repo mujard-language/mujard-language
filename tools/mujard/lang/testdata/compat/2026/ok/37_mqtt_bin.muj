@@ -1,0 +1,28 @@
+# sample: a smart bin that reports its fill level over MQTT and opens on command
+board esp32
+use mujard.mqtt
+use mujard.servo
+
+lid = Servo(pin 13)
+level = analog 34
+
+at start:
+    wifi.connect(secret("home_wifi"))
+    mqtt.connect("broker.example.com", user: "bin7", password: secret("mqtt"))
+    mqtt.subscribe("bins/{board.id}/command")
+
+every 1 min:
+    mqtt.publish("bins/{board.id}/level", level.percent)
+
+on mqtt.message as m:
+    if m.text == "open":
+        lid.move(90 deg, over: 1 s)
+    elif m.text == "close":
+        lid.move(0 deg, over: 1 s)
+
+on wifi.lost:
+    log.warn "Wi-Fi lost, reconnecting"
+
+test "the bin program starts clean":
+    advance(100 ms)
+    expect true, "mqtt + servo + wifi set up without error"

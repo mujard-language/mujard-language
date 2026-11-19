@@ -1,0 +1,4 @@
+# expect: C303 4:16
+board uno
+task t:
+    wait until 5

@@ -1,0 +1,20 @@
+# More outputs with a shift register
+# Level 3 - Sensors and motors
+#
+# Drive eight LEDs from three pins with a 74HC595 chip.
+# You learn: the shift library, binary numbers (0b...) and the << operator.
+# You need: a 74HC595: data (DS) to pin 11, clock (SH_CP) to pin 12, latch (ST_CP) to pin 8,
+# eight LEDs with resistors on its outputs Q0-Q7, VCC and MR to 5V, GND and OE to GND.
+
+board uno
+use mujard.shift
+
+leds = shift.out_register(data: pin 11, clock: pin 12, latch: pin 8)
+
+var pattern = 0b0000_0001          # one bit for each LED; _ is just for reading
+
+every 100 ms:
+    leds.write(pattern)
+    pattern = pattern << 1         # move the light one place along
+    if pattern > 0b1000_0000:
+        pattern = 0b0000_0001

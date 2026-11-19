@@ -1,0 +1,19 @@
+# sample: a lamp that fades in when the room gets dark
+board uno
+
+lamp  = pin 9 as pwm
+light = analog A0
+const DARK = 30 %
+
+when light.percent < DARK:
+    lamp.fade(to: 100 %, over: 2 s)
+
+when light.percent > DARK + 10 %:
+    lamp.fade(to: 0 %, over: 2 s)
+
+test "dark and light both run clean":
+    light.pretend(10 %)
+    advance(3000 ms)
+    light.pretend(80 %)
+    advance(3000 ms)
+    expect true, "the fades should run without error"

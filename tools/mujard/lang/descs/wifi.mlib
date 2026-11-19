@@ -1,0 +1,76 @@
+{
+  "name": "WiFi",
+  "header": "WiFi.h",
+  "architectures": ["esp32"],
+  "classes": {
+    "WiFi": {
+      "methods": {
+        "begin": {"params": [{"name": "ssid", "type": "text", "optional": true}, {"name": "password", "type": "text", "optional": true}], "result": "int"},
+        "disconnect": {"params": [{"name": "wifioff", "type": "bool", "optional": true}, {"name": "eraseap", "type": "bool", "optional": true}], "result": "bool"},
+        "reconnect": {"params": [], "result": "bool"},
+        "status": {"params": [], "result": "int"},
+        "mode": {"params": [{"name": "m", "type": "any"}], "result": "bool"},
+        "localIP": {"params": [], "result": "any"},
+        "subnetMask": {"params": [], "result": "any"},
+        "gatewayIP": {"params": [], "result": "any"},
+        "dnsIP": {"params": [{"name": "n", "type": "int", "optional": true}], "result": "any"},
+        "macAddress": {"params": [], "result": "text"},
+        "SSID": {"params": [], "result": "text"},
+        "BSSIDstr": {"params": [], "result": "text"},
+        "RSSI": {"params": [], "result": "int"},
+        "channel": {"params": [], "result": "int"},
+        "scanNetworks": {"params": [{"name": "async", "type": "bool", "optional": true}, {"name": "hidden", "type": "bool", "optional": true}], "result": "int"},
+        "scanComplete": {"params": [], "result": "int"},
+        "scanDelete": {"params": [], "result": "void"},
+        "softAP": {"params": [{"name": "ssid", "type": "text"}, {"name": "password", "type": "text", "optional": true}, {"name": "channel", "type": "int", "optional": true}], "result": "bool"},
+        "softAPIP": {"params": [], "result": "any"},
+        "softAPdisconnect": {"params": [{"name": "wifioff", "type": "bool", "optional": true}], "result": "bool"},
+        "hostname": {"params": [{"name": "name", "type": "text"}], "result": "bool"},
+        "getHostname": {"params": [], "result": "text"},
+        "setSleep": {"params": [{"name": "enable", "type": "bool"}], "result": "bool"},
+        "persistent": {"params": [{"name": "enable", "type": "bool"}], "result": "void"}
+      }
+    },
+    "WiFiClient": {
+      "ctors": [{"params": [], "result": "WiFiClient"}],
+      "methods": {
+        "connect": {"params": [{"name": "host", "type": "text"}, {"name": "port", "type": "int"}], "result": "int"},
+        "connected": {"params": [{"name": "timeout", "type": "int", "optional": true}], "result": "bool"},
+        "available": {"params": [], "result": "int"},
+        "read": {"params": [], "result": "int"},
+        "peek": {"params": [], "result": "int"},
+        "write": {"params": [{"name": "data", "type": "any"}], "result": "int"},
+        "print": {"params": [{"name": "value", "type": "any"}, {"name": "base", "type": "any", "optional": true}], "result": "int"},
+        "println": {"params": [{"name": "value", "type": "any", "optional": true}], "result": "int"},
+        "flush": {"params": [], "result": "void"},
+        "stop": {"params": [], "result": "void"},
+        "remoteIP": {"params": [], "result": "any"},
+        "remotePort": {"params": [], "result": "int"},
+        "setTimeout": {"params": [{"name": "seconds", "type": "int"}], "result": "void"}
+      }
+    },
+    "WiFiServer": {
+      "ctors": [{"params": [{"name": "port", "type": "int"}, {"name": "max_clients", "type": "int", "optional": true}], "result": "WiFiServer"}],
+      "methods": {
+        "begin": {"params": [{"name": "port", "type": "int", "optional": true}, {"name": "enable", "type": "int", "optional": true}], "result": "void"},
+        "available": {"params": [], "result": "WiFiClient"},
+        "hasClient": {"params": [], "result": "bool"},
+        "accept": {"params": [], "result": "WiFiClient"},
+        "end": {"params": [], "result": "void"},
+        "close": {"params": [], "result": "void"}
+      }
+    }
+  },
+  "constants": {
+    "WL_CONNECTED": "int",
+    "WL_DISCONNECTED": "int",
+    "WL_IDLE_STATUS": "int",
+    "WL_NO_SSID_AVAIL": "int",
+    "WL_CONNECT_FAILED": "int",
+    "WL_CONNECTION_LOST": "int",
+    "WIFI_OFF": "int",
+    "WIFI_STA": "int",
+    "WIFI_AP": "int",
+    "WIFI_AP_STA": "int"
+  }
+}

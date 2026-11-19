@@ -1,0 +1,38 @@
+# sample: a stopwatch with two buttons
+board uno
+
+start_stop = pin 2 as input pullup
+reset      = pin 3 as input pullup
+
+var watch = stopwatch()
+
+on start_stop.pressed:
+    if watch.running:
+        watch.stop()
+        print "Time: {watch.elapsed as s}"
+    else:
+        watch.start()
+
+on reset.pressed:
+    watch.reset()
+    print "Reset"
+
+test "starts and stops on the button":
+    start_stop.pretend(1)
+    advance(100 ms)
+    start_stop.pretend(0)
+    advance(100 ms)
+    expect watch.running, "a press starts the watch"
+    start_stop.pretend(1)
+    advance(100 ms)
+    start_stop.pretend(0)
+    advance(100 ms)
+    expect not watch.running, "another press stops it"
+    expect printed "Time:", "stopping reports the time"
+
+test "reset clears and reports":
+    reset.pretend(1)
+    advance(100 ms)
+    reset.pretend(0)
+    advance(100 ms)
+    expect printed "Reset", "reset prints"

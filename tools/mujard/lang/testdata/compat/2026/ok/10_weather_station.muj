@@ -1,0 +1,21 @@
+# sample: send the temperature to the app and to MQTT
+board esp32
+use mujard.mqtt
+
+sensor = analog 35
+
+at start:
+    wifi.connect(secret("home_wifi"))
+    mqtt.connect("broker.example.com", password: secret("mqtt"))
+
+every 10 s:
+    var t = scale(sensor.volts, 0.5 V..1.5 V, 0 C..100 C)
+    show "Temperature", t
+    plot t
+    if wifi.connected:
+        mqtt.publish("station/{board.id}/temp", t)
+
+test "the reading loop runs clean":
+    sensor.pretend(0.9 V)
+    advance(200 ms)
+    expect true, "show/plot run without error"

@@ -1,0 +1,4 @@
+# expect: L108 4:16
+board uno
+at start:
+    print "bad \q"

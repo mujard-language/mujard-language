@@ -1,0 +1,41 @@
+# Testing without hardware
+# Level 5 - Advanced
+#
+# A porch light with tests that check it works - on a simulated board, before you build anything.
+# You learn: test blocks, pretend(), advance(), printed() and expect inside a test.
+# You need: nothing to run the tests (the Test button, or: mujard test 38_testing.muj).
+# To build it for real: an LDR on A0 (10 kohm to GND) and an LED on pin 12.
+
+board uno
+
+light = analog A0
+lamp  = pin 12 as output
+
+when light.percent < 20 %:
+    lamp.on()
+    print "Dark: porch light on"
+    after 30 s:
+        lamp.off()
+        print "Porch light off again"
+
+# Tests never go into the firmware. Each one starts a fresh, simulated board.
+test "the light comes on when it gets dark":
+    light.pretend(10 %)
+    advance(100 ms)
+    expect lamp.read(), "the lamp should be on"
+    expect printed("light on")
+
+test "the light switches itself off after 30 seconds":
+    light.pretend(10 %)
+    advance(31 s)                  # 31 simulated seconds take a few milliseconds
+    expect not lamp.read(), "the lamp should be off"
+
+test "it comes on again the next night":
+    light.pretend(10 %)
+    advance(31 s)                  # night one: on, then off by itself
+    light.pretend(80 %)
+    advance(1 s)                   # morning
+    expect not lamp.read()
+    light.pretend(10 %)
+    advance(100 ms)                # night two
+    expect lamp.read(), "the lamp should be on again"

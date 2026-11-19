@@ -1,0 +1,28 @@
+# sample: a traffic light as a task
+board uno
+
+red    = pin 10 as output
+yellow = pin 11 as output
+green  = pin 12 as output
+
+task traffic:
+    while true:
+        red.on()
+        wait 5 s
+        yellow.on()
+        wait 1 s
+        red.off()
+        yellow.off()
+        green.on()
+        wait 4 s
+        green.off()
+        yellow.on()
+        wait 1 s
+        yellow.off()
+
+test "the light cycles red then green":
+    advance(3 s)
+    expect red.read(), "red should be up first"
+    advance(3500 ms)
+    expect green.read(), "green after red+yellow"
+    expect not red.read(), "red is off once green is up"

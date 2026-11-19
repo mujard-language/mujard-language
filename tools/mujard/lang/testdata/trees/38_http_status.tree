@@ -1,0 +1,25 @@
+(file esp8266
+  (device led pin [D5] output [] to_end=false)
+  (at start
+    (do (call wifi.connect (call secret (text "office_wifi"))))
+  )
+  (task check_status
+    (while true
+      (wait-until wifi.connected)
+      (var reply = (call http.get (text "http://status.example.com/today")))
+      (if reply.ok
+        (do (call led.off))
+        (print (text "Status: " {reply.text}))
+      )
+      (else
+        (do (call led.on))
+        (print (text "No answer (" {reply.status} ")"))
+      )
+      (wait 5min)
+    )
+  )
+  (test "the status loop runs clean"
+    (do (call advance 100ms))
+    (expect true (text "the http status task sets up without error"))
+  )
+)

@@ -1,0 +1,61 @@
+{
+  "name": "MFRC522",
+  "header": "MFRC522.h",
+  "takes": ["spi"],
+  "classes": {
+    "MFRC522": {
+      "ctors": [
+        {"params": [{"name": "chipSelect", "type": "int"}, {"name": "reset", "type": "int"}], "result": "MFRC522"},
+        {"params": [{"name": "ss", "type": "int"}, {"name": "sck", "type": "int"}, {"name": "mosi", "type": "int"}, {"name": "miso", "type": "int"}, {"name": "irq", "type": "int"}, {"name": "reset", "type": "int"}], "result": "MFRC522"}
+      ],
+      "methods": {
+        "PCD_Init": {"params": [], "result": "void"},
+        "PCD_Reset": {"params": [], "result": "void"},
+        "PCD_AntennaOn": {"params": [], "result": "void"},
+        "PCD_AntennaOff": {"params": [], "result": "void"},
+        "PCD_GetAntennaGain": {"params": [], "result": "int"},
+        "PCD_SetAntennaGain": {"params": [{"name": "mask", "type": "int"}], "result": "void"},
+        "PCD_DumpVersionToSerial": {"params": [], "result": "void"},
+        "PICC_IsNewCardPresent": {"params": [], "result": "bool"},
+        "PICC_ReadCardSerial": {"params": [], "result": "bool"},
+        "PICC_RequestA": {"params": [{"name": "buffer", "type": "any"}, {"name": "size", "type": "any"}], "result": "int"},
+        "PICC_WakeupA": {"params": [{"name": "buffer", "type": "any"}, {"name": "size", "type": "any"}], "result": "int"},
+        "PICC_Select": {"params": [{"name": "uid", "type": "any"}, {"name": "validBits", "type": "int", "optional": true}], "result": "int"},
+        "PICC_HaltA": {"params": [], "result": "int"},
+        "PICC_GetType": {"params": [{"name": "sak", "type": "int"}], "result": "int"},
+        "PICC_GetTypeName": {"params": [{"name": "type", "type": "int"}], "result": "text"},
+        "PICC_DumpToSerial": {"params": [{"name": "uid", "type": "any"}], "result": "void"},
+        "PICC_DumpDetailsToSerial": {"params": [{"name": "uid", "type": "any"}], "result": "void"},
+        "MIFARE_Read": {"params": [{"name": "block", "type": "int"}, {"name": "buffer", "type": "any"}, {"name": "size", "type": "any"}], "result": "int"},
+        "MIFARE_Write": {"params": [{"name": "block", "type": "int"}, {"name": "buffer", "type": "any"}, {"name": "size", "type": "int"}], "result": "int"},
+        "MIFARE_Ultralight_Write": {"params": [{"name": "page", "type": "int"}, {"name": "buffer", "type": "any"}, {"name": "size", "type": "int"}], "result": "int"},
+        "MIFARE_GetValue": {"params": [{"name": "block", "type": "int"}, {"name": "value", "type": "any"}], "result": "int"},
+        "MIFARE_SetValue": {"params": [{"name": "block", "type": "int"}, {"name": "value", "type": "int"}], "result": "int"},
+        "MIFARE_Increment": {"params": [{"name": "block", "type": "int"}, {"name": "delta", "type": "int"}], "result": "int"},
+        "MIFARE_Decrement": {"params": [{"name": "block", "type": "int"}, {"name": "delta", "type": "int"}], "result": "int"},
+        "MIFARE_Transfer": {"params": [{"name": "block", "type": "int"}], "result": "int"},
+        "MIFARE_Restore": {"params": [{"name": "block", "type": "int"}], "result": "int"},
+        "PCD_Authenticate": {"params": [{"name": "command", "type": "int"}, {"name": "block", "type": "int"}, {"name": "key", "type": "any"}, {"name": "uid", "type": "any"}], "result": "int"},
+        "PCD_StopCrypto1": {"params": [], "result": "void"},
+        "MIFARE_UnbrickUidSector": {"params": [{"name": "logging", "type": "bool"}], "result": "bool"},
+        "PCD_PerformSelfTest": {"params": [], "result": "bool"}
+      },
+      "fields": {"uid": "any"}
+    }
+  },
+  "constants": {
+    "MFRC522::PICC_TYPE_MIFARE_MINI": "int",
+    "MFRC522::PICC_TYPE_MIFARE_1K": "int",
+    "MFRC522::PICC_TYPE_MIFARE_4K": "int",
+    "MFRC522::PICC_TYPE_MIFARE_UL": "int",
+    "MFRC522::PICC_TYPE_MIFARE_PLUS": "int",
+    "MFRC522::PICC_TYPE_MIFARE_DESFIRE": "int",
+    "MFRC522::PICC_TYPE_ISO_14443_4": "int",
+    "MFRC522::PICC_TYPE_ISO_18092": "int",
+    "MFRC522::PICC_TYPE_TNP3XXX": "int",
+    "MFRC522::PICC_TYPE_NOT_COMPLETE": "int",
+    "MFRC522::PICC_TYPE_UNKNOWN": "int",
+    "MFRC522::PICC_CMD_MF_AUTH_KEY_A": "int",
+    "MFRC522::PICC_CMD_MF_AUTH_KEY_B": "int"
+  }
+}

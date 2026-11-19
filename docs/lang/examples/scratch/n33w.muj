@@ -1,0 +1,4 @@
+board nano33ble
+use mujard.wifi
+at start:
+    wifi.connect(secret("home"))

@@ -1,0 +1,28 @@
+(file esp32
+  (device led pin [GPIO26] output [] to_end=false)
+  (device button pin [GPIO27] input [pulldown] to_end=false)
+  (device relay pin [GPIO25] output [inverted] to_end=false)
+  (var relay_on = false)
+  (on button.pressed
+    (= relay_on (not relay_on))
+    (do (call relay.write relay_on))
+    (do (call led.write relay_on))
+    (do (call log.info (text "Relay is now " {relay_on})))
+  )
+  (test "a press flips the relay and the LED"
+    (do (call button.pretend 1))
+    (do (call advance 100ms))
+    (do (call button.pretend 0))
+    (do (call advance 100ms))
+    (expect (call relay.read) (text "the relay switched"))
+    (expect (call led.read) (text "the LED followed"))
+    (do (call button.pretend 1))
+    (do (call advance 100ms))
+    (do (call button.pretend 0))
+    (do (call advance 100ms))
+    (expect (not (call relay.read)) (text "a second press flips it back"))
+  )
+  (every 1h
+    (do (call log.info (text "Up " {board.uptime} ", free memory " {board.free_memory})))
+  )
+)

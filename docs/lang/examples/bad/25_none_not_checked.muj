@@ -1,0 +1,6 @@
+# expect: C304 6:13
+board uno
+echo = pin 10 as input
+at start:
+    var t = echo.measure_pulse()
+    print "{t * 2}"

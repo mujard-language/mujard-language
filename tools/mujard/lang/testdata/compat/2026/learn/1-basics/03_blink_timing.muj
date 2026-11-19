@@ -1,0 +1,17 @@
+# Blink with your own timing
+# Level 1 - Basics
+#
+# A short flash and a long pause: on for 100 ms, off for 900 ms.
+# You learn: a 'task', 'wait', 'while true' and on() / off().
+# You need: nothing extra.
+
+board uno
+
+led = pin LED as output
+
+task flash:                        # a task runs step by step, like a recipe
+    while true:                    # repeat forever (a task stops when it reaches its end)
+        led.on()
+        wait 100 ms                # wait pauses only this task - the rest of the program keeps running
+        led.off()
+        wait 900 ms

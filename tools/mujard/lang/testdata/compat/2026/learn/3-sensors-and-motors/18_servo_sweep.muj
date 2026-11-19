@@ -1,0 +1,19 @@
+# Servo sweep
+# Level 3 - Sensors and motors
+#
+# A servo motor turns slowly from one side to the other and back.
+# You learn: 'use' to add a library, angles in degrees and smooth moves with over:.
+# You need: a small servo (such as an SG90): signal (orange) to pin 9, red to 5V, brown to GND.
+# Bigger servos need their own power supply - the board's 5V can't feed them.
+
+board uno
+use mujard.servo
+
+arm = Servo(pin 9)
+
+task sweep:
+    while true:
+        arm.move(180 deg, over: 2 s)   # move() also works in the background...
+        wait 2 s                       # ...so wait until it has arrived
+        arm.move(0 deg, over: 2 s)
+        wait 2 s

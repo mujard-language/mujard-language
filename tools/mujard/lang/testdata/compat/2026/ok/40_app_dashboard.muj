@@ -1,0 +1,40 @@
+# sample: every app built-in - show, plot, notify, control and ask - on a plant waterer
+board uno
+
+pump = pin 7 as output
+soil = analog A0
+
+var watering_ml = 200
+var auto = true
+control "Water per run (ml)", watering_ml, 50..500
+control "Automatic", auto
+
+every 10 s:
+    var moisture = soil.percent
+    show "Soil", moisture, as: gauge(0 %..100 %)
+    show "Pump", pump.read()
+    plot moisture
+    if moisture < 20 %:
+        notify "The soil is dry ({moisture})", urgent: true
+
+task water:
+    while true:
+        wait until soil.percent < 20 %
+        var go = auto
+        if not auto:
+            var answer = ask "Water the plant now?"
+            if answer != none:
+                go = answer
+        if go:
+            pump.on()
+            wait watering_ml * 50 ms
+            pump.off()
+            print "Watered {watering_ml} ml"
+        wait 10 min
+
+test "dry soil waters and reports":
+    soil.pretend(10 %)
+    advance(200 ms)
+    expect notified "The soil is dry", "the dry alert fires"
+    advance(20 s)
+    expect printed "Watered", "the pump ran and reported"

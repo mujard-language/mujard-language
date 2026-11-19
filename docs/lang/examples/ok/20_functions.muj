@@ -1,0 +1,31 @@
+# sample: functions with default and named arguments
+board uno
+
+buzzer = pin 8 as output
+button = pin 2 as input pullup
+
+fn beep(pitch: frequency = 2 kHz, length: time = 100 ms):
+    buzzer.tone(pitch, length)
+
+fn sum_to(n: int) -> int:
+    var total = 0
+    for i in 1..=n:
+        total += i
+    return total
+
+fn average(a: float, b: float) -> float:
+    return (a + b) / 2
+
+on button.pressed:
+    beep()
+
+on button.held(1 s):
+    beep(pitch: 1 kHz, length: 300 ms)
+    print "1 + 2 + ... + 10 = {sum_to(10)}, average of 3 and 4 = {average(3, 4)}"
+
+test "the functions compute right":
+    expect sum_to(10) == 55, "1 + 2 + ... + 10 is 55"
+    expect average(3, 4) == 3.5, "the average of 3 and 4 is 3.5"
+    button.pretend(1)
+    advance(1200 ms)
+    expect printed "55", "a hold reports the maths"

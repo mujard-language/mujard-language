@@ -1,0 +1,26 @@
+# sample: tests that run in the simulator
+board uno
+use mujard.servo
+use mujard.ultrasonic
+
+lid  = Servo(pin 6)
+hand = Ultrasonic(trig: pin 9, echo: pin 10)
+
+every 100 ms:
+    var d = hand.distance()
+    if d != none and d < 20 cm:
+        lid.move(90 deg)
+        after 3 s:
+            lid.move(0 deg)
+
+test "opens when a hand is near":
+    hand.pretend(10 cm)
+    advance(200 ms)
+    expect lid.angle == 90 deg, "lid should be open"
+
+test "closes again after three seconds":
+    hand.pretend(10 cm)
+    advance(200 ms)
+    hand.pretend(80 cm)
+    advance(3500 ms)
+    expect lid.angle == 0 deg, "lid should be closed"

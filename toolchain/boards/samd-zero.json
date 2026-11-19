@@ -1,0 +1,37 @@
+{
+  "schema": "mujard-board.v1",
+  "id": "arduino:samd:zero",
+  "short": "zero",
+  "name": "Arduino Zero (SAMD21G18A, native USB)",
+  "vendor": "arduino",
+  "family": "samd",
+  "chip": "microchip:samd21g18",
+  "aliases": ["samd21", "arduino_zero_native", "arduino:samd:arduino_zero_native"],
+  "package": "arduino-samd",
+  "core": "cores/arduino",
+  "variant": "variants/arduino_zero",
+  "vars": {
+    "mcu": "samd21",
+    "arch": "SAMD",
+    "boardDefine": "SAMD_ZERO",
+    "boardId": "zero",
+    "chipDefine": "__SAMD21G18A__",
+    "fCpu": "48000000L",
+    "ideVersion": "10607",
+    "cpuFlag": "-mcpu=cortex-m0plus",
+    "usbVid": "0x2341",
+    "usbPid": "0x804d",
+    "usbProduct": "Arduino Zero",
+    "usbManufacturer": "Arduino LLC",
+    "ldscript": "variants/arduino_zero/linker_scripts/gcc/flash_with_bootloader.ld",
+    "mathLib": "arm_cortexM0l_math",
+    "mathLibDir": "Lib/GCC"
+  },
+  "output": "bin",
+  "flashMax": 262144,
+  "ramMax": 32768,
+  "upload": {
+    "protocol": "bossac",
+    "baud": 115200
+  }
+}

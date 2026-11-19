@@ -1,0 +1,16 @@
+# sample: warn on the phone when the battery runs low
+board esp32
+
+battery = battery_on(analog 35, divider: 2, type: lipo_1s)
+status  = pin 26 as output
+
+every 5 min:
+    show "Battery", battery.percent
+    when battery.percent < 15 %:
+        notify "Charge me! ({battery.percent})"
+        status.blink(1 Hz, on: 100 ms)
+
+test "a low battery asks to be charged":
+    battery.pretend(10 %)
+    advance(100 ms)
+    expect notified "Charge me", "a low battery warns"

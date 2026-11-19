@@ -1,0 +1,26 @@
+# Using an Arduino library
+# Level 5 - Advanced
+#
+# A rainbow on a NeoPixel LED strip, using the Adafruit NeoPixel library straight from Mujard.
+# You learn: 'use' with any Arduino library (pinned to a version), calling it, and a cpp: block for plain C++.
+# You need: a WS2812 / NeoPixel strip of 8 LEDs: DIN to pin 6, 5V and GND. Long strips need their own 5 V supply.
+
+board uno
+use "Adafruit NeoPixel" version "1.12.3"
+
+strip = Adafruit_NeoPixel(8, pin 6, NEO_GRB + NEO_KHZ800)
+
+var hue = 0
+
+at start:
+    strip.begin()
+    strip.setBrightness(40)        # library calls look just like the library's own examples
+
+every 20 ms:
+    hue = (hue + 256) mod 65536    # walk round the colour wheel
+    strip.fill(strip.ColorHSV(hue))
+    strip.show()
+
+cpp:
+    // Anything Mujard can't say yet can be written in C++ here. Mujard doesn't check it, so keep it small.
+    static_assert(sizeof(int) >= 2, "int too small");

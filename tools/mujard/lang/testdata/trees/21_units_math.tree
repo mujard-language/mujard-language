@@ -1,0 +1,25 @@
+(file uno
+  (use mujard "mujard.math" version="" as="")
+  (device trig pin [9] output [] to_end=false)
+  (device echo pin [10] input [] to_end=false)
+  (every 200ms
+    (do (call trig.pulse 10us))
+    (var t = (call echo.measure_pulse timeout:30ms))
+    (if (== t none)
+      (print (text "Nothing in range"))
+    )
+    (else
+      (var distance = (/ (* t 343m/s) 2))
+      (var height = (* distance (call math.sin 30deg)))
+      (print (text "Distance " {(as distance cm)} ", height " {(as height cm)}))
+    )
+  )
+  (test "an echo prints the distance"
+    (do (call echo.pretend 1m))
+    (do (call advance 300ms))
+    (expect (call printed (text "Distance")) (text "a range is reported"))
+    (do (call echo.pretend (- 1m)))
+    (do (call advance 300ms))
+    (expect (call printed (text "Nothing in range")) (text "no echo means no range"))
+  )
+)

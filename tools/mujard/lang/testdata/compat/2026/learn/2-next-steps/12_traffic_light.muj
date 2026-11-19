@@ -1,0 +1,27 @@
+# Traffic light
+# Level 2 - Next steps
+#
+# Red, red + yellow, green, yellow - like a real traffic light.
+# You learn: a task that walks through steps, one after another.
+# You need: a red, a yellow and a green LED (each with a 220 ohm resistor) on pins 10, 11 and 12.
+
+board uno
+
+red    = pin 10 as output
+yellow = pin 11 as output
+green  = pin 12 as output
+
+task lights:
+    while true:
+        red.on()
+        wait 5 s
+        yellow.on()                # red + yellow: get ready
+        wait 1 s
+        red.off()
+        yellow.off()
+        green.on()
+        wait 4 s
+        green.off()
+        yellow.on()
+        wait 1 s
+        yellow.off()

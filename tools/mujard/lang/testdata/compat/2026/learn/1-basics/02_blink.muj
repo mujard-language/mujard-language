@@ -1,0 +1,13 @@
+# Blink
+# Level 1 - Basics
+#
+# The hello-world of hardware: the board's own LED turns on and off.
+# You learn: naming a pin, 'as output', 'every' and toggle().
+# You need: nothing extra - the LED is already on the board (next to pin 13 on an Uno).
+
+board uno
+
+led = pin LED as output            # LED is the built-in LED; you could write pin 13 instead
+
+every 500 ms:                      # twice a second...
+    led.toggle()                   # ...switch the LED: on if it was off, off if it was on

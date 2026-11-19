@@ -1,0 +1,20 @@
+(file esp32
+  (device soil analog [34]  [] to_end=false)
+  (device pump pin [26] output [] to_end=false)
+  (saved waterings = 0)
+  (when (< soil.percent 30%)
+    (do (call pump.on))
+    (+= waterings 1)
+    (do (call log.info (text "Watering (" {waterings} " times so far)")))
+    (after 5s
+      (do (call pump.off))
+    )
+  )
+  (test "dry soil starts the pump"
+    (do (call soil.pretend 15%))
+    (do (call advance 500ms))
+    (expect (call pump.read) (text "dry soil should run the pump"))
+    (do (call advance 5s))
+    (expect (not (call pump.read)) (text "and stop after the watering"))
+  )
+)

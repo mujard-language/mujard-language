@@ -1,0 +1,24 @@
+{
+  "name": "Adafruit MLX90614 Library",
+  "header": "Adafruit_MLX90614.h",
+  "takes": ["i2c"],
+  "classes": {
+    "Adafruit_MLX90614": {
+      "ctors": [{"params": [], "result": "Adafruit_MLX90614"}],
+      "methods": {
+        "begin": {"params": [{"name": "addr", "type": "int", "optional": true}], "result": "bool"},
+        "readObjectTempC": {"params": [], "result": "float"},
+        "readAmbientTempC": {"params": [], "result": "float"},
+        "readObjectTempF": {"params": [], "result": "float"},
+        "readAmbientTempF": {"params": [], "result": "float"},
+        "readEmissivityReg": {"params": [], "result": "int"},
+        "writeEmissivityReg": {"params": [{"name": "ereg", "type": "int"}], "result": "void"},
+        "readEmissivity": {"params": [], "result": "float"},
+        "writeEmissivity": {"params": [{"name": "emissivity", "type": "float"}], "result": "void"}
+      }
+    }
+  },
+  "constants": {
+    "MLX90614_I2CADDR": "int"
+  }
+}

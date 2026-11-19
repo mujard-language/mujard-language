@@ -1,0 +1,16 @@
+# sample: an alarm clock set from the internet
+board esp32
+
+buzzer = pin 25 as output
+
+at start:
+    wifi.connect(secret("home_wifi"))
+    clock.sync(timezone: "Africa/Lagos")
+
+at 07:30:
+    buzzer.melody("C5 E5 G5 C6*2")
+    log.info "Good morning! It is {clock.time} on {clock.date}"
+
+test "the clock program starts clean":
+    advance(100 ms)
+    expect true, "wifi + clock sync set up without error"

@@ -1,0 +1,28 @@
+{
+  "name": "WiFiManager",
+  "header": "WiFiManager.h",
+  "architectures": ["esp8266", "esp32"],
+  "classes": {
+    "WiFiManager": {
+      "ctors": [{"params": [], "result": "WiFiManager"}],
+      "methods": {
+        "autoConnect": {"params": [{"name": "apName", "type": "text", "optional": true}, {"name": "apPassword", "type": "text", "optional": true}], "result": "bool"},
+        "startConfigPortal": {"params": [{"name": "apName", "type": "text", "optional": true}, {"name": "apPassword", "type": "text", "optional": true}], "result": "bool"},
+        "process": {"params": [], "result": "bool"},
+        "resetSettings": {"params": [], "result": "void"},
+        "disconnect": {"params": [], "result": "bool"},
+        "setConfigPortalTimeout": {"params": [{"name": "seconds", "type": "int"}], "result": "void"},
+        "setConnectTimeout": {"params": [{"name": "seconds", "type": "int"}], "result": "void"},
+        "setConnectRetries": {"params": [{"name": "numRetries", "type": "int"}], "result": "void"},
+        "setDebugOutput": {"params": [{"name": "debug", "type": "bool"}], "result": "void"},
+        "setConfigPortalBlocking": {"params": [{"name": "shouldBlock", "type": "bool"}], "result": "void"},
+        "setHostname": {"params": [{"name": "hostname", "type": "text"}], "result": "bool"},
+        "setTitle": {"params": [{"name": "title", "type": "text"}], "result": "void"},
+        "getWiFiSSID": {"params": [{"name": "persistent", "type": "bool", "optional": true}], "result": "text"},
+        "getWiFiPass": {"params": [{"name": "persistent", "type": "bool", "optional": true}], "result": "text"},
+        "setDarkMode": {"params": [{"name": "enable", "type": "bool"}], "result": "void"},
+        "getConfigPortalActive": {"params": [], "result": "bool"}
+      }
+    }
+  }
+}

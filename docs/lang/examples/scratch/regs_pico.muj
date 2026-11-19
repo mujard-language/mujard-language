@@ -1,0 +1,8 @@
+board pico
+use mujard.regs
+
+led = pin 5 as output
+
+at start:
+    regs.SIO_GPIO_OUT_SET.set(regs.SIO_GPIO_OUT_SET.GPIO_OUT_SET)
+    led.on()

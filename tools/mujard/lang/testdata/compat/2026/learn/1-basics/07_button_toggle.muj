@@ -1,0 +1,15 @@
+# Button toggle
+# Level 1 - Basics
+#
+# Each press switches the LED on or off, like a light switch.
+# You learn: events with 'on ... pressed:' - no need to check the button yourself, and presses are debounced.
+# You need: a pushbutton between pin 2 and GND.
+
+board uno
+
+led    = pin LED as output
+button = pin 2 as input pullup
+
+on button.pressed:                 # runs once for every press
+    led.toggle()
+    print "Click!"

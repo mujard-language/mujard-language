@@ -1,0 +1,43 @@
+{
+  "name": "DallasTemperature",
+  "header": "DallasTemperature.h",
+  "classes": {
+    "DallasTemperature": {
+      "ctors": [{"params": [{"name": "wire", "type": "any"}], "result": "DallasTemperature"}],
+      "methods": {
+        "begin": {"params": [], "result": "void"},
+        "setResolution": {"params": [{"name": "res", "type": "any"}, {"name": "addr", "type": "any", "optional": true}], "result": "void"},
+        "getResolution": {"params": [{"name": "addr", "type": "any", "optional": true}], "result": "int"},
+        "getDeviceCount": {"params": [], "result": "int"},
+        "getDS18Count": {"params": [], "result": "int"},
+        "getAddress": {"params": [{"name": "addr", "type": "any"}, {"name": "index", "type": "int"}], "result": "bool"},
+        "requestTemperatures": {"params": [], "result": "bool"},
+        "requestTemperaturesByIndex": {"params": [{"name": "index", "type": "int"}], "result": "bool"},
+        "requestTemperaturesByAddress": {"params": [{"name": "addr", "type": "any"}], "result": "bool"},
+        "getTempC": {"params": [{"name": "addr", "type": "any"}], "result": "float"},
+        "getTempF": {"params": [{"name": "addr", "type": "any"}], "result": "float"},
+        "getTempCByIndex": {"params": [{"name": "index", "type": "int"}], "result": "float"},
+        "getTempFByIndex": {"params": [{"name": "index", "type": "int"}], "result": "float"},
+        "toFahrenheit": {"params": [{"name": "celsius", "type": "float"}], "result": "float"},
+        "toCelsius": {"params": [{"name": "fahrenheit", "type": "float"}], "result": "float"},
+        "setWaitForConversion": {"params": [{"name": "flag", "type": "bool"}], "result": "void"},
+        "getWaitForConversion": {"params": [], "result": "bool"},
+        "setCheckForConversion": {"params": [{"name": "flag", "type": "bool"}], "result": "void"},
+        "isParasitePowerMode": {"params": [], "result": "bool"},
+        "setUserData": {"params": [{"name": "addr", "type": "any"}, {"name": "data", "type": "int"}], "result": "void"},
+        "getUserData": {"params": [{"name": "addr", "type": "any"}], "result": "int"},
+        "isConnected": {"params": [{"name": "addr", "type": "any"}], "result": "bool"},
+        "setHighAlarmTemp": {"params": [{"name": "addr", "type": "any"}, {"name": "celsius", "type": "int"}], "result": "void"},
+        "setLowAlarmTemp": {"params": [{"name": "addr", "type": "any"}, {"name": "celsius", "type": "int"}], "result": "void"},
+        "hasAlarm": {"params": [{"name": "addr", "type": "any", "optional": true}], "result": "bool"},
+        "processAlarms": {"params": [], "result": "void"},
+        "resetAlarmSearch": {"params": [], "result": "void"},
+        "alarmSearch": {"params": [{"name": "addr", "type": "any"}], "result": "bool"}
+      }
+    }
+  },
+  "constants": {
+    "DEVICE_DISCONNECTED_C": "float",
+    "DEVICE_DISCONNECTED_F": "float"
+  }
+}

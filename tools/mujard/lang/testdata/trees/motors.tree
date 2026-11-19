@@ -1,0 +1,16 @@
+(file uno
+  (const top_speed = 800)
+  (var armed = true)
+  (fn reset ()
+    (= armed false)
+  )
+  (fn faster (v:int):int
+    (if (in v (.. 0 top_speed))
+      (return (+ v 100))
+    )
+    (return top_speed)
+  )
+  (fn ready ():bool
+    (return armed)
+  )
+)

@@ -1,0 +1,9 @@
+board unor4
+
+led = pin LED as output
+pot = analog A0
+i2c_dev = pin A4 as input
+
+at start:
+    led.on()
+    print(pot.value)

@@ -1,0 +1,7 @@
+board uno
+use mujard.regs
+
+at start:
+    regs.PORTX.write(1)
+    regs.PORTB.write(999)
+    regs.PORTB.NOPE

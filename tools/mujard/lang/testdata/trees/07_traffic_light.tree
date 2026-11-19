@@ -1,0 +1,28 @@
+(file uno
+  (device red pin [10] output [] to_end=false)
+  (device yellow pin [11] output [] to_end=false)
+  (device green pin [12] output [] to_end=false)
+  (task traffic
+    (while true
+      (do (call red.on))
+      (wait 5s)
+      (do (call yellow.on))
+      (wait 1s)
+      (do (call red.off))
+      (do (call yellow.off))
+      (do (call green.on))
+      (wait 4s)
+      (do (call green.off))
+      (do (call yellow.on))
+      (wait 1s)
+      (do (call yellow.off))
+    )
+  )
+  (test "the light cycles red then green"
+    (do (call advance 3s))
+    (expect (call red.read) (text "red should be up first"))
+    (do (call advance 3500ms))
+    (expect (call green.read) (text "green after red+yellow"))
+    (expect (not (call red.read)) (text "red is off once green is up"))
+  )
+)

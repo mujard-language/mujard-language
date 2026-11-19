@@ -1,0 +1,35 @@
+# Project: an RC car over Bluetooth
+# Level 5 - Advanced
+#
+# A joystick drives, a hold button sounds the horn. Let go - or lose the phone - and it stops.
+board esp32
+use mujard.ble
+
+left_motor = pin 25 as pwm
+right_motor = pin 26 as pwm
+horn_pin = pin 27 as output
+
+var steer = 0 %
+var throttle = 0 %
+var horn = false
+control "Drive", steer, throttle, -100 %..100 %
+control "Horn", horn, hold
+
+at start:
+    ble.start("mujard-car")
+
+every 20 ms:
+    var forward = throttle
+    if forward < 0 %:
+        forward = 0 %
+    var left = forward + steer / 2
+    var right = forward - steer / 2
+    left_motor.write(clamp(left, 0 %..100 %))
+    right_motor.write(clamp(right, 0 %..100 %))
+    if horn:
+        horn_pin.on()
+    else:
+        horn_pin.off()
+
+every 1 s:
+    show "Throttle", throttle

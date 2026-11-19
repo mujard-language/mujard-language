@@ -1,0 +1,4 @@
+# expect: P202 4:1
+board uno
+every 1 s:
+print "tick"

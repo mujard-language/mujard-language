@@ -1,0 +1,40 @@
+# Reaction game
+# Level 4 - Bigger programs
+#
+# Wait for the LED, then press the button as fast as you can. Too early and you lose the round.
+# You learn: stopwatch(), random times, 'wait until' and keeping a best score.
+# You need: an LED on pin 12 (with a 220 ohm resistor) and a pushbutton between pin 2 and GND.
+
+board uno
+
+led    = pin 12 as output
+button = pin 2 as input pullup
+
+var timer = stopwatch()
+var waiting = false                # true while the LED is on and we wait for the press
+var best = 10 s
+
+task game:
+    while true:
+        print "Get ready..."
+        wait random(2 s..5 s)      # nobody can guess when
+        led.on()
+        timer.reset()
+        timer.start()
+        waiting = true
+        wait until not waiting     # the button handler ends the round
+        led.off()
+        wait 2 s
+
+on button.pressed:
+    if not waiting:
+        print "Too early! Wait for the light."
+    else:
+        timer.stop()
+        waiting = false
+        var t = timer.elapsed
+        if t < best:
+            best = t
+            print "{t as ms} - a new best!"
+        else:
+            print "{t as ms} (best {best as ms})"

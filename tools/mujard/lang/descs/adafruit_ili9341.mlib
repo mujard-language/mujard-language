@@ -1,0 +1,64 @@
+{
+  "name": "Adafruit ILI9341",
+  "header": "Adafruit_ILI9341.h",
+  "takes": ["spi"],
+  "classes": {
+    "Adafruit_ILI9341": {
+      "ctors": [
+        {"params": [{"name": "cs", "type": "int"}, {"name": "dc", "type": "int"}, {"name": "rst", "type": "int", "optional": true}], "result": "Adafruit_ILI9341"},
+        {"params": [{"name": "cs", "type": "int"}, {"name": "dc", "type": "int"}, {"name": "mosi", "type": "int"}, {"name": "sclk", "type": "int"}, {"name": "rst", "type": "int"}, {"name": "miso", "type": "int"}], "result": "Adafruit_ILI9341"}
+      ],
+      "methods": {
+        "begin": {"params": [{"name": "freq", "type": "int", "optional": true}, {"name": "spi", "type": "any", "optional": true}], "result": "void"},
+        "setRotation": {"params": [{"name": "rot", "type": "int"}], "result": "void"},
+        "getRotation": {"params": [], "result": "int"},
+        "invertDisplay": {"params": [{"name": "invert", "type": "bool"}], "result": "void"},
+        "scrollTo": {"params": [{"name": "y", "type": "int"}], "result": "void"},
+        "setScrollMargins": {"params": [{"name": "top", "type": "int"}, {"name": "bottom", "type": "int"}], "result": "void"},
+        "setSPISpeed": {"params": [{"name": "freq", "type": "int"}], "result": "void"},
+        "readcommand8": {"params": [{"name": "command", "type": "int"}, {"name": "index", "type": "int", "optional": true}], "result": "int"},
+        "width": {"params": [], "result": "int"},
+        "height": {"params": [], "result": "int"},
+        "fillScreen": {"params": [{"name": "color", "type": "int"}], "result": "void"},
+        "drawPixel": {"params": [{"name": "x", "type": "int"}, {"name": "y", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "drawLine": {"params": [{"name": "x0", "type": "int"}, {"name": "y0", "type": "int"}, {"name": "x1", "type": "int"}, {"name": "y1", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "drawRect": {"params": [{"name": "x", "type": "int"}, {"name": "y", "type": "int"}, {"name": "w", "type": "int"}, {"name": "h", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "fillRect": {"params": [{"name": "x", "type": "int"}, {"name": "y", "type": "int"}, {"name": "w", "type": "int"}, {"name": "h", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "drawCircle": {"params": [{"name": "x0", "type": "int"}, {"name": "y0", "type": "int"}, {"name": "r", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "fillCircle": {"params": [{"name": "x0", "type": "int"}, {"name": "y0", "type": "int"}, {"name": "r", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "drawRoundRect": {"params": [{"name": "x", "type": "int"}, {"name": "y", "type": "int"}, {"name": "w", "type": "int"}, {"name": "h", "type": "int"}, {"name": "r", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "fillRoundRect": {"params": [{"name": "x", "type": "int"}, {"name": "y", "type": "int"}, {"name": "w", "type": "int"}, {"name": "h", "type": "int"}, {"name": "r", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "drawTriangle": {"params": [{"name": "x0", "type": "int"}, {"name": "y0", "type": "int"}, {"name": "x1", "type": "int"}, {"name": "y1", "type": "int"}, {"name": "x2", "type": "int"}, {"name": "y2", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "fillTriangle": {"params": [{"name": "x0", "type": "int"}, {"name": "y0", "type": "int"}, {"name": "x1", "type": "int"}, {"name": "y1", "type": "int"}, {"name": "x2", "type": "int"}, {"name": "y2", "type": "int"}, {"name": "color", "type": "int"}], "result": "void"},
+        "setCursor": {"params": [{"name": "x", "type": "int"}, {"name": "y", "type": "int"}], "result": "void"},
+        "setTextColor": {"params": [{"name": "color", "type": "int"}, {"name": "bg", "type": "int", "optional": true}], "result": "void"},
+        "setTextSize": {"params": [{"name": "s", "type": "int"}, {"name": "sy", "type": "int", "optional": true}], "result": "void"},
+        "setTextWrap": {"params": [{"name": "wrap", "type": "bool"}], "result": "void"},
+        "setFont": {"params": [{"name": "font", "type": "any"}], "result": "void"},
+        "print": {"params": [{"name": "value", "type": "any"}, {"name": "base", "type": "any", "optional": true}], "result": "int"},
+        "println": {"params": [{"name": "value", "type": "any", "optional": true}], "result": "int"}
+      }
+    }
+  },
+  "constants": {
+    "ILI9341_BLACK": "int",
+    "ILI9341_NAVY": "int",
+    "ILI9341_DARKGREEN": "int",
+    "ILI9341_DARKCYAN": "int",
+    "ILI9341_MAROON": "int",
+    "ILI9341_PURPLE": "int",
+    "ILI9341_OLIVE": "int",
+    "ILI9341_LIGHTGREY": "int",
+    "ILI9341_DARKGREY": "int",
+    "ILI9341_BLUE": "int",
+    "ILI9341_GREEN": "int",
+    "ILI9341_CYAN": "int",
+    "ILI9341_RED": "int",
+    "ILI9341_MAGENTA": "int",
+    "ILI9341_YELLOW": "int",
+    "ILI9341_WHITE": "int",
+    "ILI9341_ORANGE": "int",
+    "ILI9341_GREENYELLOW": "int",
+    "ILI9341_PINK": "int"
+  }
+}

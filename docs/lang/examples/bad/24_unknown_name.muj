@@ -1,0 +1,4 @@
+# expect: C301 4:5
+board uno
+at start:
+    lde.on()

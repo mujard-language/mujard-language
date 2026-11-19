@@ -1,0 +1,24 @@
+# Exercises the async http contract end to end: http.get in a task waits without stopping the rest of the
+# program, and on the simulated board (no Wi-Fi answers) the reply says "no answer" instead of hanging.
+board esp32
+
+var ticks = 0
+
+at start:
+    wifi.connect(secret("wifi"))
+
+task fetcher:
+    while true:
+        var reply = http.get("http://status.example.com/today")
+        print "status {reply.status} ok {reply.ok}"
+        print "json ok {reply.json.ok}"
+        wait 1 min
+
+every 100 ms:
+    ticks += 1
+
+test "the task waits but the loop keeps running":
+    advance(2 s)
+    expect ticks > 10, "the every-block should have run meanwhile"
+    expect printed("status -1")
+    expect printed("json ok false")

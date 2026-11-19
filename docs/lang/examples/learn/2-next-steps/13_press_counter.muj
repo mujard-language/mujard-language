@@ -1,0 +1,20 @@
+# Press counter
+# Level 2 - Next steps
+#
+# Counts button presses and celebrates every tenth one.
+# You learn: changing a variable in an event, 'mod' (the remainder) and text with values inside.
+# You need: a pushbutton between pin 2 and GND.
+
+board uno
+
+button = pin 2 as input pullup
+led    = pin LED as output
+
+var presses = 0
+
+on button.pressed:
+    presses += 1
+    print "Pressed {presses} times"
+    if presses mod 10 == 0:        # 10, 20, 30...
+        print "That's {presses}! Well done."
+        led.blink(10 Hz, for: 1 s)

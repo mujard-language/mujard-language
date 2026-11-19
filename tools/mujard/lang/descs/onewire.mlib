@@ -1,0 +1,27 @@
+{
+  "name": "OneWire",
+  "header": "OneWire.h",
+  "classes": {
+    "OneWire": {
+      "ctors": [{"params": [{"name": "pin", "type": "int"}], "result": "OneWire"}],
+      "methods": {
+        "reset": {"params": [], "result": "int"},
+        "select": {"params": [{"name": "rom", "type": "any"}], "result": "void"},
+        "skip": {"params": [], "result": "void"},
+        "write": {"params": [{"name": "v", "type": "int"}, {"name": "power", "type": "int", "optional": true}], "result": "void"},
+        "write_bytes": {"params": [{"name": "buf", "type": "any"}, {"name": "count", "type": "int"}, {"name": "power", "type": "int", "optional": true}], "result": "void"},
+        "read": {"params": [], "result": "int"},
+        "read_bit": {"params": [], "result": "int"},
+        "read_bytes": {"params": [{"name": "buf", "type": "any"}, {"name": "count", "type": "int"}], "result": "void"},
+        "write_bit": {"params": [{"name": "v", "type": "int"}], "result": "void"},
+        "depower": {"params": [], "result": "void"},
+        "reset_search": {"params": [], "result": "void"},
+        "target_search": {"params": [{"name": "family_code", "type": "int"}], "result": "void"},
+        "search": {"params": [{"name": "addr", "type": "any"}, {"name": "search_alarm", "type": "bool", "optional": true}], "result": "bool"},
+        "crc8": {"params": [{"name": "addr", "type": "any"}, {"name": "len", "type": "int"}], "result": "int"},
+        "crc16": {"params": [{"name": "input", "type": "any"}, {"name": "len", "type": "int"}, {"name": "crc", "type": "int", "optional": true}], "result": "int"},
+        "check_crc16": {"params": [{"name": "input", "type": "any"}, {"name": "len", "type": "int"}, {"name": "inverted_crc", "type": "any"}, {"name": "crc", "type": "int", "optional": true}], "result": "bool"}
+      }
+    }
+  }
+}

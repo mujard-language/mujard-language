@@ -1,0 +1,21 @@
+# A task on the second core hands results to the main one through a queue.
+board esp32
+use mujard.queue
+
+led = pin GPIO25 as output
+
+q = Queue(int, 8)
+
+task counter on core 1:
+    while true:
+        for n in 1..=10:
+            q.push(n)
+            wait 200 ms
+
+every 100 ms:
+    while q.available:
+        print "core 1 says {q.pop()}"
+
+every 1 s:
+    led.toggle()
+    print "main core alive ({board.cores} cores)"

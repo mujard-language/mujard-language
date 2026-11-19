@@ -1,0 +1,65 @@
+# Exercises the Milestone D features end to end on the simulated board:
+# serial.read_line and uart read_line in tasks, store.load without a default, int.bytes,
+# spi.device/transfer, mujard.rtc as the clock's source, and the test hooks serial.pretend /
+# <uart>.pretend / answer.
+board uno
+use mujard.uart
+use mujard.spi
+use mujard.rtc
+
+gps = Uart(rx: pin 4, tx: pin 3, speed: 9600 baud)
+radio = spi.device(cs: pin 10, speed: 1 MHz, mode: 0)
+
+var got = ""
+var gpsline = ""
+var stored: int? = none
+var data: list[int, 8] = [1, 2, 3]
+
+at start:
+    stored = store.load("count")
+    print "stored is none: {stored == none}"
+    var n = 16909060
+    var bytes = n.bytes
+    print "bytes {bytes[0]} {bytes[1]} {bytes[2]} {bytes[3]}"
+    var ans = radio.transfer(data)
+    print "spi back {ans.length} first {ans[0]}"
+    rtc.set(2026, 10, 25, 12, 30)
+    clock.source(rtc)
+    var t = clock.time
+    if t != none:
+        print "clock {t.hour}:{t.minute}"
+
+task reader:
+    while true:
+        var line = serial.read_line()
+        if line != none:
+            got = line
+            print "serial got {line}"
+
+task gps_reader:
+    while true:
+        var l = gps.read_line()
+        if l != none:
+            gpsline = l
+            print "gps got {l}"
+
+task asker:
+    var ok = ask "Continue?"
+    print "answered {ok}"
+
+test "serial.read_line in a task":
+    serial.pretend("hello board")
+    advance(100 ms)
+    expect got == "hello board", "the task should have taken the line"
+    expect printed("serial got hello board")
+
+test "uart read_line in a task":
+    gps.pretend("$GPGGA,1200")
+    advance(100 ms)
+    expect gpsline == "$GPGGA,1200", "the task should have taken the uart line"
+
+test "answer finishes the ask":
+    advance(50 ms)
+    answer true
+    advance(50 ms)
+    expect printed("answered true")

@@ -1,0 +1,18 @@
+(file uno
+  (use mujard "mujard.shift" version="" as="")
+  (device leds (call shift.out_register data:(pin 11) clock:(pin 12) latch:(pin 8)))
+  (var pattern = 0b0000_0001)
+  (every 100ms
+    (do (call leds.write pattern))
+    (= pattern (<< pattern 1))
+    (if (> pattern 0b1000_0000)
+      (= pattern 0b0000_0001)
+    )
+  )
+  (test "the light runs along the register"
+    (do (call advance 250ms))
+    (expect (> pattern 1) (text "the bit marches along"))
+    (do (call advance 800ms))
+    (expect (<= pattern 128) (text "it wraps back around"))
+  )
+)

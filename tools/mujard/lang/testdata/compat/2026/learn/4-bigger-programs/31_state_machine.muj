@@ -1,0 +1,45 @@
+# A state machine: climate control
+# Level 4 - Bigger programs
+#
+# The program is always in one of three modes - idle, heating or cooling - and switches between them.
+# You learn: enum (a fixed set of names), struct (values that belong together) and match.
+# You need: a TMP36 on A0, an LED for the heater on pin 7 and an LED for the cooler on pin 8.
+
+board uno
+
+enum Mode: idle, heating, cooling
+
+struct Reading:
+    value: temperature
+    taken: time
+
+sensor = analog A0
+heater = pin 7 as output
+cooler = pin 8 as output
+
+var mode = Mode.idle
+var last = Reading(value: 20 C, taken: now())
+
+fn next_mode(t: temperature) -> Mode:
+    if t < 18 C:
+        return Mode.heating
+    if t > 26 C:
+        return Mode.cooling
+    return Mode.idle
+
+every 2 s:
+    last = Reading(value: scale(sensor.volts, 0.5 V..1.5 V, 0 C..100 C), taken: now())
+    var new_mode = next_mode(last.value)
+    if new_mode != mode:
+        mode = new_mode
+        print "Now {mode} at {round(last.value, 1)}"
+    match mode:                    # match must cover every mode (or have an else)
+        Mode.idle:
+            heater.off()
+            cooler.off()
+        Mode.heating:
+            heater.on()
+            cooler.off()
+        Mode.cooling:
+            heater.off()
+            cooler.on()

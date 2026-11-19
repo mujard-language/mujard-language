@@ -1,0 +1,33 @@
+{
+  "name": "Adafruit NeoPixel",
+  "header": "Adafruit_NeoPixel.h",
+  "classes": {
+    "Adafruit_NeoPixel": {
+      "ctors": [{"params": [{"name": "n", "type": "int"}, {"name": "pin", "type": "int", "optional": true}, {"name": "type", "type": "int", "optional": true}], "result": "Adafruit_NeoPixel"}],
+      "methods": {
+        "begin": {"params": [], "result": "void"},
+        "show": {"params": [], "result": "void"},
+        "setPixelColor": {"params": [{"name": "n", "type": "int"}, {"name": "r_or_color", "type": "int"}, {"name": "g", "type": "int", "optional": true}, {"name": "b", "type": "int", "optional": true}, {"name": "w", "type": "int", "optional": true}], "result": "void"},
+        "fill": {"params": [{"name": "color", "type": "int", "optional": true}, {"name": "first", "type": "int", "optional": true}, {"name": "count", "type": "int", "optional": true}], "result": "void"},
+        "clear": {"params": [], "result": "void"},
+        "setBrightness": {"params": [{"name": "b", "type": "int"}], "result": "void"},
+        "getBrightness": {"params": [], "result": "int"},
+        "setPin": {"params": [{"name": "pin", "type": "int"}], "result": "void"},
+        "getPin": {"params": [], "result": "int"},
+        "numPixels": {"params": [], "result": "int"},
+        "getPixelColor": {"params": [{"name": "n", "type": "int"}], "result": "int"},
+        "Color": {"params": [{"name": "r", "type": "int"}, {"name": "g", "type": "int"}, {"name": "b", "type": "int"}, {"name": "w", "type": "int", "optional": true}], "result": "int"},
+        "ColorHSV": {"params": [{"name": "hue", "type": "int"}, {"name": "sat", "type": "int", "optional": true}, {"name": "val", "type": "int", "optional": true}], "result": "int"},
+        "gamma32": {"params": [{"name": "x", "type": "int"}], "result": "int"}
+      }
+    }
+  },
+  "constants": {
+    "NEO_GRB": "int",
+    "NEO_RGB": "int",
+    "NEO_RGBW": "int",
+    "NEO_GRBW": "int",
+    "NEO_KHZ800": "int",
+    "NEO_KHZ400": "int"
+  }
+}

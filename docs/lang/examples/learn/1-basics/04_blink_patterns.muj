@@ -1,0 +1,18 @@
+# Blink patterns and Morse code
+# Level 1 - Basics
+#
+# The LED blinks by itself, then switches to SOS in Morse code after 5 seconds.
+# You learn: blink(), pattern() and 'after' - the LED keeps going in the background.
+# You need: nothing extra.
+
+board uno
+
+led = pin LED as output
+
+at start:
+    led.blink(4 Hz)                # 4 times a second, with no timing code of your own
+    print "Blinking fast"
+
+after 5 s:                         # once, 5 seconds after start
+    led.pattern("SOS")             # Morse code: ... --- ...
+    print "Now sending SOS"

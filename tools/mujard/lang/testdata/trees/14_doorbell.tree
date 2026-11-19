@@ -1,0 +1,17 @@
+(file uno
+  (device bell pin [2] input [pullup] to_end=false)
+  (device buzzer pin [8] output [] to_end=false)
+  (on bell.pressed
+    (do (call buzzer.melody (text "E5 C5 - E5 C5") tempo:140))
+  )
+  (on bell.double_clicked
+    (do (call buzzer.stop))
+  )
+  (test "a ring and a double-click run clean"
+    (do (call bell.pretend 1))
+    (do (call advance 100ms))
+    (do (call bell.pretend 0))
+    (do (call advance 2000ms))
+    (expect true (text "the melody should play without error"))
+  )
+)

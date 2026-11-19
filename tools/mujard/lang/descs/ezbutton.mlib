@@ -1,0 +1,25 @@
+{
+  "name": "ezButton",
+  "header": "ezButton.h",
+  "classes": {
+    "ezButton": {
+      "ctors": [{"params": [{"name": "pin", "type": "int"}, {"name": "mode", "type": "int", "optional": true}], "result": "ezButton"}],
+      "methods": {
+        "setDebounceTime": {"params": [{"name": "time", "type": "int"}], "result": "void"},
+        "getState": {"params": [], "result": "int"},
+        "getStateRaw": {"params": [], "result": "int"},
+        "isPressed": {"params": [], "result": "bool"},
+        "isReleased": {"params": [], "result": "bool"},
+        "setCountMode": {"params": [{"name": "mode", "type": "int"}], "result": "void"},
+        "getCount": {"params": [], "result": "int"},
+        "resetCount": {"params": [], "result": "void"},
+        "loop": {"params": [], "result": "void"}
+      }
+    }
+  },
+  "constants": {
+    "COUNT_FALLING": "int",
+    "COUNT_RISING": "int",
+    "COUNT_BOTH": "int"
+  }
+}

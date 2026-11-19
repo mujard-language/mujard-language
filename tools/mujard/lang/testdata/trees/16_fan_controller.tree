@@ -1,0 +1,26 @@
+(file esp32
+  (device fan pin [25] pwm [] to_end=false)
+  (device temp analog [34]  [] to_end=false)
+  (var auto = true)
+  (var manual_speed = 50%)
+  (control "Automatic" auto _)
+  (control "Manual speed" manual_speed (.. 0% 100%))
+  (limit fan (.. 20% 90%))
+  (at start
+    (do (call fan.frequency 25kHz))
+  )
+  (every 1s
+    (var t = (call scale temp.volts (.. 0.5V 1.5V) (.. 0C 100C)))
+    (if auto
+      (do (call fan.write (call scale t (.. 25C 45C) (.. 0% 100%))))
+    )
+    (else
+      (do (call fan.write manual_speed))
+    )
+  )
+  (test "the auto fan follows the temperature"
+    (do (call temp.pretend 1.2V))
+    (do (call advance 1200ms))
+    (expect true (text "the auto fan loop runs without error"))
+  )
+)

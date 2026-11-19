@@ -1,0 +1,13 @@
+# sample: blink the built-in LED
+board uno
+
+led = pin LED as output
+
+every 500 ms:
+    led.toggle()
+
+test "blinks on and off":
+    advance(200 ms)
+    expect led.read(), "LED should be on after the first tick"
+    advance(400 ms)
+    expect not led.read(), "LED should be off after the second"

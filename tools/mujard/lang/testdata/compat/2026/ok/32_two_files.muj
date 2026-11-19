@@ -1,0 +1,24 @@
+# sample: share code between files - 'import motors' brings in motors.muj's names as motors.<name>
+board uno
+import motors
+
+led = pin 13 as output
+
+var speed = motors.top_speed
+
+at start:
+    motors.reset()
+
+every 500 ms:
+    speed = motors.faster(speed)
+    led.toggle()
+
+task guard:
+    wait until motors.ready()
+    led.blink(4 Hz)
+
+test "the imported helpers drive the toggle":
+    advance(100 ms)
+    expect led.read(), "the first toggle is on"
+    advance(500 ms)
+    expect not led.read(), "the second is off"

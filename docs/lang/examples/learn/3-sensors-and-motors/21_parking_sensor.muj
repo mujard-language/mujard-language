@@ -1,0 +1,25 @@
+# Parking sensor
+# Level 3 - Sensors and motors
+#
+# Beeps faster the closer you get, and keeps beeping when you are very close - like a car's parking sensor.
+# You learn: scale() between different units (centimetres into milliseconds) and clamp().
+# You need: an HC-SR04 (Trig pin 7, Echo pin 8) and a piezo buzzer from pin 3 to GND.
+
+board uno
+use mujard.ultrasonic
+
+sonar  = Ultrasonic(trig: pin 7, echo: pin 8)
+buzzer = pin 3 as output
+
+task beeper:
+    while true:
+        var d = sonar.distance()
+        if d == none or d > 100 cm:
+            wait 200 ms            # far away: stay quiet
+        elif d < 10 cm:
+            buzzer.tone(1 kHz, 100 ms)
+            wait 100 ms            # very close: one long beep
+        else:
+            var gap = scale(clamp(d, 10 cm..100 cm), 10 cm..100 cm, 50 ms..800 ms)
+            buzzer.tone(1 kHz, 50 ms)
+            wait 50 ms + gap

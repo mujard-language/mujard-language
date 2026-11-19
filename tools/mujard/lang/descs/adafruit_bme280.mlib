@@ -1,0 +1,28 @@
+{
+  "name": "Adafruit BME280 Library",
+  "header": "Adafruit_BME280.h",
+  "takes": ["i2c"],
+  "classes": {
+    "Adafruit_BME280": {
+      "ctors": [{"params": [], "result": "Adafruit_BME280"}],
+      "methods": {
+        "begin": {"params": [{"name": "addr", "type": "int", "optional": true}, {"name": "wire", "type": "any", "optional": true}], "result": "bool"},
+        "init": {"params": [], "result": "bool"},
+        "readTemperature": {"params": [], "result": "float"},
+        "readPressure": {"params": [], "result": "float"},
+        "readHumidity": {"params": [], "result": "float"},
+        "readAltitude": {"params": [{"name": "seaLevel", "type": "float"}], "result": "float"},
+        "seaLevelForAltitude": {"params": [{"name": "altitude", "type": "float"}, {"name": "pressure", "type": "float"}], "result": "float"},
+        "setSampling": {"params": [{"name": "mode", "type": "int", "optional": true}, {"name": "tempSampling", "type": "int", "optional": true}, {"name": "pressSampling", "type": "int", "optional": true}, {"name": "humSampling", "type": "int", "optional": true}, {"name": "filter", "type": "int", "optional": true}, {"name": "duration", "type": "int", "optional": true}], "result": "void"},
+        "setTemperatureCompensation": {"params": [{"name": "adjustment", "type": "float"}], "result": "void"},
+        "getTemperatureCompensation": {"params": [], "result": "float"},
+        "takeForcedMeasurement": {"params": [], "result": "void"},
+        "sensorID": {"params": [], "result": "int"}
+      }
+    }
+  },
+  "constants": {
+    "BME280_ADDRESS": "int",
+    "BME280_ADDRESS_ALTERNATE": "int"
+  }
+}

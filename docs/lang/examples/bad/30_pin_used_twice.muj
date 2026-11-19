@@ -1,0 +1,4 @@
+# expect: B407 4:12
+board uno
+led  = pin 13 as output
+buzz = pin 13 as output

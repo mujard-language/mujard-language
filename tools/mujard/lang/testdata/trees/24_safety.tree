@@ -1,0 +1,26 @@
+(file uno
+  (device heater pin [7] output [] to_end=false)
+  (device sensor analog [A0]  [] to_end=false)
+  (safe_state ""
+    (do (call heater.off))
+  )
+  (at start
+    (do (call watchdog 2s))
+  )
+  (every 1s
+    (var t = (call scale sensor.volts (.. 0.5V 1.5V) (.. 0C 100C)))
+    (expect (< t 85C) (text "Heater too hot"))
+    (do (call heater.write (call hysteresis t on:60C off:65C)))
+    (if (> board.uptime 12h)
+      (do (call board.halt (text "Twelve-hour limit reached")))
+    )
+  )
+  (test "a cold room heats, a hot one halts"
+    (do (call sensor.pretend 0.7V))
+    (do (call advance 1200ms))
+    (expect (call heater.read) (text "below the band the heater runs"))
+    (do (call sensor.pretend 1.9V))
+    (do (call advance 1200ms))
+    (expect (call stopped) (text "over 85 C the guard halts it"))
+  )
+)

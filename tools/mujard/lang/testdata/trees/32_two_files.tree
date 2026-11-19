@@ -1,0 +1,22 @@
+(file uno
+  (import motors)
+  (device led pin [13] output [] to_end=false)
+  (var speed = motors.top_speed)
+  (at start
+    (do (call motors.reset))
+  )
+  (every 500ms
+    (= speed (call motors.faster speed))
+    (do (call led.toggle))
+  )
+  (task guard
+    (wait-until (call motors.ready))
+    (do (call led.blink 4Hz))
+  )
+  (test "the imported helpers drive the toggle"
+    (do (call advance 100ms))
+    (expect (call led.read) (text "the first toggle is on"))
+    (do (call advance 500ms))
+    (expect (not (call led.read)) (text "the second is off"))
+  )
+)

@@ -1,0 +1,51 @@
+{
+  "schema": "mujard-board.v1",
+  "id": "mujard:esp32s3:mj1",
+  "short": "mj1",
+  "name": "Mujard One",
+  "vendor": "mujard",
+  "family": "esp32",
+  "chip": "espressif:esp32s3",
+  "aliases": ["mujard-one"],
+  "package": "espressif-esp32",
+  "core": "cores/esp32",
+  "variant": "variants/esp32s3",
+  "vars": {
+    "tarch": "xtensa",
+    "target": "esp32s3",
+    "mcu": "esp32s3",
+    "arch": "ESP32",
+    "boardDefine": "ESP32S3_DEV",
+    "fCpu": "240000000L",
+    "ideVersion": "10819",
+    "codeDebug": "0",
+    "boot": "qio",
+    "bootFreq": "80m",
+    "flashMode": "dio",
+    "flashFreq": "80m",
+    "flashSize": "4MB",
+    "psramType": "qspi",
+    "partitions": "default",
+    "usbMode": "1",
+    "cdcOnBoot": "0",
+    "mscOnBoot": "0",
+    "dfuOnBoot": "0",
+    "bootloaderAddr": "0x0"
+  },
+  "options": {
+    "usbMode": {
+      "choices": ["hwcdc", "tinyusb"],
+      "default": "hwcdc",
+      "vars": { "hwcdc": { "usbMode": "1" }, "tinyusb": { "usbMode": "0" } }
+    },
+    "cdcOnBoot": { "choices": ["0", "1"], "default": "0" }
+  },
+  "output": "bin",
+  "flashMax": 1310720,
+  "ramMax": 327680,
+  "upload": {
+    "protocol": "esptool",
+    "baud": 921600,
+    "note": "first-party board - spec only, not yet built"
+  }
+}

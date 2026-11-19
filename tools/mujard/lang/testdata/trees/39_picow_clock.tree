@@ -1,0 +1,25 @@
+(file picow
+  (at start
+    (do (call wifi.connect (call secret (text "home_wifi"))))
+    (do (call clock.sync timezone:(text "Europe/London")))
+  )
+  (on wifi.joined
+    (do (call log.info (text "Wi-Fi is up")))
+  )
+  (on wifi.lost
+    (do (call log.warn (text "Wi-Fi lost")))
+  )
+  (every 1min
+    (var now = clock.time)
+    (if (!= now none)
+      (print (text "It is " {now.hour} ":" {now.minute}))
+    )
+  )
+  (at 12:00
+    (print (text "Lunch time"))
+  )
+  (test "the clock program starts clean"
+    (do (call advance 100ms))
+    (expect true (text "wifi + clock sync set up without error"))
+  )
+)

@@ -1,0 +1,20 @@
+{
+  "name": "TM1637",
+  "header": "TM1637Display.h",
+  "classes": {
+    "TM1637Display": {
+      "ctors": [
+        {"params": [{"name": "clk", "type": "int"}, {"name": "dio", "type": "int"}, {"name": "bitDelay", "type": "int", "optional": true}], "result": "TM1637Display"}
+      ],
+      "methods": {
+        "setBrightness": {"params": [{"name": "brightness", "type": "int"}, {"name": "on", "type": "bool", "optional": true}], "result": "void"},
+        "setSegments": {"params": [{"name": "segments", "type": "any"}, {"name": "length", "type": "int", "optional": true}, {"name": "pos", "type": "int", "optional": true}], "result": "void"},
+        "clear": {"params": [], "result": "void"},
+        "showNumberDec": {"params": [{"name": "num", "type": "int"}, {"name": "leading_zero", "type": "bool", "optional": true}, {"name": "length", "type": "int", "optional": true}, {"name": "pos", "type": "int", "optional": true}], "result": "void"},
+        "showNumberDecEx": {"params": [{"name": "num", "type": "int"}, {"name": "dots", "type": "int", "optional": true}, {"name": "leading_zero", "type": "bool", "optional": true}, {"name": "length", "type": "int", "optional": true}, {"name": "pos", "type": "int", "optional": true}], "result": "void"},
+        "showNumberHexEx": {"params": [{"name": "num", "type": "int"}, {"name": "dots", "type": "int", "optional": true}, {"name": "leading_zero", "type": "bool", "optional": true}, {"name": "length", "type": "int", "optional": true}, {"name": "pos", "type": "int", "optional": true}], "result": "void"},
+        "encodeDigit": {"params": [{"name": "digit", "type": "int"}], "result": "int"}
+      }
+    }
+  }
+}

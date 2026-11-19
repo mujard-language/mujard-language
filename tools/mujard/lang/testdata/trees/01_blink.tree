@@ -1,0 +1,12 @@
+(file uno
+  (device led pin [LED] output [] to_end=false)
+  (every 500ms
+    (do (call led.toggle))
+  )
+  (test "blinks on and off"
+    (do (call advance 200ms))
+    (expect (call led.read) (text "LED should be on after the first tick"))
+    (do (call advance 400ms))
+    (expect (not (call led.read)) (text "LED should be off after the second"))
+  )
+)

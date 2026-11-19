@@ -1,0 +1,18 @@
+# sample: a doorbell that plays a tune
+board uno
+
+bell   = pin 2 as input pullup
+buzzer = pin 8 as output
+
+on bell.pressed:
+    buzzer.melody("E5 C5 - E5 C5", tempo: 140)
+
+on bell.double_clicked:
+    buzzer.stop()
+
+test "a ring and a double-click run clean":
+    bell.pretend(1)
+    advance(100 ms)
+    bell.pretend(0)
+    advance(2000 ms)
+    expect true, "the melody should play without error"

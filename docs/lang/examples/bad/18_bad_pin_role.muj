@@ -1,0 +1,3 @@
+# expect: P209 3:17
+board uno
+led = pin 13 as outptu

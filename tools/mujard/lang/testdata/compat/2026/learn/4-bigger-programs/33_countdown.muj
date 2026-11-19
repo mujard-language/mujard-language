@@ -1,0 +1,30 @@
+# Countdown with start and stop
+# Level 4 - Bigger programs
+#
+# Press start for a 10-second countdown to lift-off; press abort to stop it.
+# You learn: controlling a task from events with start(), stop() and restart(), and counting down.
+# You need: buttons between pin 2 (start) and GND and pin 3 (abort) and GND, and a piezo buzzer on pin 8.
+
+board uno
+
+start_button = pin 2 as input pullup
+abort_button = pin 3 as input pullup
+buzzer       = pin 8 as output
+
+task countdown:
+    for n in 10..=1:               # 10, 9, ... 1
+        print n
+        buzzer.tone(1 kHz, 50 ms)
+        wait 1 s
+    print "Lift-off!"
+    buzzer.tone(2 kHz, 1 s)
+
+at start:
+    countdown.stop()               # tasks start by themselves; this one waits for the button
+
+on start_button.pressed:
+    countdown.restart()            # from 10 again, even if it was already running
+
+on abort_button.pressed:
+    countdown.stop()
+    print "Aborted"

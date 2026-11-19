@@ -1,0 +1,28 @@
+# Safety first: a heater that can't run away
+# Level 5 - Advanced
+#
+# A heater controller with every safety net Mujard has.
+# You learn: safe_state, expect, limit, watchdog() and board.halt().
+# You need: a TMP36 on A0 and an LED (standing in for a heater) on pin 9 with a 220 ohm resistor.
+
+board uno
+
+sensor = analog A0
+heater = pin 9 as pwm
+
+limit heater to 0 %..80 %          # every write is clamped: even a bug can't go over 80 %
+
+safe_state:                        # runs at start-up and whenever something goes wrong
+    heater.write(0 %)
+
+at start:
+    watchdog(2 s)                  # restart the board if the program ever freezes for 2 s
+    log.info "Heater controller started on {board.name}"
+
+every 1 s:
+    var t = scale(sensor.volts, 0.5 V..1.5 V, 0 C..100 C)
+    expect t > -20 C, "Sensor unplugged?"           # a failed expect runs safe_state and halts
+    expect t < 85 C, "Too hot"
+    heater.write(scale(clamp(t, 40 C..60 C), 40 C..60 C, 100 %..0 %))
+    if board.uptime > 12 h:
+        board.halt("Twelve-hour limit reached")      # stop on purpose, safely

@@ -1,0 +1,6 @@
+# expect: P212 5:15
+board uno
+var t = 25
+at start:
+    if 20 < t < 30:
+        print "ok"

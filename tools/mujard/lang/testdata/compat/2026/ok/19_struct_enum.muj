@@ -1,0 +1,44 @@
+# sample: a climate controller with an enum and a struct
+board uno
+
+enum Mode: idle, heating, cooling
+
+struct Reading:
+    value: temperature
+    taken: time
+
+heater = pin 7 as output
+cooler = pin 8 as output
+sensor = analog A0
+
+var mode = Mode.idle
+var last = Reading(value: 20 C, taken: now())
+
+every 2 s:
+    last = Reading(value: scale(sensor.volts, 0.5 V..1.5 V, 0 C..100 C), taken: now())
+    if last.value < 18 C:
+        mode = Mode.heating
+    elif last.value > 26 C:
+        mode = Mode.cooling
+    else:
+        mode = Mode.idle
+    match mode:
+        Mode.idle:
+            heater.off()
+            cooler.off()
+        Mode.heating:
+            heater.on()
+            cooler.off()
+        Mode.cooling:
+            heater.off()
+            cooler.on()
+
+test "a cold reading switches to heating":
+    sensor.pretend(0.5 V)
+    advance(2500 ms)
+    expect mode == Mode.heating, "below 18 C the heater runs"
+    expect heater.read(), "and the heater is on"
+    sensor.pretend(1.4 V)
+    advance(2500 ms)
+    expect mode == Mode.cooling, "a hot reading switches to cooling"
+    expect cooler.read(), "and the cooler is on"

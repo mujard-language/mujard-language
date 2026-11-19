@@ -1,0 +1,25 @@
+{
+  "name": "Adafruit INA219",
+  "header": "Adafruit_INA219.h",
+  "takes": ["i2c"],
+  "classes": {
+    "Adafruit_INA219": {
+      "ctors": [{"params": [{"name": "addr", "type": "int", "optional": true}], "result": "Adafruit_INA219"}],
+      "methods": {
+        "begin": {"params": [], "result": "bool"},
+        "setCalibration_32V_2A": {"params": [], "result": "void"},
+        "setCalibration_32V_1A": {"params": [], "result": "void"},
+        "setCalibration_16V_400mA": {"params": [], "result": "void"},
+        "getBusVoltage_V": {"params": [], "result": "float"},
+        "getShuntVoltage_mV": {"params": [], "result": "float"},
+        "getCurrent_mA": {"params": [], "result": "float"},
+        "getPower_mW": {"params": [], "result": "float"},
+        "powerSave": {"params": [{"name": "on", "type": "bool"}], "result": "void"},
+        "success": {"params": [], "result": "bool"}
+      }
+    }
+  },
+  "constants": {
+    "INA219_ADDRESS": "int"
+  }
+}

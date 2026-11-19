@@ -1,0 +1,29 @@
+# Smart signals
+# Level 4 - Bigger programs
+#
+# Built-ins that remember earlier values for you, so you don't need extra variables.
+# You learn: smooth(), between(), rising(), falling(), changed() and peak().
+# You need: a TMP36 on A0 and an LED for the fan on pin 7.
+
+board uno
+
+sensor = analog A0
+fan    = pin 7 as output
+
+var warmest = 0 C
+
+every 500 ms:
+    var t = scale(smooth(sensor.volts, 10), 0.5 V..1.5 V, 0 C..100 C)   # the average of the last 10 readings
+    warmest = peak(t, 1 min)                # the highest in the last minute
+    if rising(t > 30 C):                    # once, when it gets hot
+        fan.on()
+        print "Hot - fan on"
+    if falling(t > 28 C):                   # once, when it has cooled down again
+        fan.off()
+        print "Cooled down - fan off"
+    var comfy = between(t, 20 C..26 C)      # the ends are included
+    if changed(comfy):                      # only when it switches
+        print "Comfortable: {comfy}"
+
+every 10 s:
+    print "Warmest in the last minute: {round(warmest, 1)}"

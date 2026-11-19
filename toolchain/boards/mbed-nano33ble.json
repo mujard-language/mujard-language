@@ -1,0 +1,36 @@
+{
+  "schema": "mujard-board.v1",
+  "id": "arduino:mbed_nano:nano33ble",
+  "short": "nano33ble",
+  "name": "Arduino Nano 33 BLE (nRF52840)",
+  "vendor": "arduino",
+  "family": "mbed",
+  "chip": "nordic:nrf52840",
+  "aliases": ["nrf52840", "ARDUINO_NANO33BLE"],
+  "package": "arduino-mbed",
+  "core": "cores/arduino",
+  "variant": "variants/ARDUINO_NANO33BLE",
+  "vars": {
+    "mcu": "nrf52840",
+    "arch": "MBED_NANO",
+    "boardDefine": "ARDUINO_NANO33BLE",
+    "boardId": "nano33ble",
+    "archChipDefine": "ARDUINO_ARCH_NRF52840",
+    "fCpu": "64000000",
+    "ideVersion": "10607",
+    "cpuFlag": "-mcpu=cortex-m4",
+    "floatFlags": "-mfloat-abi=softfp -mfpu=fpv4-sp-d16",
+    "definesFile": "defines.txt",
+    "includesFile": "includes.txt",
+    "ldflagsFile": "ldflags.txt",
+    "ldscriptIn": "linker_script.ld",
+    "variantLibs": "libs/libmbed.a libs/libcc_310_core.a libs/libcc_310_ext.a libs/libcc_310_trng.a"
+  },
+  "output": "bin",
+  "flashMax": 983040,
+  "ramMax": 262144,
+  "upload": {
+    "protocol": "bossac",
+    "baud": 115200
+  }
+}

@@ -1,0 +1,17 @@
+(file uno
+  (device led pin [LED] output [] to_end=false)
+  (device button pin [2] input [pullup] to_end=false)
+  (on button.clicked
+    (do (call led.pattern (text "SOS") repeat:3))
+  )
+  (on (call button.held 2s)
+    (do (call led.off))
+  )
+  (test "a click plays, a hold stops - runs clean"
+    (do (call button.pretend 1))
+    (do (call advance 50ms))
+    (do (call button.pretend 0))
+    (do (call advance 3s))
+    (expect true (text "the SOS pattern should play without error"))
+  )
+)

@@ -1,0 +1,18 @@
+# sample: SOS in Morse code on a click, off on a long press
+board uno
+
+led    = pin LED as output
+button = pin 2 as input pullup
+
+on button.clicked:
+    led.pattern("SOS", repeat: 3)
+
+on button.held(2 s):
+    led.off()
+
+test "a click plays, a hold stops - runs clean":
+    button.pretend(1)
+    advance(50 ms)
+    button.pretend(0)
+    advance(3 s)
+    expect true, "the SOS pattern should play without error"

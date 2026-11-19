@@ -1,0 +1,20 @@
+(file uno
+  (use mujard "mujard.i2c" version="" as="")
+  (const SENSOR = 0x48)
+  (var request:list[int,1] = [0])
+  (every 2s
+    (do (call i2c.write SENSOR request))
+    (var data = (call i2c.read SENSOR 2))
+    (if (== data none)
+      (print (text "No answer from the sensor"))
+    )
+    (else
+      (var raw = (| (<< data[0] 8) data[1]))
+      (print (text "Raw reading: " {(>> raw 4)}))
+    )
+  )
+  (test "a silent bus gets a clean no-answer"
+    (do (call advance 2500ms))
+    (expect (call printed (text "No answer from the sensor")) (text "the fake bus has nothing on it"))
+  )
+)

@@ -1,0 +1,30 @@
+# Build output and binaries - never committed
+*.exe
+*.dll
+*.so
+*.dylib
+mujard-linux
+MujardCLI
+MujardCLI.exe
+
+# Go
+*.test
+*.out
+vendor/
+
+# Generated / local
+*.gen/
+*.hex
+*.bin
+*.elf
+*.uf2
+node_modules/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local config and secrets
+*.local.json
+*.secret
+.env
+.env.*

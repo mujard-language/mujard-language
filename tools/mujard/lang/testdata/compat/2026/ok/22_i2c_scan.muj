@@ -1,0 +1,10 @@
+# sample: list the I2C devices that are connected
+board uno
+use mujard.i2c
+
+at start:
+    print "I2C devices found: {i2c.scan()}"
+
+test "the scan reports what it found":
+    advance(100 ms)
+    expect printed "I2C devices found", "the scan runs and reports"

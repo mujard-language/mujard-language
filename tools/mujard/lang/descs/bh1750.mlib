@@ -1,0 +1,17 @@
+{
+  "name": "BH1750",
+  "header": "BH1750.h",
+  "architectures": ["avr", "sam", "esp8266", "esp32", "stm32"],
+  "takes": ["i2c"],
+  "classes": {
+    "BH1750": {
+      "ctors": [{"params": [{"name": "addr", "type": "int", "optional": true}], "result": "BH1750"}],
+      "methods": {
+        "begin": {"params": [], "result": "bool"},
+        "setMTreg": {"params": [{"name": "MTreg", "type": "int"}], "result": "bool"},
+        "measurementReady": {"params": [{"name": "maxWait", "type": "bool", "optional": true}], "result": "bool"},
+        "readLightLevel": {"params": [], "result": "float"}
+      }
+    }
+  }
+}

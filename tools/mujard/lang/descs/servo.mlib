@@ -1,0 +1,19 @@
+{
+  "name": "Servo",
+  "header": "Servo.h",
+  "takes": ["servo"],
+  "classes": {
+    "Servo": {
+      "ctors": [{"params": [], "result": "Servo"}],
+      "methods": {
+        "attach": {"params": [{"name": "pin", "type": "int"}, {"name": "min", "type": "int", "optional": true}, {"name": "max", "type": "int", "optional": true}], "result": "int"},
+        "detach": {"params": [], "result": "void"},
+        "write": {"params": [{"name": "value", "type": "int"}], "result": "void"},
+        "writeMicroseconds": {"params": [{"name": "value", "type": "int"}], "result": "void"},
+        "read": {"params": [], "result": "int"},
+        "readMicroseconds": {"params": [], "result": "int"},
+        "attached": {"params": [], "result": "bool"}
+      }
+    }
+  }
+}

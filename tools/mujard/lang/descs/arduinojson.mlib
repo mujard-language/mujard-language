@@ -1,0 +1,38 @@
+{
+  "name": "ArduinoJson",
+  "header": "ArduinoJson.h",
+  "classes": {
+    "JsonDocument": {
+      "ctors": [{"params": [], "result": "JsonDocument"}],
+      "methods": {
+        "size": {"params": [], "result": "int"},
+        "clear": {"params": [], "result": "void"},
+        "isNull": {"params": [], "result": "bool"},
+        "shrinkToFit": {"params": [], "result": "void"},
+        "overflowed": {"params": [], "result": "bool"},
+        "nesting": {"params": [], "result": "int"}
+      }
+    },
+    "DynamicJsonDocument": {
+      "ctors": [{"params": [{"name": "capacity", "type": "int"}], "result": "DynamicJsonDocument"}],
+      "methods": {
+        "size": {"params": [], "result": "int"},
+        "capacity": {"params": [], "result": "int"},
+        "clear": {"params": [], "result": "void"},
+        "isNull": {"params": [], "result": "bool"},
+        "overflowed": {"params": [], "result": "bool"}
+      }
+    }
+  },
+  "functions": {
+    "serializeJson": {"params": [{"name": "doc", "type": "any"}, {"name": "output", "type": "any"}], "result": "int"},
+    "serializeJsonPretty": {"params": [{"name": "doc", "type": "any"}, {"name": "output", "type": "any"}], "result": "int"},
+    "deserializeJson": {"params": [{"name": "doc", "type": "any"}, {"name": "input", "type": "any"}], "result": "any"},
+    "deserializeMsgPack": {"params": [{"name": "doc", "type": "any"}, {"name": "input", "type": "any"}], "result": "any"},
+    "measureJson": {"params": [{"name": "doc", "type": "any"}], "result": "int"},
+    "measureJsonPretty": {"params": [{"name": "doc", "type": "any"}], "result": "int"},
+    "JSON_ARRAY_SIZE": {"params": [{"name": "elements", "type": "int"}], "result": "int"},
+    "JSON_OBJECT_SIZE": {"params": [{"name": "members", "type": "int"}], "result": "int"},
+    "JSON_STRING_SIZE": {"params": [{"name": "length", "type": "int"}], "result": "int"}
+  }
+}

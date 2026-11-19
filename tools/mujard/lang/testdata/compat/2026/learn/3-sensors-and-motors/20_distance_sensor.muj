@@ -1,0 +1,18 @@
+# Distance sensor
+# Level 3 - Sensors and motors
+#
+# Measure how far away something is with an ultrasonic sensor.
+# You learn: the ultrasonic library, lengths in cm, and 'none' for "no answer".
+# You need: an HC-SR04: VCC to 5V, Trig to pin 7, Echo to pin 8, GND to GND.
+
+board uno
+use mujard.ultrasonic
+
+sonar = Ultrasonic(trig: pin 7, echo: pin 8)
+
+every 200 ms:
+    var d = sonar.distance()       # a length, or none when nothing echoes back
+    if d == none:                  # Mujard makes you check before using it
+        print "Nothing in range"
+    else:
+        print "Distance: {d as cm}"

@@ -1,0 +1,5 @@
+board nano33ble
+led = pin 13 as output
+s = analog A7
+at start:
+    print(s.value)

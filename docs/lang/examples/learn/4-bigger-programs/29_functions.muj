@@ -1,0 +1,33 @@
+# Functions
+# Level 4 - Bigger programs
+#
+# Put code you use more than once into a function with a name.
+# You learn: fn, parameters with types and defaults, named arguments and return values.
+# You need: a piezo buzzer on pin 8 and a pushbutton between pin 2 and GND.
+
+board uno
+
+buzzer = pin 8 as output
+button = pin 2 as input pullup
+
+# A function that does something. Both parameters have defaults, so beep() alone works.
+fn beep(pitch: frequency = 2 kHz, length: time = 100 ms):
+    buzzer.tone(pitch, length)
+
+# A function that gives back a value: -> says what type.
+fn sum_to(n: int) -> int:
+    var total = 0
+    for i in 1..=n:
+        total += i
+    return total
+
+fn average(a: float, b: float) -> float:
+    return (a + b) / 2
+
+on button.clicked:
+    beep()                                     # the defaults: 2 kHz for 100 ms
+
+on button.held(1 s):
+    beep(pitch: 500 Hz, length: 400 ms)        # named arguments: clear to read
+    print "1 + 2 + ... + 10 = {sum_to(10)}"
+    print "The average of 3 and 4 is {average(3, 4)}"

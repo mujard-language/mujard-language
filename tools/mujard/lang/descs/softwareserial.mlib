@@ -1,0 +1,26 @@
+{
+  "name": "SoftwareSerial",
+  "header": "SoftwareSerial.h",
+  "classes": {
+    "SoftwareSerial": {
+      "ctors": [
+        {"params": [{"name": "rx", "type": "int"}, {"name": "tx", "type": "int"}, {"name": "inverse", "type": "bool", "optional": true}], "result": "SoftwareSerial"}
+      ],
+      "methods": {
+        "begin": {"params": [{"name": "baud", "type": "int"}], "result": "void"},
+        "end": {"params": [], "result": "void"},
+        "listen": {"params": [], "result": "bool"},
+        "isListening": {"params": [], "result": "bool"},
+        "stopListening": {"params": [], "result": "bool"},
+        "overflow": {"params": [], "result": "bool"},
+        "available": {"params": [], "result": "int"},
+        "read": {"params": [], "result": "int"},
+        "peek": {"params": [], "result": "int"},
+        "write": {"params": [{"name": "value", "type": "int"}], "result": "int"},
+        "print": {"params": [{"name": "value", "type": "any"}, {"name": "base", "type": "any", "optional": true}], "result": "int"},
+        "println": {"params": [{"name": "value", "type": "any", "optional": true}], "result": "int"},
+        "flush": {"params": [], "result": "void"}
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+# Raspberry Pi Pico
+# Level 5 - Advanced
+#
+# One program idea, another board: a dimmer and a button on a Pico, using its GP pin names.
+# You learn: that only the board line and the pin names change between boards - the rest is the same Mujard.
+# You need: a Raspberry Pi Pico, a potentiometer on GP26 (ADC0), an LED + resistor on GP15 and a button from GP14 to GND.
+
+board pico
+
+onboard = pin LED as output
+lamp    = pin GP15 as pwm
+knob    = analog GP26
+button  = pin GP14 as input pullup
+
+var lamp_on = true
+
+every 20 ms:
+    if lamp_on:
+        lamp.write(knob.percent)
+    else:
+        lamp.write(0 %)
+
+on button.pressed:
+    lamp_on = not lamp_on
+    onboard.write(lamp_on)
+    print "Lamp {lamp_on} on a {board.name} ({board.chip})"

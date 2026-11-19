@@ -1,0 +1,6 @@
+# expect: P214 5:10
+board uno
+var x = 0
+at start:
+    if x = 3:
+        print "three"

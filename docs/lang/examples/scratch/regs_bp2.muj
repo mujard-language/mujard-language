@@ -1,0 +1,8 @@
+board bluepill
+use mujard.regs
+
+led = pin 5 as output
+
+at start:
+    regs.GPIOA_ODR.set(regs.GPIOA_ODR.ODR5)
+    led.on()

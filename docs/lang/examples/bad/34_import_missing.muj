@@ -1,0 +1,6 @@
+# expect: C321 3:1
+board uno
+import ghost
+
+at start:
+    print ghost.anything

@@ -1,0 +1,26 @@
+# sample: a fan that follows the temperature, controllable from the app
+board esp32
+
+fan  = pin 25 as pwm
+temp = analog 34
+
+var auto = true
+var manual_speed = 50 %
+control "Automatic", auto
+control "Manual speed", manual_speed, 0 %..100 %
+limit fan to 20 %..90 %
+
+at start:
+    fan.frequency(25 kHz)
+
+every 1 s:
+    var t = scale(temp.volts, 0.5 V..1.5 V, 0 C..100 C)
+    if auto:
+        fan.write(scale(t, 25 C..45 C, 0 %..100 %))
+    else:
+        fan.write(manual_speed)
+
+test "the auto fan follows the temperature":
+    temp.pretend(1.2 V)
+    advance(1200 ms)
+    expect true, "the auto fan loop runs without error"

@@ -1,0 +1,17 @@
+# sample: a GPS module on an extra serial port with mujard.uart
+board uno
+use mujard.uart
+
+gps = Uart(rx: pin 4, tx: pin 3, speed: 9600 baud)
+
+at start:
+    gps.write("$PMTK220,1000*1F\n")
+
+on gps.line as sentence:
+    if sentence.starts_with("$GPGGA"):
+        print sentence
+
+test "a fix sentence prints":
+    gps.pretend("$GPGGA,123519,4807.038,N,01131.000,E")
+    advance(200 ms)
+    expect printed "$GPGGA", "a GPS line is echoed"

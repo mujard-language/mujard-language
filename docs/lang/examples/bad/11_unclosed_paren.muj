@@ -1,0 +1,4 @@
+# expect: L110 4:11
+board uno
+at start:
+    print (1 + 2

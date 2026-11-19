@@ -1,0 +1,75 @@
+{
+  "name": "FastLED",
+  "header": "FastLED.h",
+  "classes": {
+    "CRGB": {
+      "ctors": [
+        {"params": [{"name": "r", "type": "int"}, {"name": "g", "type": "int"}, {"name": "b", "type": "int"}], "result": "CRGB"},
+        {"params": [], "result": "CRGB"},
+        {"params": [{"name": "color", "type": "int"}], "result": "CRGB"}
+      ],
+      "methods": {
+        "setRGB": {"params": [{"name": "r", "type": "int"}, {"name": "g", "type": "int"}, {"name": "b", "type": "int"}], "result": "CRGB"},
+        "setHSV": {"params": [{"name": "h", "type": "int"}, {"name": "s", "type": "int"}, {"name": "v", "type": "int"}], "result": "CRGB"},
+        "setHue": {"params": [{"name": "hue", "type": "int"}], "result": "CRGB"},
+        "fadeToBlackBy": {"params": [{"name": "fadefactor", "type": "int"}], "result": "void"},
+        "fadeLightBy": {"params": [{"name": "fadefactor", "type": "int"}], "result": "void"},
+        "nscale8": {"params": [{"name": "scaledown", "type": "int"}], "result": "void"},
+        "lerp8": {"params": [{"name": "other", "type": "CRGB"}, {"name": "frac", "type": "int"}], "result": "CRGB"},
+        "maximizeBrightness": {"params": [], "result": "void"},
+        "getAverageLight": {"params": [], "result": "int"},
+        "getLuma": {"params": [], "result": "int"},
+        "getParity": {"params": [], "result": "int"}
+      },
+      "fields": {"r": "int", "g": "int", "b": "int", "red": "int", "green": "int", "blue": "int"}
+    },
+    "CHSV": {
+      "ctors": [
+        {"params": [{"name": "h", "type": "int"}, {"name": "s", "type": "int"}, {"name": "v", "type": "int"}], "result": "CHSV"},
+        {"params": [], "result": "CHSV"}
+      ],
+      "fields": {"h": "int", "hue": "int", "s": "int", "sat": "int", "v": "int", "val": "int"}
+    },
+    "CFastLED": {
+      "ctors": [{"params": [], "result": "CFastLED"}],
+      "methods": {
+        "show": {"params": [{"name": "scale", "type": "int", "optional": true}], "result": "void"},
+        "clear": {"params": [{"name": "writeData", "type": "bool", "optional": true}], "result": "void"},
+        "clearData": {"params": [], "result": "void"},
+        "setBrightness": {"params": [{"name": "scale", "type": "int"}], "result": "void"},
+        "getBrightness": {"params": [], "result": "int"},
+        "setMaxRefreshRate": {"params": [{"name": "rate", "type": "int"}, {"name": "constrain", "type": "bool", "optional": true}], "result": "void"},
+        "delay": {"params": [{"name": "ms", "type": "int"}], "result": "void"},
+        "count": {"params": [], "result": "int"},
+        "size": {"params": [], "result": "int"},
+        "setCorrection": {"params": [{"name": "correction", "type": "any"}], "result": "void"},
+        "setTemperature": {"params": [{"name": "temperature", "type": "any"}], "result": "void"},
+        "setDither": {"params": [{"name": "dither", "type": "int"}], "result": "void"},
+        "setMaxPowerInVoltsAndMilliamps": {"params": [{"name": "volts", "type": "int"}, {"name": "milliamps", "type": "int"}], "result": "void"},
+        "showColor": {"params": [{"name": "color", "type": "CRGB"}, {"name": "scale", "type": "int", "optional": true}], "result": "void"},
+        "getFPS": {"params": [], "result": "int"}
+      }
+    }
+  },
+  "functions": {
+    "fill_solid": {"params": [{"name": "leds", "type": "any"}, {"name": "num", "type": "int"}, {"name": "color", "type": "CRGB"}], "result": "void"},
+    "fill_rainbow": {"params": [{"name": "leds", "type": "any"}, {"name": "num", "type": "int"}, {"name": "firsthue", "type": "int"}, {"name": "deltahue", "type": "int", "optional": true}], "result": "void"},
+    "fill_gradient_RGB": {"params": [{"name": "leds", "type": "any"}, {"name": "num", "type": "int"}, {"name": "c1", "type": "CRGB"}, {"name": "c2", "type": "CRGB"}], "result": "void"},
+    "fadeToBlackBy": {"params": [{"name": "leds", "type": "any"}, {"name": "num", "type": "int"}, {"name": "fadefactor", "type": "int"}], "result": "void"},
+    "beatsin8": {"params": [{"name": "bpm", "type": "int"}, {"name": "lo", "type": "int", "optional": true}, {"name": "hi", "type": "int", "optional": true}], "result": "int"},
+    "beatsin16": {"params": [{"name": "bpm", "type": "int"}, {"name": "lo", "type": "int", "optional": true}, {"name": "hi", "type": "int", "optional": true}], "result": "int"},
+    "beat8": {"params": [{"name": "bpm", "type": "int"}], "result": "int"},
+    "beat16": {"params": [{"name": "bpm", "type": "int"}], "result": "int"},
+    "random8": {"params": [{"name": "lim", "type": "int", "optional": true}], "result": "int"},
+    "random16": {"params": [{"name": "lim", "type": "int", "optional": true}], "result": "int"},
+    "sin8": {"params": [{"name": "theta", "type": "int"}], "result": "int"},
+    "cos8": {"params": [{"name": "theta", "type": "int"}], "result": "int"},
+    "scale8": {"params": [{"name": "i", "type": "int"}, {"name": "scale", "type": "int"}], "result": "int"},
+    "map8": {"params": [{"name": "x", "type": "int"}, {"name": "low", "type": "int"}, {"name": "high", "type": "int"}], "result": "int"},
+    "hsv2rgb_rainbow": {"params": [{"name": "hsv", "type": "CHSV"}, {"name": "rgb", "type": "CRGB"}], "result": "void"},
+    "ColorFromPalette": {"params": [{"name": "pal", "type": "any"}, {"name": "index", "type": "int"}, {"name": "brightness", "type": "int", "optional": true}, {"name": "blend", "type": "any", "optional": true}], "result": "CRGB"}
+  },
+  "constants": {
+    "FastLED": "CFastLED"
+  }
+}
