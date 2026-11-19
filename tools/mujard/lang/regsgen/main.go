@@ -1,7 +1,7 @@
 // regsgen builds lang/regs.json from the AVR GCC io headers - the register and bit names the maker publishes
 // (the same data ATDF files carry). Run from the lang directory:
 //
-//	go run ./regsgen -toolchain "C:\Users\Don Fila\AppData\Local\mujard\toolchains\avr-gcc-7.3.0-atmel3.6.1-arduino7"
+//	go run ./regsgen -toolchain "%LOCALAPPDATA%\mujard\toolchains\avr-gcc-7.3.0-atmel3.6.1-arduino7"
 //
 // Espressif and other non-AVR chips come from their SVD files (-svd-dir). A board whose chip has no table yet
 // gets B413 at compile time, never a crash.
