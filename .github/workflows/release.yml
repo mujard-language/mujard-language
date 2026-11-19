@@ -70,6 +70,15 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+
+      - name: SBOM (source, SPDX JSON)
+        uses: anchore/sbom-action@v0
+        with:
+          path: .
+          format: spdx-json
+          output-file: sbom.spdx.json
+
       - uses: actions/download-artifact@v4
         with:
           path: dist
@@ -87,3 +96,4 @@ jobs:
           files: |
             dist/*
             checksums.txt
+            sbom.spdx.json

@@ -7,6 +7,11 @@ language is pre-1.0; version numbers track the language version reported by
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-11-19 (language version 69)
+
+First public release: the repository goes public with a curated, single-commit
+history (pre-release private history intentionally unpublished).
+
 ### Added
 
 - Initial public import of the open-source components:
@@ -24,3 +29,7 @@ language is pre-1.0; version numbers track the language version reported by
   2026 implementation milestones
 - `ROADMAP.md` — public milestones and capability evidence model
 - `CONTRIBUTING.md` — the three-homes rule, DCO sign-off and build/test guide
+- `.github/` — CI (`gofmt`, `go vet`, `go test` on both modules), the release
+  workflow (prebuilt `mujard` + `mujard-build` binaries for Windows, Linux and
+  macOS with SHA-256 checksums and an SPDX SBOM), issue/PR templates and
+  Dependabot updates
