@@ -1,0 +1,14 @@
+version: 2
+updates:
+  - package-ecosystem: go
+    directory: /tools/mujard
+    schedule:
+      interval: weekly
+  - package-ecosystem: go
+    directory: /tools/mujard-build
+    schedule:
+      interval: weekly
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
