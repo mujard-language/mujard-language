@@ -140,7 +140,7 @@ func fakeArduinoCli(t *testing.T) string {
 		return p
 	}
 	p := filepath.Join(t.TempDir(), "arduino-cli")
-	script := "#!/bin/sh\nmkdir -p \"$5\"\necho ':00000001FF' > \"$5/sketch.ino.hex\"\nif [ -n \"$MUJARD_TEST_SEEN\" ] && [ -f \"$6/mujard_secrets.h\" ]; then cp \"$6/mujard_secrets.h\" \"$MUJARD_TEST_SEEN\"; fi\nexit 0\n"
+	script := "#!/bin/sh\nPATH=/usr/local/bin:/usr/bin:/bin\nexport PATH\nmkdir -p \"$5\"\necho ':00000001FF' > \"$5/sketch.ino.hex\"\nif [ -n \"$MUJARD_TEST_SEEN\" ] && [ -f \"$6/mujard_secrets.h\" ]; then cp \"$6/mujard_secrets.h\" \"$MUJARD_TEST_SEEN\"; fi\nexit 0\n"
 	if err := os.WriteFile(p, []byte(script), 0o700); err != nil {
 		t.Fatal(err)
 	}
